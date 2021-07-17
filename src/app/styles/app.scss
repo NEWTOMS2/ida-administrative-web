@@ -17,3 +17,9 @@ body {
 .bold-font {
   font-weight: 700;
 }
+
+.primary-btn {
+  width: 100%;
+  color: $secondary-text;
+  background: $primary-color;
+}

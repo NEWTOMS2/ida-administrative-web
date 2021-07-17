@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
+import { languages  } from '../app/core/config/configuration';
 
 @Component({
   selector: 'app-root',
@@ -10,16 +11,13 @@ import { environment } from 'src/environments/environment';
 })
 export class AppComponent {
   title = 'ida-admin-web-app';
-  languages = [
-    { language: 'es', term: 'ES' },
-    { language: 'en', term: 'EN' },
-  ];
+
   constructor(private translate: TranslateService) {
     this.translate.setDefaultLang(environment.defaultLanguage);
     this.translate.use(environment.defaultLanguage);
 
     const langs:any = [];
-    this.languages.map((el) => {
+    languages.map((el) => {
       langs.push(el.language);
     });
     this.translate.addLangs(langs);

@@ -1,0 +1,49 @@
+@import "../../styles/variables.scss";
+
+.login-section {
+    background: $login-background;
+    height: 100vh;
+}
+
+.container {
+    height: 100%;
+    display: grid;
+    align-items: center;
+}
+
+.row {
+    height: 100%;
+}
+
+.columns {
+    display: grid;
+    align-items: center;
+}
+
+.login-img-wrapper {
+    background-color: $login-img-wrapper-color;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 40px;
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+
+    img {
+        width: auto;
+        height: 25%;
+    }
+}
+
+.login-form-wrapper {
+    background-color: $login-form-wrapper-color;
+    color: $dark-blue;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 100px;
+    height: 70%;
+    padding: 4rem 5rem;
+}
+    
+
+  

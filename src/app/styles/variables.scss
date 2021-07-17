@@ -2,15 +2,21 @@ $font-family: 'Poppins', Arial;
 
 // Colors
 $white: #fff;
-$ligth-grey: rgb(196, 196, 196);
+$ligth-grey: #E5E5E5;
 $black: #000000;
 $dark-blue: #182249;
-$orange: #ff5210;
-$dark-orange: #c24513;
+$ligth-blue: #63709F;
 $grey: #e7e7e7;
+$primary-color: $dark-blue;
 
 // Text
 $primary-text: $black;
+$secondary-text: $ligth-grey;
 
 // ---------- App ----------
 $background: $ligth-grey;
+//Login
+$login-background: $dark-blue;
+$login-img-wrapper-color: $ligth-blue;
+$login-form-wrapper-color: $white;
+
