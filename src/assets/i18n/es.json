@@ -48,5 +48,11 @@
   "PERSONAL_DATA": "Datos personales",
   "USER_PROFILE": "Perfil de usuario",
   "LANGUAGE": "Lenguaje",
-  "STATUS": "Estatus"
+  "STATUS": "Estatus",
+
+  "ATTENTION_CENTER": "Centro de Atención",
+  "FREQUENTLY-QUESTIONS": "Preguntas frecuentes",
+  "ATTENTION_REQUESTS": "Solicitudes de atención",
+  "MVNO_INFORMATION": "Información del OMV",
+  "USERS": "Usuarios"
 }

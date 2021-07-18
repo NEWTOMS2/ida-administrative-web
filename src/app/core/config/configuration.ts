@@ -4,3 +4,5 @@ export const languages = [
 ];
 
 export const administrative_exp_api_host = "https://pro-ida-administrative-exp-api.us-e1.cloudhub.io/api"
+
+export const images = { applicationLogo: "assets/images/exis_logo.png"}

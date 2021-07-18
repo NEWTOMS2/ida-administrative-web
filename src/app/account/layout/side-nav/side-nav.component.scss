@@ -1,0 +1,76 @@
+@import "../../../styles/mixins";
+@import "../../../styles/variables";
+
+// General
+.side-nav-content{
+    margin-top: 4rem;
+}
+
+.side-nav-logo-wrapper {
+    display: flex !important;
+    justify-content: center !important;
+  
+    img {
+      @include object-size(6rem, auto);
+      margin-bottom: -2%;
+    }
+}
+
+.side-nav-space-bar {
+    margin: 0.5rem 0rem !important
+}
+
+// Side-nav options
+.active-item {
+    background: $sidenav-active-option-background !important;
+    border-color: $primary-color;
+    color: $white;
+    opacity: 1;
+    .menu-icon {
+      color: $white;
+    }
+  
+    &:hover {
+      color:  $white;
+      .menu-icon {
+        color: $white;
+      }
+    }
+  }
+
+.simple-menu-item {
+  color: $ligth-grey;
+  text-decoration: none;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 48px;
+  padding: 0px 20px;
+  border-color: $primary-color;
+  border-left-style: solid;
+  border-left-width: 3px;
+  font-weight: 300;
+  transition:  0.3s;
+
+  .menu-icon {
+    @include text-style($ligth-grey, 400, 1rem);
+    padding: 0px 20px 0px 0px;
+  }
+
+  &:hover {
+    font-weight: 500;
+    opacity: 1;
+    color: $white;
+
+    .menu-icon {
+      color: $white;
+    }
+  }
+
+  &.active {
+    @extend .active-item;
+  }
+}
+
+
