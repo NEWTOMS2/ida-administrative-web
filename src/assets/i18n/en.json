@@ -55,6 +55,15 @@
   "FREQUENTLY-QUESTIONS": "Frecuently Questions",
   "ATTENTION_REQUESTS": "Attention Requests",
   "MVNO_INFORMATION": "MVNO Information",
-  "USERS": "Users"
+  "USERS": "Users",
+
+  "TYPE": "Type",
+  "REQUESTER": "Requester",
+  "DATE": "Date",
+  "STATE": "State",
+
+  "NEW": "New",
+  "IN_PROGRESS": "In progress",
+  "COMPLETED": "Completed"
 
 }

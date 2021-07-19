@@ -54,5 +54,14 @@
   "FREQUENTLY-QUESTIONS": "Preguntas frecuentes",
   "ATTENTION_REQUESTS": "Solicitudes de atención",
   "MVNO_INFORMATION": "Información del OMV",
-  "USERS": "Usuarios"
+  "USERS": "Usuarios",
+
+  "TYPE": "Tipo",
+  "REQUESTER": "Solicitante",
+  "DATE": "Fecha",
+  "STATE": "Estado",
+
+  "NEW": "Nuevo",
+  "IN_PROGRESS": "En progreso",
+  "COMPLETED": "Completado"
 }
