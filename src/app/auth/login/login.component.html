@@ -25,6 +25,7 @@
                       formControlName="email"
                       placeholder='{{"EMAIL_ADDRESS" | translate}}'
                       class="form-control"
+                      (keydown.enter)="login()"
                       [ngClass]="{
                         'is-invalid':
                           this.loginForm.get('email')?.invalid &&
@@ -52,6 +53,7 @@
                         id="password"
                         class="form-control"
                         placeholder="{{ 'PASSWORD' | translate }}"
+                        (keydown.enter)="login()"
                         [ngClass]="{
                           'is-invalid':
                             this.loginForm.get('password')?.invalid &&
@@ -85,11 +87,6 @@
                     </div>
                   </ng-template>
                   </button>
-                  <button
-                    class="btn primary-btn btn-block"
-                    type="button"
-                    (click)="validate()"
-                  >Validar</button>
                 </div>
               </form>
             </div>

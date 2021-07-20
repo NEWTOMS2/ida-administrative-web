@@ -5,6 +5,7 @@ import { HidePasswordService } from 'src/app/shared/services/hide-password.servi
 import { images } from '../../core/config/configuration';
 import { AuthService } from '../../core/services/auth.service';
 import { NotificationsService } from '../../shared/services/notifications.service';
+import { emailPattern } from '../../core/config/configuration';
 
 @Component({
   selector: 'app-login',
@@ -40,32 +41,22 @@ export class LoginComponent implements OnInit {
         .login(credentials).toPromise()
         .then((data) => {
           this.authService.storeUserData(data.data[0]);
-          this.spinnerLoader = false;
-          this.router.navigate(['/simulator/dashboard']);
+          this.router.navigate(['/account/tickets']);
         })
         .catch((error) => {
           this.spinnerLoader = false;
-          this.notification.showErrorToast("error");
+          if (error == "Invalid credentials"){
+            error = "WRONG_CREDENTIALS"
+          }else error = "GENERIC_ERROR"
+          this.notification.showErrorToast(error);
         });
     }
   }
 
-  validate(): void {
-    this.authService.isUserLogged(localStorage.getItem('Token')!).toPromise().then((data)=>{console.log(data)});
-  }
-
-  passwordValidation(): boolean {
-    // return (
-    //   this.loginForm.get('password').errors &&
-    //   this.loginForm.get('password').touched
-    // );
-    return true;
-  }
-
   private buildForm(): void {
     this.loginForm = this.formBuilder.group({
-      email: ['', Validators.compose([Validators.required, Validators.email])],
-      password: ['', Validators.compose([Validators.required])],
+      email: ['', Validators.compose([Validators.required, Validators.pattern(emailPattern)])],
+      password: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
     });
   }
 }

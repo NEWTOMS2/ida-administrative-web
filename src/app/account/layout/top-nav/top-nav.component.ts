@@ -48,8 +48,8 @@ export class TopNavComponent implements OnInit {
   }
 
   logOut(): void {
-    console.log('Log out');
-    this.router.navigate(['login'])
+    localStorage.clear();
+    this.router.navigate(['/']);
   }
 
 }

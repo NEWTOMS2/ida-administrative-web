@@ -70,3 +70,18 @@ body {
   color: $ligth-blue;
   margin-bottom: 0 !important
 }
+
+
+.form-control:invalid:focus, .form-control:focus  {
+  box-shadow: none !important;
+}
+
+
+/* Toast alerts*/
+.toast-container .ngx-toastr {
+  box-shadow: none !important;
+}
+
+.toast-message {
+  font-size: 13px !important;
+}

@@ -36,20 +36,16 @@ export class AuthService {
       localStorage.setItem('Role', user.role);
   }
 
-  logout(): void {
-    localStorage.clear();
-  }
-
-  isUserLogged(token: string): Observable<any> {
-    return this.http.get<any>(auth_api_host + '/validate-token', {
+  async isUserLogged(token: string): Promise<any> {
+    const user = await this.http.get<any>(auth_api_host + '/validate-token', {
       headers: new HttpHeaders({
         'Content-Type':'application/json',
         'Authorization': `Bearer ${token}`
       })
+    }).toPromise().catch(()=> {
+      return null
     })
-    .pipe(
-      catchError(this.handleError)
-    )
+    return user;
   }
 
   handleError(error: any ) {
