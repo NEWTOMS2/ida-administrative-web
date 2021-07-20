@@ -1,0 +1,101 @@
+@import "../../styles/variables.scss";
+
+.login-section {
+    background: $login-background;
+    height: 100vh;
+}
+
+.container {
+    height: 100%;
+    display: grid;
+    align-items: center;
+}
+
+.columns {
+    display: grid;
+    align-items: center;
+}
+
+.login-img-wrapper {
+    background-color: $login-img-wrapper-color;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 40px;
+    padding: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    img {
+        width: 50%;
+        height: auto;
+    }
+}
+
+.login-form-wrapper {
+    background-color: $login-form-wrapper-color;
+    color: $dark-blue;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 100px;
+    padding: 6rem 4rem;
+    height: 100%;
+}
+
+.form-control {
+    background-color: $ligth-grey;
+
+    &:focus {
+        background-color: $ligth-grey;
+    }
+}
+
+.img-col {
+    padding-right: 0; 
+    padding-left: 8%;
+}
+
+.login-col {
+    padding-left: 0;
+    padding-right: 8%;
+}
+
+@media (max-width: 991px) {
+    .img-col {
+        display: none;
+    }
+
+    .login-col {
+        padding-right: 0;
+    }
+
+    .login-form-wrapper {
+        border-bottom-left-radius: 40px;
+        border-top-left-radius: 100px;
+    }
+
+}
+
+@media (max-width: 560px) {
+    .columns {
+        padding: 0rem 2rem !important;
+    }
+
+    .login-form-wrapper {
+        background-color: $login-form-wrapper-color;
+        color: $dark-blue;
+        border-top-right-radius: 40px;
+        border-bottom-right-radius: 100px;
+        padding: 6rem 1rem;
+    }
+}
+
+@media (max-height: 560px) {
+    .login-section {
+        height: 100%;
+        padding: 5% 0%;
+    }
+}
+    
+.form-row {
+    margin: 2.5rem 0rem;
+ }

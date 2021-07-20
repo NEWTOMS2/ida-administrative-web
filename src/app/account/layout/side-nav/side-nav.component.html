@@ -1,0 +1,27 @@
+<div>
+    <!--Side-nav header: Logo --> 
+    <div class="ml-4 mt-3 side-nav-logo-wrapper">
+        <img 
+            [src]="sideNavLogo" 
+            alt="Logo" 
+            loading="lazy"
+        />
+    </div>
+    <div class="mx-2">
+        <hr class="side-nav-space-bar" />
+    </div>
+
+    <!-- Side-nav options -->
+    <div class="side-nav-content">
+        <a
+        *ngFor="let option of menuOptions"
+        class="simple-menu-item"
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+        [routerLink]="[option.link]"
+        >
+            <fa-icon [icon]="option.icon" class="menu-icon mr-3"></fa-icon>
+            <span class="menu-item-title">{{ option.name }}</span>
+        </a>
+    </div>
+</div>

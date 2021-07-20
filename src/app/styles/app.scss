@@ -1,0 +1,87 @@
+@import "../styles/variables.scss";
+
+body {
+  font-family: $font-family !important;
+  color: $primary-text;
+  background: $background;
+}
+
+.thin-font {
+  font-weight: 100;
+}
+
+.light-font {
+  font-weight: 300;
+}
+
+.bold-font {
+  font-weight: 700;
+}
+
+.primary-btn {
+  width: 100%;
+  color: $secondary-text;
+  background: $primary-color;
+
+  &:hover{
+    color: $white;
+  }
+}
+
+.invalid-feedback {
+  position: fixed;
+  font-size: 12px;
+}
+
+.input-group-append .input-group-text {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+
+
+/* Badge */
+.primary-badge{
+  background-color: $primary-color !important;
+}
+.secondary-badge{
+  background-color: $secondary-color  !important;
+}
+
+.info-badge{
+  background-color: $info-color  !important;
+}
+
+
+/* Forms */
+.form-select {
+  background-color: #fff0 !important;
+  color: $dark-blue !important;
+  font-size: 0.8rem !important;
+  border: 1px solid $ligth-blue;
+  font-weight: 400 !important
+}
+
+.form-label {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: $ligth-blue;
+  margin-bottom: 0 !important
+}
+
+
+.form-control:invalid:focus, .form-control:focus  {
+  box-shadow: none !important;
+}
+
+
+/* Toast alerts*/
+.toast-container .ngx-toastr {
+  box-shadow: none !important;
+}
+
+.toast-message {
+  font-size: 13px !important;
+}
