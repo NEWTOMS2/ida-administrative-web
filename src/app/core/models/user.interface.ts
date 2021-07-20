@@ -4,5 +4,5 @@ export interface User {
   email?: string;
   password?: string;
   uid?: string;
-  connect_id: string;
+  connectId?: string;
 }

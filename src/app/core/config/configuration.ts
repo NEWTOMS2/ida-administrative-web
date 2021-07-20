@@ -8,3 +8,19 @@ export const administrative_exp_api_host = "https://prod-ida-administrative-exp-
 export const auth_api_host = "http://localhost:8095/api"
 
 export const images = { applicationLogo: "assets/images/exis_logo.png"}
+
+export const ticketStates = [
+  {
+    state:  "COMPLETED",
+    color: "primary"
+  },
+  {
+    state:  "NEW",
+    color: "secondary"
+  },
+  {
+    state:  "IN_PROGRESS",
+    color: "info"
+  }
+]
+export const ticketTypes = ["SERVICES", "PROBLEMS"]

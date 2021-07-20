@@ -39,3 +39,34 @@ body {
   cursor: pointer;
   user-select: none;
 }
+
+
+
+/* Badge */
+.primary-badge{
+  background-color: $primary-color !important;
+}
+.secondary-badge{
+  background-color: $secondary-color  !important;
+}
+
+.info-badge{
+  background-color: $info-color  !important;
+}
+
+
+/* Forms */
+.form-select {
+  background-color: #fff0 !important;
+  color: $dark-blue !important;
+  font-size: 0.8rem !important;
+  border: 1px solid $ligth-blue;
+  font-weight: 400 !important
+}
+
+.form-label {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: $ligth-blue;
+  margin-bottom: 0 !important
+}

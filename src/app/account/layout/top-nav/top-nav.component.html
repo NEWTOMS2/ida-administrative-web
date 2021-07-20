@@ -1,0 +1,24 @@
+<div class="top-navbar">
+    <div class="brand-header d-flex justify-content-between justify-content-md-end">
+      <div *ngIf="isHandset$ | async">
+        <button
+          type="button"
+          class="btn sidebar-toggle"
+          (click)="toggleSideMenu()"
+        >
+          <fa-icon class="sidebar-toggle-icon" [icon]="menuIcon"></fa-icon>
+        </button>
+      </div>
+
+      <!-- User information and log out -->
+      <div>
+         <div class="mr-md-3 tool-actions">
+            <div>{{ user.name }}</div>
+            <div class="logout-btn"  (click)="logOut()">
+                <fa-icon [icon]="logoutIcon" class="menu-icon mr-3"></fa-icon>
+            </div>
+         </div>
+      </div>
+    </div>
+</div>
+  

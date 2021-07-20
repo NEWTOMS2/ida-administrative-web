@@ -49,5 +49,26 @@
   "USER_PROFILE": "User profile",
   "LANGUAGE": "Language",
   "SAVE_CHANGES": "Save",
-  "STATUS": "Status"
+  "STATUS": "Status",
+
+  "ATTENTION_CENTER": "Attention Center",
+  "FREQUENTLY-QUESTIONS": "Frecuently Questions",
+  "ATTENTION_REQUESTS": "Attention Requests",
+  "MVNO_INFORMATION": "MVNO Information",
+  "USERS": "Users",
+
+  "TYPE": "Type",
+  "REQUESTER": "Requester",
+  "DATE": "Date",
+  "STATE": "State",
+
+  "NEW": "New",
+  "IN_PROGRESS": "In progress",
+  "COMPLETED": "Completed",
+
+  "ALL": "All",
+  "MY_REQUESTS": "My requests",
+
+  "SERVICES": "Service",
+  "PROBLEMS": "Problem"
 }
