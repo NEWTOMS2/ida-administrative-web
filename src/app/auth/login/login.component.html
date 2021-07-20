@@ -1,129 +1,21 @@
-<!-- <main class="d-flex align-items-center py-3 py-md-0 main">
-    <div class="container">
-      <div class="card auth-card">
-        <div class="row no-gutters">
-          <div class="col-md-7">
-            <img
-              src="assets/images/login.PNG"
-              alt="login"
-              class="login-card-img"
-            />
-          </div>
-          <div class="col-md-5">
-            <div class="card-body">
-              <div class="mb-4">
-                <img
-                  src="assets/images/tradeItLogo.png"
-                  alt="logo"
-                  height="37px"
-                />
-              </div>
-              <h4 class="mb-4">{{ "SIGN_IN" | translate }}</h4>
-              <form [formGroup]="loginForm" class="needs-validation" novalidate>
-                <div class="form-row mb-2">
-                  <div class="col">
-                    <label class="sr-only">{{
-                      "EMAIL_ADDRESS" | translate
-                    }}</label>
-                    <input
-                      formControlName="email"
-                      id="email"
-                      class="form-control"
-                      placeholder="{{ 'EMAIL_ADDRESS' | translate }}"
-                      required
-                      [ngClass]="{
-                        'is-invalid':
-                          this.loginForm.get('email')?.invalid &&
-                          this.loginForm.get('email')?.touched
-                      }"
-                    />
-                    <div class="invalid-feedback font-size-11px mt-n3">
-                      {{ "INTRODUCE_EMAIL" | translate }}
-                    </div>
-                  </div>
-                </div>
-                <div class="form-row mb-2">
-                  <div class="col">
-                    <div
-                      class="input-group"
-                      [ngClass]="{ 'is-invalid': passwordValidation() }"
-                    >
-                      <input
-                        formControlName="password"
-                        [type]=""
-                        id="password"
-                        class="form-control"
-                        placeholder="{{ 'PASSWORD' | translate }}"
-                        [ngClass]="{ 'is-invalid': passwordValidation() }"
-                      />
-                      <div
-                        class="input-group-append"
-                      >
-                        <span class="input-group-text form-control">
-                          <fa-icon [icon]="hidePassword.toogleIcon"></fa-icon>
-                        </span>
-                      </div>
-                    </div>
-                    <div class="invalid-feedback font-size-11px mt-n3">
-                      {{ "INTRODUCE_PASSWORD" | translate }}
-                    </div>
-                  </div>
-                </div>
-                <button
-                  id="login"
-                  class="btn btn-blue btn-block mb-5"
-                  type="button"
-                  (click)="login()"
-                >
-                  <span *ngIf="!spinnerLoader; else loading">{{
-                    "LOGIN" | translate
-                  }}</span>
-                  <ng-template class="text-center" #loading>
-                    <div class="spinner-border spinner-border-sm" role="status">
-                      <span class="sr-only">Loading...</span>
-                    </div>
-                  </ng-template>
-                </button>
-              </form>
-              <div class="mb-3 font-size-14px">
-                <p>
-                  {{ "FORGOT_PASSWORD" | translate }}
-                  <a class="link" routerLink="/forgot-password">
-                    {{ "RECOVER_PASSWORD" | translate }}
-                  </a>
-                </p>
-              </div>
-              <p>
-                {{ "NO_ACCOUNT" | translate }}
-                <a class="link" routerLink="/sign-up">{{
-                  "REGISTER_HERE" | translate
-                }}</a>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-   -->
 <div class="login-section">
   <div class="container">
     <div class="row">
-      <div class="col-lg-6 col-12 columns" style="padding-right: 0; padding-left: 8%;">
+      <div class="col-lg-6 col-12 columns img-col">
         <div class="login-img-wrapper">
           <img
-          src="assets/images/exis_logo.png"
+          src={{login_image}}
           alt="Exis Logo"
           loading="lazy"
         />
         </div>
       </div>
-      <div class="col-lg-6 col-12 columns" style="padding-left: 0; padding-right: 8%;">
+      <div class="col-lg-6 col-12 columns login-col">
         <div class="login-form-wrapper">
-          <h2 class="bold-font text-center mb-5">
+          <h2 class="bold-font text-center mb-4">
             {{"LOGIN" | translate}}
           </h2>
-          <div class="row justify-content-center px-4 pb-2">
+          <div class="row justify-content-center px-3 pb-2">
             <div class="col-12">
               <form [formGroup]="loginForm" class="needs-validation" novalidate>
                 <div class="form-row" id="name-group">
@@ -132,32 +24,50 @@
                       type="text"
                       formControlName="email"
                       placeholder='{{"EMAIL_ADDRESS" | translate}}'
-                      class="form-control mb-3"
+                      class="form-control"
                       [ngClass]="{
                         'is-invalid':
                           this.loginForm.get('email')?.invalid &&
                           this.loginForm.get('email')?.touched
                       }"
                     />
-                    <div class="invalid-feedback form-error mt-n3">
+                    <div class="invalid-feedback">
                       {{"INTRODUCE_EMAIL" | translate}}
                     </div>
                   </div>
                 </div>
-                <div class="form-row mt-2" id="name-group">
+                <div class="form-row" id="name-group">
                   <div class="col-12">
-                    <input
-                      type="text"
-                      formControlName="password"
-                      placeholder='{{"PASSWORD" | translate}}'
-                      class="form-control mb-3"
-                      [ngClass]="{
-                        'is-invalid':
-                          this.loginForm.get('password')?.invalid &&
-                          this.loginForm.get('password')?.touched
-                      }"
-                    />
-                    <div class="invalid-feedback form-error mt-n3">
+                    <div
+                    class="input-group"
+                    [ngClass]="{
+                      'is-invalid':
+                        this.loginForm.get('password')?.invalid &&
+                        this.loginForm.get('password')?.touched
+                    }"
+                    >
+                      <input
+                        formControlName="password"
+                        [type]="hidePassword.passwordType"
+                        id="password"
+                        class="form-control"
+                        placeholder="{{ 'PASSWORD' | translate }}"
+                        [ngClass]="{
+                          'is-invalid':
+                            this.loginForm.get('password')?.invalid &&
+                            this.loginForm.get('password')?.touched
+                        }"
+                      />
+                      <div
+                        class="input-group-append"
+                        (click)="hidePassword.hidePassword()"
+                      >
+                        <span class="input-group-text form-control">
+                          <fa-icon [icon]="hidePassword.toogleIcon"></fa-icon>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="invalid-feedback">
                       {{"INTRODUCE_PASSWORD" | translate}}
                     </div>
                   </div>
@@ -168,13 +78,18 @@
                     type="button"
                     (click)="login()"
                   >
-                    <span *ngIf="!spinnerLoader; else loading">{{"LOGIN" | translate}}</span>
-                    <ng-template class="text-center" #loading>
-                      <div class="spinner-border spinner-border-sm" role="status">
-                        <span class="sr-only">Loading...</span>
-                      </div>
-                    </ng-template>
+                  <span *ngIf="!spinnerLoader; else loading">{{"LOGIN" | translate}}</span>
+                  <ng-template class="text-center" #loading>
+                    <div class="spinner-border spinner-border-sm" role="status">
+                      <span class="sr-only"></span>
+                    </div>
+                  </ng-template>
                   </button>
+                  <button
+                    class="btn primary-btn btn-block"
+                    type="button"
+                    (click)="validate()"
+                  >Validar</button>
                 </div>
               </form>
             </div>

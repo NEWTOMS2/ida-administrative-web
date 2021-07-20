@@ -22,4 +22,20 @@ body {
   width: 100%;
   color: $secondary-text;
   background: $primary-color;
+
+  &:hover{
+    color: $white;
+  }
+}
+
+.invalid-feedback {
+  position: fixed;
+  font-size: 12px;
+}
+
+.input-group-append .input-group-text {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  cursor: pointer;
+  user-select: none;
 }
