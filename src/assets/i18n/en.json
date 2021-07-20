@@ -64,6 +64,11 @@
 
   "NEW": "New",
   "IN_PROGRESS": "In progress",
-  "COMPLETED": "Completed"
+  "COMPLETED": "Completed",
 
+  "ALL": "All",
+  "MY_REQUESTS": "My requests",
+
+  "SERVICES": "Service",
+  "PROBLEMS": "Problem"
 }

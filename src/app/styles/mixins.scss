@@ -3,7 +3,7 @@
     height: $height !important;
   }
   
-  @mixin text-style($color, $font-weight, $font-size) {
+@mixin text-style($color, $font-weight, $font-size) {
     color: $color;
     font-weight: $font-weight;
     font-size: $font-size;

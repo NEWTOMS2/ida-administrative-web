@@ -8,13 +8,15 @@ import { TopNavComponent } from './layout/top-nav/top-nav.component';
 
 import { LayoutService } from './layout/layout.service';
 import { SharedModule } from '../shared/shared.module';
+import { LocalizedDatePipe } from '../shared/pipes/localized.pipe';
 
 
 @NgModule({
   declarations: [
     LayoutComponent,
     SideNavComponent,
-    TopNavComponent
+    TopNavComponent,
+    LocalizedDatePipe
   ],
   imports: [
     CommonModule,

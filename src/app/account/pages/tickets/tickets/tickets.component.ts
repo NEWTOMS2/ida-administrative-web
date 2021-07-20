@@ -3,13 +3,27 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute } from '@angular/router';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-
 import { TranslateService } from '@ngx-translate/core';
+
+import { ticketStates, ticketTypes } from 'src/app/core/config/configuration';
 
 import { Ticket } from 'src/app/core/models/ticket.interface';
 import { User } from 'src/app/core/models/user.interface';
+import { LocalizedDatePipe } from 'src/app/shared/pipes/localized.pipe';
 import { searchTranslation } from 'src/app/utils/searchTranslation';
+
+
+export interface TableTicket {
+  id: number;
+  type: string;
+  user:  string;
+  date: string;
+  state: string;
+  agent: string;
+  
+}
 
 @Component({
   selector: 'app-tickets',
@@ -21,39 +35,33 @@ export class TicketsComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<any>;
   public title =  searchTranslation(this.translateService, 'ATTENTION_REQUESTS');
-  public dataSource!: MatTableDataSource<Ticket>;
-  public selection = new SelectionModel<Ticket>(true, []);
+  public dataSource!: MatTableDataSource<TableTicket>;
+  public selection = new SelectionModel<TableTicket>(true, []);
   public searchIcon = faSearch;
+  public ticketStates!: any[];
+  public ticketTypes!: string[];
   public   displayedColumns = [
     'select',
     'id',
     'type',
+    'agent',
     'user',
     'date',
     'state'
   ];
-  private states = [
-    {
-      state:  searchTranslation(this.translateService,"NEW"),
-      color: "secondary"
-    },
-    {
-      state:  searchTranslation(this.translateService,"COMPLETED"),
-      color: "primary"
-    },
-    {
-      state:  searchTranslation(this.translateService,"IN_PROGRESS"),
-      color: "info"
-    }
-  ]
   private user!: User;
 
-  constructor(private translateService: TranslateService) { }
+  constructor(
+    private translateService: TranslateService,
+    private activatedRoute: ActivatedRoute,
+    private localizePipe: LocalizedDatePipe
+    ) { }
 
   ngOnInit(): void {
+    this.buildSelectorData();
     this.buildTable();
     this.user = {
-      email: "michelle.alleyne@newtoms.com"
+      email: "michellealleyne@gmail.com"
     }
   }
 
@@ -66,71 +74,38 @@ export class TicketsComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
+  private buildSelectorData(): void {
+    this.ticketStates = ticketStates.map((state)=> {
+      return {
+        state:  searchTranslation(this.translateService,state.state),
+        color: state.color
+      }
+    })
+
+    this.ticketTypes = ticketTypes.map((type) => searchTranslation(this.translateService, type))
+  }
   
   private buildTable(): void {
-    const tickets: Ticket[]= [
-      {
-        "id": "T-1212",
-        "type": "envío de SIM",
-        "user": "alleynemichelle123@gmail.com",
-        "date": "28 Abril del 2020",
-        "state": searchTranslation(this.translateService,"NEW"),
-        "agent": "michelle.alleyne@newtoms.com"
-      },
-      {
-        "id": "T-1212",
-        "type": "Problema de envío de SIM",
-        "user": "alleynemichelle123@gmail.com",
-        "date": "28 Abril del 2020",
-        "state": searchTranslation(this.translateService,"NEW"),
-        "agent": "michelle.alleyne@newtoms.com"
 
-      },
-      {
-        "id": "T-1212",
-        "type": "Problema de envío de SIM",
-        "user": "alleynemichelle123@gmail.com",
-        "date": "28 Abril del 2020",
-        "state": searchTranslation(this.translateService,"NEW"),
-        "agent": "michelle.boniel@newtoms.com"
-      },
-      {
-        "id": "T-1212",
-        "type": "Problema de envío de SIM",
-        "user": "alleynemichelle123@gmail.com",
-        "date": "28 Abril del 2020",
-        "state": searchTranslation(this.translateService,"NEW"),
-        "agent": "michelle.boniel@newtoms.com"
+    this.activatedRoute.data.subscribe((data: Partial<{ tickets: Ticket[]}>) => {
+      const content = data.tickets != null ? data.tickets : []
+      let tickets = content.map((ticket) =>{
+        const state = (ticket.states?.find((state) => state.finalDate == null || state.stateName == 'COMPLETED'))?.stateName
+        const date =  (ticket.states?.find((state) => state.stateName == 'NEW'))?.initialDate
+        
+        return {
+          id: ticket.id || 0,
+          type: searchTranslation(this.translateService, ticket.type || ""),
+          user: ticket.client?.email  || "",
+          date:  this.localizePipe.transform( new Date (date || ""), 'MMMM d, y'),
+          state: searchTranslation(this.translateService, state || ""),
+          agent: ticket.employee?.email  || "",
+        }
+      })
 
-      },
-      {
-        "id": "T-1212",
-        "type": "Problema de envío de SIM",
-        "user": "alleynemichelle123@gmail.com",
-        "date": "28 Abril del 2020",
-        "state": searchTranslation(this.translateService,"NEW"),
-        "agent": "michelle.boniel@newtoms.com"
-      },
-      {
-        "id": "T-1212",
-        "type": "Problema de envío de SIM",
-        "user": "alleynemichelle123@gmail.com",
-        "date": "28 Abril del 2020",
-        "state": searchTranslation(this.translateService, "IN_PROGRESS"),
-        "agent": "michelle.alleyne@newtoms.com"
+      this.dataSource = new MatTableDataSource(tickets as TableTicket[]);
+    });
 
-      },
-      {
-        "id": "T-1212",
-        "type": "Problema de envío de SIM",
-        "user": "alleynemichelle123@gmail.com",
-        "date": "28 Abril del 2020",
-        "state": searchTranslation(this.translateService, "COMPLETED"),
-        "agent": "perez.alleyne@newtoms.com"
-      }
-    ]
-
-    this.dataSource = new MatTableDataSource(tickets);
   }
 
 
@@ -147,7 +122,7 @@ export class TicketsComponent implements OnInit, AfterViewInit {
   }
 
   setStateBadgeClass(state: string): string {
-    return (this.states.find((item)=> item.state == state)?.color || "") + "-badge"
+    return (this.ticketStates.find((item: any)=> item.state == state)?.color || "") + "-badge"
   }
 
   setTableRowColor(index: number): string{
@@ -170,5 +145,4 @@ export class TicketsComponent implements OnInit, AfterViewInit {
     const filter = value == 'MY_REQUESTS' ? this.user.email : ''
     this.applyFilter({value: filter});
   }
-
 }

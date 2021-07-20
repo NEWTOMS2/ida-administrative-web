@@ -1,14 +1,15 @@
 <app-page-wrapper [title]="title">
   
+    <!-- Page buttoms header  -->
     <div class="page-options container px-0 ">
         <div class="row justify-content-center justify-content-md-end">
             <div class="col-12 col-md-6 text-end">
                 <div class="btn-group" role="group">
                     <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"  (click)= "filterAgentRequests('MY_REQUESTS')">
-                    <label class="btn btn-outline-primary" for="btnradio1">Mis solicitudes</label>
+                    <label class="btn btn-outline-primary" for="btnradio1">{{'MY_REQUESTS' | translate}}</label>
                   
                     <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked  (click)= "filterAgentRequests('')">
-                    <label class="btn btn-outline-primary" for="btnradio2">Todas</label>
+                    <label class="btn btn-outline-primary" for="btnradio2">{{'ALL' | translate}}</label>
                   </div>
             </div>
         </div>
@@ -17,25 +18,31 @@
     <div class="container table-container px-0 mb-5">
         <div class="row justify-content-center">
             <div class="col">
+
+                 <!-- Table header  -->
                 <div class="table-header row pb-5 pt-3 px-4">
                     <div class="col-12 col-md-3">
-                        <label class="form-label">Tipo</label>
+                        <label class="form-label">{{ 'TYPE' | translate }}</label>
                         <select class="form-select small-searcher" (change)="applyFilter($event.target)">
-                            <option selected value="">Todos</option>
-                            <option value="PROBLEMA">Problema</option>
-                            <option value="SIM CARD">SIM CARD</option>
-                          </select>
+                            <option selected value="">{{'ALL' | translate}}</option>
+                            <option *ngFor="let type of ticketTypes">
+                                    {{  type }}
+                            </option>
+                        </select>
                     </div>
+
+                    
                     <div class="col-12 col-md-3">
-                        <label class="form-label">Estado</label>
+                        <label class="form-label">{{ 'STATE' | translate }}</label>
 
                         <select class="form-select small-searcher" (change)="applyFilter($event.target)">
-                            <option selected value="">Todos</option>
-                            <option value="Nuevo">Nuevo</option>
-                            <option value="Completado">Completado</option>
-                            <option value="En proceso">En proceso</option>
+                            <option selected value="">{{'ALL' | translate}}</option>
+                            <option *ngFor="let state of ticketStates">
+                                    {{ state.state }}
+                            </option>
                           </select>
                     </div>
+
                     <div class="col-12 col-md-6">
                         <label class="form-label-searcher">Buscar</label>
 
@@ -48,6 +55,7 @@
                     </div>
                 </div>
 
+                <!-- Table content  -->
                 <mat-table [dataSource]="dataSource" class="table" matSort>
                     <ng-container matColumnDef="select">
                         <th mat-header-cell *matHeaderCellDef class="mt-2">
@@ -89,6 +97,15 @@
                         </mat-cell>
                     </ng-container>
 
+                    <ng-container matColumnDef="agent">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>
+                        {{ "Agente" | translate }}
+                        </mat-header-cell>
+                        <mat-cell *matCellDef="let row" data-label="Agente">
+                        {{ row.agent }}
+                        </mat-cell>
+                    </ng-container>
+
                     <ng-container matColumnDef="user">
                         <mat-header-cell *matHeaderCellDef mat-sort-header>
                         {{ "REQUESTER" | translate }}
@@ -103,7 +120,7 @@
                         {{ "DATE" | translate }}
                         </mat-header-cell>
                         <mat-cell *matCellDef="let row" data-label="Fecha">
-                        {{ row.date }}
+                        {{ row.date | titlecase  }}
                         </mat-cell>
                     </ng-container>
 
@@ -129,8 +146,8 @@
                 </mat-table>
                 
                 <mat-paginator
-                class="paginator-table"
-                [pageSizeOptions]="[10, 25, 100]"
+                    class="paginator-table"
+                    [pageSizeOptions]="[10, 25, 100]"
                 ></mat-paginator>
             </div>
         </div>
