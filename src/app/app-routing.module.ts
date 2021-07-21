@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
+import { IsTokenValidGuard } from './auth/guards/is-token-valid.guard';
 
 const routes: Routes = [
   {
@@ -8,6 +9,7 @@ const routes: Routes = [
   },
   {
     path: 'account',
+    canActivate: [IsTokenValidGuard],
     loadChildren: () =>
       import('./account/account.module').then((m) => m.AccountModule),
   },

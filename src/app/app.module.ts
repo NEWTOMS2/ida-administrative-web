@@ -31,6 +31,7 @@ registerLocaleData(localeEs, 'es');
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FontAwesomeModule,
@@ -42,11 +43,9 @@ registerLocaleData(localeEs, 'es');
       },
     }),
     ToastrModule.forRoot(),
-    BrowserAnimationsModule,
     NgxLoadingModule.forRoot(loaderConfig),
     CoreModule,
-
-
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

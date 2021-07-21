@@ -1,9 +1,9 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
+import { NavigationService } from './core/services/navigation.service';
 import { environment } from 'src/environments/environment';
 import { languages  } from '../app/core/config/configuration';
-import { NavigationService } from './core/services/navigation.service';
 
 @Component({
   selector: 'app-root',

@@ -22,7 +22,24 @@ body {
   width: 100%;
   color: $secondary-text;
   background: $primary-color;
+
+  &:hover{
+    color: $white;
+  }
 }
+
+.invalid-feedback {
+  position: fixed;
+  font-size: 12px;
+}
+
+.input-group-append .input-group-text {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
 
 
 /* Badge */
@@ -52,4 +69,19 @@ body {
   font-size: 0.75rem;
   color: $ligth-blue;
   margin-bottom: 0 !important
+}
+
+
+.form-control:invalid:focus, .form-control:focus  {
+  box-shadow: none !important;
+}
+
+
+/* Toast alerts*/
+.toast-container .ngx-toastr {
+  box-shadow: none !important;
+}
+
+.toast-message {
+  font-size: 13px !important;
 }
