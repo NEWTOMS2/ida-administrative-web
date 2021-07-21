@@ -1,4 +1,5 @@
 export const environment = {
   production: false,
-  defaultLanguage:'es'
+  defaultLanguage:'es',
+  encryptKey: 'IDA2021'
 };

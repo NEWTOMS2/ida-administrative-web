@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError, from } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { retry, catchError } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
+import CryptoES from 'crypto-es';
 
 import { administrative_exp_api_host, auth_api_host } from '../config/configuration';
 import { User } from '../models/user.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -28,12 +30,15 @@ export class AuthService {
   }
 
   storeUserData(user: any): void {
-      localStorage.setItem('Name', user.user.name);
-      localStorage.setItem('Lastname', user.user.lastname);
-      localStorage.setItem('Email', user.user.email);
-      localStorage.setItem('PhoneNumber', user.user.phone_number);
-      localStorage.setItem('Token', user.token);
-      localStorage.setItem('Role', user.role);
+      const userData: User = {
+        name: user.user.name,
+        lastname: user.user.lastname,
+        phoneNumber: user.user.phone_number,
+        email:  user.user.email
+      }
+
+      localStorage.setItem('user', this.crypto(JSON.stringify(userData), environment.encryptKey));
+      localStorage.setItem('Token', this.crypto(user.token, environment.encryptKey));
   }
 
   async isUserLogged(token: string): Promise<any> {
@@ -52,4 +57,19 @@ export class AuthService {
     console.log(error);
     return throwError(error.error.error[0].error_description);
  }
+
+
+ crypto(value: any, key: string): string{
+  return CryptoES.AES.encrypt(value, key).toString();
+ }
+
+ decrypt(value: string, key: string): string {
+   const decryptedData = CryptoES.AES.decrypt(value, key);
+   try {
+     return decryptedData.toString(CryptoES.enc.Utf8);
+   } catch {
+     return "";
+   }
+ }
+
 }

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { CoreRoutingModule } from './core-routing.module';
 
 import { TicketsService } from './services/tickets.service';
+import { NavigationService } from './services/navigation.service';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { TicketsService } from './services/tickets.service';
     CoreRoutingModule
   ],
   providers: [
-    TicketsService
+    TicketsService,
+    NavigationService
   ]
 })
 export class CoreModule { }
