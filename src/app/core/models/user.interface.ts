@@ -6,4 +6,7 @@ export interface User {
   uid?: string;
   connectId?: string;
   phoneNumber?: string;
+  country?: string;
+  city?: string;
+  address?: string;
 }
