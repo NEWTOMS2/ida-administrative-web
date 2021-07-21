@@ -9,6 +9,7 @@ import { TopNavComponent } from './layout/top-nav/top-nav.component';
 import { LayoutService } from './layout/layout.service';
 import { SharedModule } from '../shared/shared.module';
 import { LocalizedDatePipe } from '../shared/pipes/localized.pipe';
+import { UserResolver } from './resolvers/user.resolver';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { LocalizedDatePipe } from '../shared/pipes/localized.pipe';
     SharedModule
   ],
   providers: [
-    LayoutService
+    LayoutService,
+    UserResolver
   ]
 })
 export class AccountModule { }

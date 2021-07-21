@@ -49,7 +49,7 @@ export class TicketsComponent implements OnInit, AfterViewInit {
     'date',
     'state'
   ];
-  private user!: User;
+  private user!: User | undefined;
 
   constructor(
     private translateService: TranslateService,
@@ -58,11 +58,9 @@ export class TicketsComponent implements OnInit, AfterViewInit {
     ) { }
 
   ngOnInit(): void {
+    this.buildUser();
     this.buildSelectorData();
     this.buildTable();
-    this.user = {
-      email: "michellealleyne@gmail.com"
-    }
   }
 
   ngAfterViewInit(): void {
@@ -108,6 +106,12 @@ export class TicketsComponent implements OnInit, AfterViewInit {
 
   }
 
+  private buildUser(): void{
+
+    this.activatedRoute.data.subscribe((data: Partial<{ user: User}>) => {
+      this.user = data.user
+    });
+  }
 
   isAllSelected(): boolean {
     const numSelected = this.selection.selected.length;
@@ -142,7 +146,7 @@ export class TicketsComponent implements OnInit, AfterViewInit {
   }
 
   filterAgentRequests(value: string): void {
-    const filter = value == 'MY_REQUESTS' ? this.user.email : ''
+    const filter = value == 'MY_REQUESTS' ? this.user?.email : ''
     this.applyFilter({value: filter});
   }
 }

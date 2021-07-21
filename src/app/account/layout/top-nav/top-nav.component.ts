@@ -1,6 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
@@ -24,20 +24,21 @@ export class TopNavComponent implements OnInit {
     map((result: any) => result.matches),
     shareReplay()
   );
-  public user!: User;
+  public userName!: string;
   private sideMenuVisible!: boolean;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
     private layoutService: LayoutService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
-    // Need to be connected with the local storage
-    this.user = {
-      name: "Pedro Perez"
-    }
+
+    this.activatedRoute.data.subscribe((data: Partial<{ user: User}>) => {
+      this.userName = data.user?.name + " " + data.user?.lastname
+    });
   }
 
   

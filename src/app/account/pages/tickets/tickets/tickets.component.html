@@ -5,10 +5,10 @@
         <div class="row justify-content-center justify-content-md-end">
             <div class="col-12 col-md-6 text-end">
                 <div class="btn-group" role="group">
-                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off"  (click)= "filterAgentRequests('MY_REQUESTS')">
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked  (click)= "filterAgentRequests('MY_REQUESTS')">
                     <label class="btn btn-outline-primary" for="btnradio1">{{'MY_REQUESTS' | translate}}</label>
                   
-                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off" checked  (click)= "filterAgentRequests('')">
+                    <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off"   (click)= "filterAgentRequests('')">
                     <label class="btn btn-outline-primary" for="btnradio2">{{'ALL' | translate}}</label>
                   </div>
             </div>
