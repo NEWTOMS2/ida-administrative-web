@@ -21,3 +21,11 @@ export const ticketStates = [
   }
 ]
 export const ticketTypes = ["SERVICES", "PROBLEMS"]
+export const loaderConfig = Object.freeze({
+  animationType: 'pulse',
+  backdropBackgroundColour: "#182249",
+  backdropBorderRadius: '4px',
+  primaryColour:  "#63709F",
+  secondaryColour:  "#63709F",
+  tertiaryColour: '#EBF1FA',
+});

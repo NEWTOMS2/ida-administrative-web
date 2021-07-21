@@ -13,6 +13,9 @@ import { registerLocaleData } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NgxLoadingModule } from 'ngx-loading';
+import { loaderConfig } from './core/config/configuration';
+import { CoreModule } from './core/core.module';
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -39,7 +42,11 @@ registerLocaleData(localeEs, 'es');
       },
     }),
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxLoadingModule.forRoot(loaderConfig),
+    CoreModule,
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]
