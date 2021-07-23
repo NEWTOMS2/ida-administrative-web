@@ -1,0 +1,14 @@
+@import "../../../../styles/variables.scss";
+
+.aws {
+  width: 100%;
+  height: 75vh;
+  iframe {
+    border-color: transparent !important;
+    display: none;
+  }
+}
+
+#ccpDiv iframe {
+  display: none;
+}
