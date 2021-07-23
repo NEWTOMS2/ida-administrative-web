@@ -3,7 +3,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -54,9 +54,12 @@ export class TicketsComponent implements OnInit, AfterViewInit {
   constructor(
     private translateService: TranslateService,
     private activatedRoute: ActivatedRoute,
-    private localizePipe: LocalizedDatePipe
+    private localizePipe: LocalizedDatePipe,
+    private router: Router
     ) { }
 
+
+  
   ngOnInit(): void {
     this.buildUser();
     this.buildSelectorData();
@@ -149,4 +152,7 @@ export class TicketsComponent implements OnInit, AfterViewInit {
     const filter = value == 'MY_REQUESTS' ? this.user?.email : ''
     this.applyFilter({value: filter});
   }
+
+  seeTicket(ticket: Ticket): void{
+    this.router.navigateByUrl('/account/tickets/details', { state: ticket });  }
 }

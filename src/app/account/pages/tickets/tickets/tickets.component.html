@@ -141,6 +141,7 @@
                     <mat-row
                       *matRowDef="let row; index as i; columns: displayedColumns"
                       [ngClass]="setTableRowColor(i)"
+                      (click)="seeTicket(row)"
                     >
                     </mat-row>
                 </mat-table>

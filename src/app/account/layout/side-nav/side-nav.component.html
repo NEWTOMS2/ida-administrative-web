@@ -17,7 +17,6 @@
         *ngFor="let option of menuOptions"
         class="simple-menu-item"
         [routerLinkActive]="['active']"
-        [routerLinkActiveOptions]="{ exact: true }"
         [routerLink]="[option.link]"
         >
             <fa-icon [icon]="option.icon" class="menu-icon mr-3"></fa-icon>

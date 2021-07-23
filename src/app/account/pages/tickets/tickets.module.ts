@@ -10,11 +10,13 @@ import { TicketsResolver } from './resolvers/tickets.resolver';
 import { UserResolver } from '../../resolvers/user.resolver';
 
 import { LocalizedDatePipe } from 'src/app/shared/pipes/localized.pipe';
+import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
 
 
 @NgModule({
   declarations: [
-    TicketsComponent
+    TicketsComponent,
+    TicketDetailsComponent
   ],
   imports: [
     CommonModule,
