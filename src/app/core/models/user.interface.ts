@@ -5,4 +5,8 @@ export interface User {
   password?: string;
   uid?: string;
   connectId?: string;
+  phoneNumber?: string;
+  country?: string;
+  city?: string;
+  address?: string;
 }

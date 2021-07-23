@@ -13,7 +13,7 @@
       <!-- User information and log out -->
       <div>
          <div class="mr-md-3 tool-actions">
-            <div>{{ user.name }}</div>
+            <div>{{ userName | titlecase }}</div>
             <div class="logout-btn"  (click)="logOut()">
                 <fa-icon [icon]="logoutIcon" class="menu-icon mr-3"></fa-icon>
             </div>

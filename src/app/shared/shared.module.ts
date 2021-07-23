@@ -10,6 +10,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PageWrapperComponent } from './page-wrapper/page-wrapper.component';
 
@@ -22,6 +24,7 @@ import { PageWrapperComponent } from './page-wrapper/page-wrapper.component';
     CommonModule,
     SharedRoutingModule,
     MatSidenavModule,
+    MatDialogModule,
     MatToolbarModule,
     MatPaginatorModule,
     MatSortModule,
@@ -32,6 +35,7 @@ import { PageWrapperComponent } from './page-wrapper/page-wrapper.component';
   ],
   exports: [
     MatSidenavModule,
+    MatDialogModule,
     MatToolbarModule,
     MatPaginatorModule,
     MatSortModule,

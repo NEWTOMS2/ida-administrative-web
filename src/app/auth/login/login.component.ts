@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { HidePasswordService } from 'src/app/shared/services/hide-password.service';
 import { images } from '../../core/config/configuration';
 import { AuthService } from '../../core/services/auth.service';

@@ -10,6 +10,8 @@
   "CONFIRM_PASSWORD": "Confirmar contraseña",
   "INTRODUCE_EMAIL": "Introduce un correo electrónico válido",
   "INTRODUCE_PASSWORD": "Introduce la contraseña",
+  "INTRODUCE_LAST_NAME": "Introduce un apellido",
+  "INTRODUCE_PHONE_NUMBER": "Introduce un número de teléfono",
   "LOGIN": "Iniciar sesión",
   "LOGOUT": "Cerrar sesión",
   "FORGOT_PASSWORD": "¿Olvidaste tu contraseña?",
@@ -69,6 +71,21 @@
   "MY_REQUESTS": "Mis solicitudes",
 
   "SERVICES": "Servicio",
-  "PROBLEMS": "Inconveniente"
+  "PROBLEMS": "Inconveniente",
+
+  "UNITED_STATES": "Estados Unidos",
+  "MEXICO": "México",
+  "ADMIN": "Administrador",
+  "AGENT": "Agente",
+
+  "LAST_NAME": "Apellido",
+  "CITY": "Ciudad",
+  "COUNTRY": "País",
+  "PHONE_NUMBER": "Número telefónico",
+  "ADDRESS": "Dirección",
+  "USER_TYPE": "Tipo de usuario",
+  "CREATE": "Crear",
+
+  "USER_ALREADY_EXISTS": "El correo electrónico o el número de teléfono indicado ya existe. Por favor, ingrese uno nuevo"
 
 }

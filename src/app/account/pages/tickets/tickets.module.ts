@@ -7,6 +7,8 @@ import { TicketsRoutingModule } from './tickets-routing.module';
 import { TicketsComponent } from './tickets/tickets.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { TicketsResolver } from './resolvers/tickets.resolver';
+import { UserResolver } from '../../resolvers/user.resolver';
+
 import { LocalizedDatePipe } from 'src/app/shared/pipes/localized.pipe';
 
 
@@ -23,6 +25,7 @@ import { LocalizedDatePipe } from 'src/app/shared/pipes/localized.pipe';
   ],
   providers: [
     TicketsResolver,
+    UserResolver,
     LocalizedDatePipe,
     DatePipe,
     TitleCasePipe

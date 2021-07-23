@@ -4,6 +4,9 @@
 /dist
 /tmp
 /out-tsc
+/environments
+
+
 # Only exists if Bazel was run
 /bazel-out
 
@@ -12,6 +15,7 @@
 
 # profiling files
 chrome-profiler-events*.json
+
 
 # IDEs and editors
 /.idea

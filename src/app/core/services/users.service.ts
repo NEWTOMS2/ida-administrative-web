@@ -14,11 +14,12 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class UsersService {
-  // token = this.authService.decrypt(localStorage.getItem('Token') || "", environment.encryptKey)
+  token = this.authService.decrypt(localStorage.getItem('Token') || "", environment.encryptKey)
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      //'Authorization': `Bearer `
+      'Authorization': `Bearer ${this.token}`
+
     })
   }  
 
