@@ -1,0 +1,178 @@
+<div class="container basic-form pt-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10">
+            <form [formGroup]="userForm" class="needs-validation" novalidate>
+                <div class="row form-row mb-4" id="name-group">
+                    <div class="col-12 col-md-6 mb-4 mb-md-0">
+                        <label class="form-label">{{ 'NAME' | translate }}</label>
+                        <input
+                          type="text"
+                          formControlName="name"
+                          class="form-control"
+                          [ngClass]="{
+                            'is-invalid':
+                              this.userForm.get('name')?.invalid &&
+                              this.userForm.get('name')?.touched
+                          }"
+                        />
+                        <div class="invalid-feedback">
+                          {{"INTRODUCE_NAME" | translate}}
+                        </div>
+                      </div>
+
+                      <div class="col-12 col-md-6">
+                        <label class="form-label">{{ 'LAST_NAME' | translate }}</label>
+                        <input
+                          type="text"
+                          formControlName="last_name"
+                          class="form-control"
+                          [ngClass]="{
+                            'is-invalid':
+                              this.userForm.get('last_name')?.invalid &&
+                              this.userForm.get('last_name')?.touched
+                          }"
+                        />
+                        <div class="invalid-feedback">
+                          {{"INTRODUCE_LAST_NAME" | translate}}
+                        </div>
+                      </div>
+                </div>
+
+                <div class="row form-row mb-4" id="name-group">
+                    <div class="col-12 col-md-6  mb-4 mb-md-0">
+                        <label class="form-label">{{ 'PHONE_NUMBER' | translate }}</label>
+                        <input
+                          type="text"
+                          formControlName="phone_number"
+                          class="form-control"
+                          [ngClass]="{
+                            'is-invalid':
+                              this.userForm.get('phone_number')?.invalid &&
+                              this.userForm.get('phone_number')?.touched
+                          }"
+                        />
+                        <div class="invalid-feedback">
+                          {{"INTRODUCE_PHONE_NUMBER" | translate}}
+                        </div>
+                      </div>
+
+                      <div class="col-12 col-md-6">
+                        <label class="form-label">{{ 'EMAIL_ADDRESS' | translate }}</label>
+                        <input
+                          type="text"
+                          formControlName="email"
+                          class="form-control"
+                          [ngClass]="{
+                            'is-invalid':
+                              this.userForm.get('email')?.invalid &&
+                              this.userForm.get('email')?.touched
+                          }"
+                        />
+                        <div class="invalid-feedback">
+                          {{"INTRODUCE_EMAIL" | translate}}
+                        </div>
+                      </div>
+                </div>
+
+                
+                <div class="row form-row mb-4" id="name-group">
+                    <div class="col-12 col-md-6  mb-4 mb-md-0">
+                        <label class="form-label">{{ 'USER_TYPE' | translate }}</label>
+                            <select 
+                            class="form-select" 
+                            formControlName="role"
+                            [ngClass]="{
+                                'is-invalid':
+                                this.userForm.get('role')?.invalid &&
+                                this.userForm.get('role')?.touched
+                            }"
+                        >
+                            <option *ngFor="let type of userTypes">
+                                    {{  formatContent(type) | translate | titlecase }}
+                            </option>
+                        </select>
+                        <div class="invalid-feedback">
+                          {{"INTRODUCE_USER_TYPE" | translate}}
+                        </div>
+                      </div>
+
+                      <div class="col-12 col-md-6">
+                        <label class="form-label">{{ 'COUNTRY' | translate }}</label>
+                            <select 
+                                class="form-select" 
+                                formControlName="country"
+                                [ngClass]="{
+                                    'is-invalid':
+                                    this.userForm.get('country')?.invalid &&
+                                    this.userForm.get('country')?.touched
+                                }"
+                            >
+                                <option *ngFor="let address of addresses">
+                                        {{  address.country }}
+                                </option>
+                            </select>
+                        <div class="invalid-feedback">
+                          {{"INTRODUCE_COUNTRY" | translate}}
+                        </div>
+                      </div>
+                </div>
+
+                <div class="row form-row mb-4 " id="name-group">
+                    <div class="col-12 col-md-6  mb-4 mb-md-0">
+                        <label class="form-label">{{ 'CITY' | translate }}</label>
+                        <select 
+                            class="form-select" 
+                            formControlName="city"
+                            [ngClass]="{
+                                'is-invalid':
+                                  this.userForm.get('city')?.invalid &&
+                                  this.userForm.get('city')?.touched
+                              }"
+                        >
+                            <option *ngFor="let city of searchStates(userForm.get('country')?.value || '' )">
+                                    {{  city }}
+                            </option>
+                        </select>
+                        <div class="invalid-feedback">
+                          {{"INTRODUCE_CITY" | translate}}
+                        </div>
+                      </div>
+
+                      <div class="col-12 col-md-6">
+                        <label class="form-label">{{ 'ADDRESS' | translate }}</label>
+                        <input
+                          type="text"
+                          formControlName="detail_address"
+                          class="form-control"
+                          [ngClass]="{
+                            'is-invalid':
+                              this.userForm.get('detail_address')?.invalid &&
+                              this.userForm.get('detail_address')?.touched
+                          }"
+                        />
+                        <div class="invalid-feedback">
+                          {{"INTRODUCE_ADDRESS" | translate}}
+                        </div>
+                      </div>
+                </div>
+
+                <div class="row form-row mb-4 mt-5 form-btn" id="name-group">
+                    <div class="col-12 col-md-3">
+                        <button
+                          class="btn secondary-btn btn-block"
+                          type="button"
+                          (click)="createUser()"
+                        >
+                        <span *ngIf="!spinnerLoader; else loading" class="btn-content"> {{"SAVE" | translate | uppercase }}</span>
+                        <ng-template class="text-center" #loading>
+                          <div class="spinner-border spinner-border-sm" role="status">
+                            <span class="sr-only"></span>
+                          </div>
+                        </ng-template>
+                        </button>
+                      </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

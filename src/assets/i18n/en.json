@@ -11,6 +11,8 @@
   "PASSWORDS_NOT_EQUAL": "Passwords must match",
   "INTRODUCE_EMAIL": "Introduce a valid email address",
   "INTRODUCE_PASSWORD": "Introduce a password",
+  "INTRODUCE_LAST_NAME": "Introduce a last name",
+  "INTRODUCE_PHONE_NUMBER": "Introduce a phone number",
   "LOGIN": "Login",
   "LOGOUT": "Logout",
   "FORGOT_PASSWORD": "Forgot password?",
@@ -70,5 +72,22 @@
   "MY_REQUESTS": "My requests",
 
   "SERVICES": "Service",
-  "PROBLEMS": "Problem"
+  "PROBLEMS": "Problem",
+
+  
+  "UNITED_STATES": "United States",
+  "MEXICO": "Mexico",
+  "ADMIN": "Administrator",
+  "AGENT": "Agent",
+
+  "LAST_NAME": "Last Name",
+  "CITY": "City",
+  "COUNTRY": "Country",
+  "PHONE_NUMBER": "Phone number",
+  "ADDRESS": "Address",
+  "USER_TYPE": "User type",
+  "CREATE": "Create",
+
+  "USER_ALREADY_EXISTS": "User email or phone number already exists. Please, provide another one"
+
 }
