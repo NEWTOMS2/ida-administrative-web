@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
-import { address, emailPattern } from 'src/app/core/config/configuration';
+import { address, emailPattern, userTypes } from 'src/app/core/config/configuration';
 import { UsersService } from 'src/app/core/services/users.service';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { searchTranslation } from 'src/app/utils/searchTranslation';
@@ -15,7 +15,7 @@ import { searchTranslation } from 'src/app/utils/searchTranslation';
 export class UsersCreationComponent implements OnInit {
   userForm!: FormGroup;
   spinnerLoader = false;
-  userTypes = [ 'agent', 'admin']
+  userTypes = userTypes;
   addresses = address;
 
 
@@ -56,7 +56,9 @@ export class UsersCreationComponent implements OnInit {
 
       this.usersService.create(user).toPromise()
       .then(() => {
-        this.notification.showSuccessToast('USER_CREATED')
+        this.spinnerLoader = false;
+        this.notification.showSuccessToast('USER_CREATED');
+        this.dialogRef.close()
       })
       .catch((error) => {
         this.spinnerLoader = false;
