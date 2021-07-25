@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "start-secure": "ng serve --ssl --ssl-key key.pem  --ssl-cert cert.crt"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +28,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
+    "amazon-connect-streams": "^1.6.8",
     "bootstrap": "^5.0.2",
     "crypto-es": "^1.2.7",
     "ngx-loading": "^8.0.0",

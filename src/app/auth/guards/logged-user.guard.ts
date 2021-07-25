@@ -9,11 +9,13 @@ export class LoggedUserGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
   async canActivate(): Promise<boolean> {
-   return await this.authService.isUserLogged(localStorage.getItem('Token')!).then((user)=> {
-     if (user && !user.data.expired) {
-        this.router.navigate(['/account/tickets']);
-     }
-     return true;
-   })
+    if (localStorage.getItem('Token')!) {
+      return await this.authService.isUserLogged(localStorage.getItem('Token')!).then((user)=> {
+        if (user && !user.data.expired) {
+            this.router.navigate(['/account/tickets']);
+        }
+        return true;
+      })
+    } return true;
   }  
 }

@@ -1,0 +1,62 @@
+<app-page-wrapper [title]="title">
+    <div class="row">
+        <div class="col-lg-8 col-12">
+            <div #awsWrapper>
+                <div *ngIf="showCcp; else openCcpBtn" class="aws" #ccpDiv></div>
+            </div>
+            <ng-template #openCcpBtn>
+                <div class="open-contact-wrapper">
+                    <div class="open-contact-panel" (click)="reloadCurrentRoute()">
+                        <img 
+                        [src]="contactLogo" 
+                        alt="Logo" 
+                        loading="lazy"
+                        />
+                        <p>{{'OPEN_CONTACT_PANEL' | translate }}</p>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+        <div class="col-lg-4 col-12 col-wrapper">
+            <div class="customer-info-form">
+                <p class="contact-title"></p>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label class="form-label">{{'FULLNAME' | translate}}</label>
+                        <input
+                        type="text"
+                        class="form-control base-form"
+                        [value]="(customer.name + ' ' + customer.lastname)"
+                        readonly="true"
+                        />
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label class="form-label">{{'EMAIL' | translate}}</label>
+                        <input
+                        type="text"
+                        class="form-control base-form"
+                        [value]="customer.email"
+                        readonly="true"
+                        />
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label class="form-label">{{'PHONE_NUMBER' | translate}}</label>
+                        <input
+                        type="text"
+                        class="form-control base-form"
+                        [value]="customer.phoneNumber"
+                        readonly="true"
+                        />
+                    </div>
+                </div>
+                <button
+                    class="btn secondary-btn mt-auto"
+                    type="button"
+                    (click)="setEmptyCustomerInfo()"
+                    >
+                    {{'CLEAN_CLIENT_DATA' | translate}}
+                </button>
+            </div>
+        </div>
+    </div>
+</app-page-wrapper>

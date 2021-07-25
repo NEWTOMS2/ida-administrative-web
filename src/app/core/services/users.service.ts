@@ -36,6 +36,17 @@ export class UsersService {
     )
   }
 
+  getUserByPhoneNumber(phoneNumber: string):  Observable<any> {
+        return this.http.get(administrative_exp_api_host + `/users/clients?phone_number=${phoneNumber}`, this.httpOptions)
+        .pipe(
+          map((data: any) => {
+              return data.data[0]
+          })
+        )
+        .pipe(
+            catchError(this.handleError)
+        )
+   }
 
   handleError(error: any ) {
     console.log(error);

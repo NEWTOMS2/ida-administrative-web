@@ -8,7 +8,16 @@ export const emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
 export const administrative_exp_api_host = "https://prod-ida-administrative-exp-api.us-e1.cloudhub.io/api"
 export const auth_api_host = "https://ida-auth-api.us-e1.cloudhub.io/api"
 
-export const images = { applicationLogo: "assets/images/exis_logo.png"}
+export const aws_connect = {
+  ccpUrl: 'https://newtoms.my.connect.aws/ccp-v2',
+  loginUrl: 'https://newtoms.my.connect.aws',
+  region: "us-east-1",        
+}
+
+export const images = { 
+  applicationLogo: "assets/images/exis_logo.png",
+  contactLogo:  "assets/images/contact_logo.png"
+}
 export const ticketStates = [
   {
     state:  "COMPLETED",
