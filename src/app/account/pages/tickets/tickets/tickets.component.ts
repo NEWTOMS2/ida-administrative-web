@@ -40,6 +40,7 @@ export class TicketsComponent implements OnInit, AfterViewInit {
   public searchIcon = faSearch;
   public ticketStates!: any[];
   public ticketTypes!: string[];
+  private allTickets!: any[];
   public   displayedColumns = [
     'select',
     'id',
@@ -90,6 +91,9 @@ export class TicketsComponent implements OnInit, AfterViewInit {
 
     this.activatedRoute.data.subscribe((data: Partial<{ tickets: Ticket[]}>) => {
       const content = data.tickets != null ? data.tickets : []
+      this.allTickets = content;
+
+      console.log(this.allTickets)
       let tickets = content.map((ticket) =>{
         const state = (ticket.states?.find((state) => state.finalDate == null || state.stateName == 'COMPLETED'))?.stateName
         const date =  (ticket.states?.find((state) => state.stateName == 'NEW'))?.initialDate
@@ -153,6 +157,13 @@ export class TicketsComponent implements OnInit, AfterViewInit {
     this.applyFilter({value: filter});
   }
 
-  seeTicket(ticket: Ticket): void{
-    this.router.navigateByUrl('/account/tickets/details', { state: ticket });  }
+  seeTicket(selectedTicket: Ticket): void{
+    const prueba = [].filter((value) => value == undefined)
+    this.router.navigateByUrl('/account/tickets/details', { state: {
+      detail: selectedTicket,
+      states: (this.allTickets.map((ticket) => {
+        if (ticket.id == selectedTicket.id)
+        return ticket.states
+      })).filter((state) =>  state != undefined)[0]
+    } });  }
 }

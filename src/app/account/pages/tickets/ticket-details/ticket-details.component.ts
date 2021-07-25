@@ -18,6 +18,7 @@ export class TicketDetailsComponent implements OnInit {
     type: "Problema de envio de SIM",
     agent: "michelle.alleyne@gmail.com"
   }
+  ticketStates: any [] = []
   detailsList!: any[];
 
   constructor(
@@ -29,7 +30,15 @@ export class TicketDetailsComponent implements OnInit {
     this.state$ = this.activatedRoute.paramMap
     .pipe(map(() => window.history.state))
 
-    this.state$.subscribe((data) =>  console.log(data))
+    this.state$.subscribe((data:  any) => {
+      this.ticketStates = data.states?.map((state: any) => {
+        return {
+          description: state.description,
+          initialDate: state.initialDate,
+          state: state.stateName
+        }
+      })
+    })
     this.buildForm()
 
   }

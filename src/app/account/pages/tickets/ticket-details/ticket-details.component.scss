@@ -41,6 +41,8 @@
     }
 
     .ticket-status-wrapper{
+        display: flex;
+        flex-direction: column;
         background-color: $background-color;
         border-top-right-radius: 0.25rem !important;
         border-top-right-radius: 0.25rem !important;
@@ -87,5 +89,45 @@
         color: $ligth-blue;
         padding: 0 !important
         // margin-bottom: 0 !important
+    }
+
+
+    .update-status-container{
+        border-bottom: 1px solid #63709F;
+        justify-content: space-between !important;
+        border-radius: 0.25rem;
+
+        .form-select{
+            border-bottom: 0 !important;
+            border-top-left-radius:  0 !important;
+            border-top-right-radius:  0 !important;
+            border-bottom-right-radius:  0 !important;
+            text-transform: uppercase;
+
+        }
+
+        .btn-sm{
+            padding: 0.375rem 2.25rem 0.20rem 0.75rem !important;
+            line-height: 1.5;
+            border-top-left-radius:  0 !important;
+            border-top-right-radius:  0 !important;
+            border-bottom-left-radius:  0 !important;
+            text-transform: uppercase;
+        }
+    }
+
+
+    
+    textarea {
+        border-bottom-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+        border-top: 1px solid #63709F;
+        border-left: 1px solid #63709F;
+        border-right: 1px solid #63709F;
+    }
+
+
+    .status-container-wrapper{
+        margin-top: auto;
     }
 }

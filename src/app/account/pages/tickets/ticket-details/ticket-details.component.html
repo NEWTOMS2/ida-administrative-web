@@ -12,8 +12,8 @@
             </div>
         </div>
 
-        <div class="row ticket-wrapper mb-3 mt-1 pb-5">
-            <div class="col-md-4 col-12 ticket-details-wrapper mr-2 pb-5">
+        <div class="row ticket-wrapper mb-3 mt-1">
+            <div class="col-md-4 col-12 ticket-details-wrapper mr-2 pb-3">
 
                 <div class="row" *ngFor="let option of detailsList">
                     <div class="col mb-3">
@@ -28,20 +28,94 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8 col-12 ticket-status-wrapper bg-body pb-5">
+            <div class="col-md-8 col-12 ticket-status-wrapper bg-body pb-3">
                 <div class="row mx-2 mt-3">
-                    <span ticket-header="status-title px-0">Acciones realizadas</span>
+                    <span class="ticket-header status-title px-0">Acciones realizadas</span>
                     <hr class="">
                 </div>
-                <div class="row status-wrapper mx-2">
-                    <div class="col-3 status-item text-center ">
-                        28/06/2021 7:50 AM
+
+                <div class="row">
+                    <div class="col">
+                        <nav aria-label="...">
+                            <ul class="pagination pagination-sm">
+                              <li class="page-item active">
+                                <span class="page-link">1</span>
+                              </li>
+                              <li class="page-item"><a class="page-link">2</a></li>
+                              <li class="page-item"><a class="page-link">3</a></li>
+                            </ul>
+                          </nav>
                     </div>
-                    <div class="col-3">
-                        <span class="secondary-badge status-tag"> En progreso</span>
+                </div>
+
+                <div>
+                    <div class="row status-wrapper-container mt-2">
+                        <div class="col">
+                            <div class="row status-wrapper mx-2">
+                                <div class="col-md-3  col-12 status-item text-center ">
+                                    28/06/2021 7:50 AM
+                                </div>
+                                <div class="col-md-3  col-12">
+                                    <span class="secondary-badge status-tag"> En progreso</span>
+                                </div>
+                                <div class="col-md-6 col-12 status-item">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.                     </div>
+                        </div>
+                        </div>
                     </div>
-                    <div class="col-6 status-item">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.                     </div>
+
+                    <div class="row status-wrapper-container mt-2">
+                        <div class="col">
+                            <div class="row status-wrapper mx-2">
+                                <div class="col-md-3  col-12 status-item text-center ">
+                                    28/06/2021 7:50 AM
+                                </div>
+                                <div class="col-md-3  col-12">
+                                    <span class="secondary-badge status-tag"> En progreso</span>
+                                </div>
+                                <div class="col-md-6 col-12 status-item">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.                     </div>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="row status-wrapper-container mt-2">
+                        <div class="col">
+                            <div class="row status-wrapper mx-2">
+                                <div class="col-md-3  col-12 status-item text-center ">
+                                    28/06/2021 7:50 AM
+                                </div>
+                                <div class="col-md-3  col-12">
+                                    <span class="secondary-badge status-tag"> En progreso</span>
+                                </div>
+                                <div class="col-md-6 col-12 status-item">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.                     </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                
+    
+                <div class="row mx-2 align-items-end status-container-wrapper mt-5">
+                        <div class="col-12 px-0" >
+                            <label for="exampleFormControlTextarea1" class="form-label">Guardar información de la solicitud</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                </div>
+
+                <div class="row mx-2 update-status-container">
+                        <div class="col-md-3 col-12 px-0">
+                            <select class="form-select " aria-label="Default select example">
+                                <option selected>Cambiar estado</option>
+                                <option value="1">En progreso</option>
+                                <option value="2">Culminado</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 col-12 px-0 ">
+                                <button class="btn secondary-btn btn-sm">Guardar</button>            
+                        </div>
                 </div>
             </div>
         </div>
