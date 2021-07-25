@@ -43,7 +43,7 @@
   "404_MESSAGE": "La página que estas buscando ha sido removida, cambió de nombre o no se encuentra disponible temporalmente.",
   "RETURN_HOME": "Regresar a la página de inicio",
   "HOME": "Inicio",
- 
+
   "AGREE": "Aceptar",
   "CANCEL": "Cancelar",
   
@@ -86,6 +86,9 @@
   "USER_TYPE": "Tipo de usuario",
   "CREATE": "Crear",
 
-  "USER_ALREADY_EXISTS": "El correo electrónico o el número de teléfono indicado ya existe. Por favor, ingrese uno nuevo"
-
+  "USER_ALREADY_EXISTS": "El correo electrónico o el número de teléfono indicado ya existe. Por favor, ingrese uno nuevo",
+  "FULLNAME": "Nombre completo",
+  "CLIENT_DATA": "Datos del cliente",
+  "CLEAN_CLIENT_DATA": "Limpiar información",
+  "OPEN_CONTACT_PANEL": "Abrir panel de contacto"
 }
