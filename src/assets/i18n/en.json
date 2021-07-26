@@ -88,6 +88,9 @@
   "USER_TYPE": "User type",
   "CREATE": "Create",
 
-  "USER_ALREADY_EXISTS": "User email or phone number already exists. Please, provide another one"
-
+  "USER_ALREADY_EXISTS": "User email or phone number already exists. Please, provide another one",
+  "FULLNAME": "Full name",
+  "CLIENT_DATA": "Customer information",
+  "CLEAN_CLIENT_DATA": "Clean information",
+  "OPEN_CONTACT_PANEL": "Open contact panel"
 }
