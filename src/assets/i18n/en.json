@@ -54,7 +54,7 @@
   "STATUS": "Status",
 
   "ATTENTION_CENTER": "Attention Center",
-  "FREQUENTLY-QUESTIONS": "Frecuently Questions",
+  "FREQUENTLY_QUESTIONS": "Frecuently Asked Questions",
   "ATTENTION_REQUESTS": "Attention Requests",
   "MVNO_INFORMATION": "MVNO Information",
   "USERS": "Users",
@@ -92,5 +92,13 @@
   "FULLNAME": "Full name",
   "CLIENT_DATA": "Customer information",
   "CLEAN_CLIENT_DATA": "Clean information",
-  "OPEN_CONTACT_PANEL": "Open contact panel"
+  "OPEN_CONTACT_PANEL": "Open contact panel",
+
+  "intent_name": "Intent",
+  "question": "Question",
+  "PROSPECTS": "Prospects",
+  "SIM_SHIPPING_ISSUE": "Sim card shipping", 
+  "PURCHASES": "Purchases", 
+  "INTERNET_ISSUE": "Internet issue", 
+  "BLOCKING_SERVICES": "Service blocking"
 }

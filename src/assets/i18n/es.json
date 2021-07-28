@@ -53,7 +53,7 @@
   "STATUS": "Estatus",
 
   "ATTENTION_CENTER": "Centro de Atención",
-  "FREQUENTLY-QUESTIONS": "Preguntas frecuentes",
+  "FREQUENTLY_QUESTIONS": "Preguntas frecuentes",
   "ATTENTION_REQUESTS": "Solicitudes de atención",
   "MVNO_INFORMATION": "Información del OMV",
   "USERS": "Usuarios",
@@ -90,5 +90,13 @@
   "FULLNAME": "Nombre completo",
   "CLIENT_DATA": "Datos del cliente",
   "CLEAN_CLIENT_DATA": "Limpiar información",
-  "OPEN_CONTACT_PANEL": "Abrir panel de contacto"
+  "OPEN_CONTACT_PANEL": "Abrir panel de contacto",
+
+  "intent_name": "Intención",
+  "question": "Pregunta",
+  "PROSPECTS": "Prospectos",
+  "SIM_SHIPPING_ISSUE": "Envío de tarjeta SIM", 
+  "PURCHASES": "Compras", 
+  "INTERNET_ISSUE": "Problema de internet", 
+  "BLOCKING_SERVICES": "Bloqueo de servicios"
 }
