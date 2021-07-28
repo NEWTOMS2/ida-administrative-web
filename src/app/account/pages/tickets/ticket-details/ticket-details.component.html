@@ -49,56 +49,29 @@
                 </div>
 
                 <div>
-                    <div class="row status-wrapper-container mt-2">
+                    <div *ngFor="let state of states" class="row status-wrapper-container mt-2">
                         <div class="col">
                             <div class="row status-wrapper mx-2">
                                 <div class="col-md-3  col-12 status-item text-center ">
-                                    28/06/2021 7:50 AM
+                                    {{ formatDate(state.initialDate) }}
                                 </div>
                                 <div class="col-md-3  col-12">
-                                    <span class="secondary-badge status-tag"> En progreso</span>
+                                    <span class="secondary-badge status-tag"> {{state.state | translate | titlecase}}
+                                    </span>
                                 </div>
                                 <div class="col-md-6 col-12 status-item">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.                     </div>
-                        </div>
-                        </div>
-                    </div>
-
-                    <div class="row status-wrapper-container mt-2">
-                        <div class="col">
-                            <div class="row status-wrapper mx-2">
-                                <div class="col-md-3  col-12 status-item text-center ">
-                                    28/06/2021 7:50 AM
+                                    {{state.description}}
                                 </div>
-                                <div class="col-md-3  col-12">
-                                    <span class="secondary-badge status-tag"> En progreso</span>
-                                </div>
-                                <div class="col-md-6 col-12 status-item">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.                     </div>
-                        </div>
-                        </div>
-                    </div>
-
-                    <div class="row status-wrapper-container mt-2">
-                        <div class="col">
-                            <div class="row status-wrapper mx-2">
-                                <div class="col-md-3  col-12 status-item text-center ">
-                                    28/06/2021 7:50 AM
-                                </div>
-                                <div class="col-md-3  col-12">
-                                    <span class="secondary-badge status-tag"> En progreso</span>
-                                </div>
-                                <div class="col-md-6 col-12 status-item">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.                     </div>
-                        </div>
+                          </div>
                         </div>
                     </div>
                 </div>
 
 
+
                 
     
-                <div class="row mx-2 align-items-end status-container-wrapper mt-5">
+                <div class="row mx-2 align-items-end status-container-wrapper">
                         <div class="col-12 px-0" >
                             <label for="exampleFormControlTextarea1" class="form-label">Guardar información de la solicitud</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>

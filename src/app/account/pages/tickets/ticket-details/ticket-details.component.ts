@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { LocalizedDatePipe } from 'src/app/shared/pipes/localized.pipe';
 
 @Component({
   selector: 'app-ticket-details',
@@ -11,18 +12,16 @@ import { map } from 'rxjs/operators';
 export class TicketDetailsComponent implements OnInit {
   state$!: Observable<object>;
   title = ""
-  ticketDetails = {
-    client: "Andres Fernandez",
-    phoneNumber: "04141221422",
-    email: "example@example.com",
-    type: "Problema de envio de SIM",
-    agent: "michelle.alleyne@gmail.com"
-  }
+  ticketDetails = {};
   ticketStates: any [] = []
+  states: any [] = [];
   detailsList!: any[];
 
   constructor(
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private localizePipe: LocalizedDatePipe,
+
   ) { 
   }
 
@@ -31,20 +30,37 @@ export class TicketDetailsComponent implements OnInit {
     .pipe(map(() => window.history.state))
 
     this.state$.subscribe((data:  any) => {
-      this.ticketStates = data.states?.map((state: any) => {
-        return {
-          description: state.description,
-          initialDate: state.initialDate,
-          state: state.stateName
+      if (!data.states) this.router.navigate(['/account/tickets'])
+      else {
+        this.ticketStates = data.states?.map((state: any) => {
+          return {
+            description: state.description,
+            initialDate: state.initialDate,
+            state: state.stateName
+          }
+        })
+  
+        this.states = this.ticketStates;
+        this.ticketDetails = {
+          client: data?.detail.name + " " + data?.detail.lastname,
+          phoneNumber: data?.detail.phoneNumber,
+          email: data?.detail.client,
+          type: data?.detail.type,
+          agent: data?.detail.agent,
         }
-      })
+      }
+      this.buildForm()
     })
-    this.buildForm()
+  
 
   }
 
   buildForm(): void{
     this.detailsList = Object.entries(this.ticketDetails);
+  }
+
+  formatDate(date: Date): Date {
+    return this.localizePipe.transform( new Date (date || ""), 'MMM d, y, h:mm a');
   }
 
 }

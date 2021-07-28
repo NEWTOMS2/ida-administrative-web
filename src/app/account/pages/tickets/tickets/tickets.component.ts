@@ -93,7 +93,6 @@ export class TicketsComponent implements OnInit, AfterViewInit {
       const content = data.tickets != null ? data.tickets : []
       this.allTickets = content;
 
-      console.log(this.allTickets)
       let tickets = content.map((ticket) =>{
         const state = (ticket.states?.find((state) => state.finalDate == null || state.stateName == 'COMPLETED'))?.stateName
         const date =  (ticket.states?.find((state) => state.stateName == 'NEW'))?.initialDate
@@ -158,12 +157,20 @@ export class TicketsComponent implements OnInit, AfterViewInit {
   }
 
   seeTicket(selectedTicket: Ticket): void{
-    const prueba = [].filter((value) => value == undefined)
+    const ticket = this.allTickets.filter((ticket) => ticket.id == selectedTicket.id)[0]
+
+
     this.router.navigateByUrl('/account/tickets/details', { state: {
-      detail: selectedTicket,
-      states: (this.allTickets.map((ticket) => {
-        if (ticket.id == selectedTicket.id)
-        return ticket.states
-      })).filter((state) =>  state != undefined)[0]
+      detail: {
+        id: ticket.id,
+        client: ticket.client.email,
+        lastname: ticket.client.lastname,
+        name: ticket.client.name,
+        phoneNumber: ticket.client.phoneNumber,
+        description: ticket.description,
+        agent: ticket.employee.email,
+        type: ticket.type
+      },
+      states: ticket.states
     } });  }
 }
