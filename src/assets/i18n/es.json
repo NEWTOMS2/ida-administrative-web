@@ -4,6 +4,7 @@
   "WRONG_CREDENTIALS": "El correo electrónico o la contraseña es incorrecta.",
   "GENERIC_ERROR": "Ocurrió un error inesperado.",
   "USER_CREATED": "Usuario creado satisfactoriamente.",
+  "CLAIM_STATE_CREATED": "Estado del reclamo creado satisfactoriamente",
   "SIGN_IN": "Inicia sesión en tu cuenta",
   "EMAIL_ADDRESS": "Correo electrónico",
   "PASSWORD": "Contraseña",
@@ -90,5 +91,14 @@
   "FULLNAME": "Nombre completo",
   "CLIENT_DATA": "Datos del cliente",
   "CLEAN_CLIENT_DATA": "Limpiar información",
-  "OPEN_CONTACT_PANEL": "Abrir panel de contacto"
+  "OPEN_CONTACT_PANEL": "Abrir panel de contacto",
+  "CLIENT": "Cliente",
+  "PHONENUMBER": "Número telefónico",
+  "EMAIL": "Correo electrónico",
+
+  "ACTIONS_MADE": "Acciones realizadas",
+  "REQUEST": "Solicitud",
+
+  "SAVE_REQUEST_INFORMATION": "Guardar información de la solicitud",
+  "SEND_NOTIFICATION": "Enviar notificación"
 }

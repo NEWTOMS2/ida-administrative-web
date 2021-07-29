@@ -25,7 +25,7 @@
 }
 
 .ticket-wrapper{
-    // min-height: 80vh;
+    min-height: 70vh;
 
     .ticket-details-wrapper{
         background-color: $secondary-ligther-color !important;
@@ -145,9 +145,33 @@
 
 .switch-wrapper {
     display: flex;
+    border-right: 1px solid $ligth-blue;
 }
 
 .form-check-input:checked {
     background-color: $ligth-blue;
     border-color: $ligth-blue;
+}
+
+.pagination {
+    padding-left: none !important;
+}
+
+.nav-wrapper  {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.page-link {
+    color:  $ligth-blue !important;
+    cursor: pointer;
+
+    &:hover{
+        background-color: $ligth-blue !important;
+        color: $white !important;
+    }
+}
+
+ol, ul, dl {
+    margin-bottom: 0rem !important
 }

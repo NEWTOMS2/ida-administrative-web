@@ -167,7 +167,7 @@ export class TicketsComponent implements OnInit, AfterViewInit {
 
     this.router.navigateByUrl('/account/tickets/details', { state: {
       detail: {
-        id: ticket.id,
+        id: ticket.claimId,
         client: ticket.client.email,
         lastname: ticket.client.lastname,
         name: ticket.client.name,

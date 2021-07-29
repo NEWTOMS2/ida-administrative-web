@@ -1,15 +1,17 @@
 <app-page-wrapper [title]="title">
-    <div >
+    <div *ngIf="ticketStates && ticketCurrentStatus" >
         <div class="row ticket-header">
             <div class="col-md-4 col-12 d-flex py-2 ticket-header-container">
                 <div class="secondary-badge status-tag">
                     {{ticketCurrentStatus.state | translate | titlecase}}
                 </div>
                 <div class="mx-3 request-id">
-                    Solicitud # {{ticketCurrentStatus.id}}
+                    {{ 'REQUEST' | translate }} # {{ticketCurrentStatus.id}}
                 </div>
 
             </div>
+
+            
         </div>
 
         <div class="row ticket-wrapper mb-3 mt-1">
@@ -17,39 +19,38 @@
 
                 <div class="row" *ngFor="let option of detailsList">
                     <div class="col mb-3">
-                        <label class="form-label">{{ option[0] | translate }}</label>
+                        <label class="form-label">{{ (option[0]).toUpperCase() | translate }}</label>
                         <input
                           type="text"
                           class="form-control detail-form"
-                          value="{{ option[1] }}"
-                          [ngClass]="{'text-input': option[0] === 'type'}"
+                          value="{{ option[1] | translate }}"
                           readonly
                         />
                     </div>
                 </div>
             </div>
             <div class="col-md-8 col-12 ticket-status-wrapper bg-body pb-3">
-                <div class="row mx-2 mt-3">
-                    <span class="ticket-header status-title px-0">Acciones realizadas</span>
-                    <hr class="">
-                </div>
-
-                <div class="row">
-                    <div class="col">
-                        <nav aria-label="...">
+                <div class="row mx-2 mt-3 align-items-center">
+                    <div class="col px-0 ">
+                        <span class=" status-title px-0"> {{ 'ACTIONS_MADE' | translate }}</span>
+                    </div>
+                    <div class="col-2 nav-wrapper px-0">
+                        <nav>
                             <ul class="pagination pagination-sm">
-                              <li class="page-item active">
-                                <span class="page-link">1</span>
+                              <li class="page-item" (click)="updatePaginator(-1)">
+                                <span class="page-link">&laquo;</span>
                               </li>
-                              <li class="page-item"><a class="page-link">2</a></li>
-                              <li class="page-item"><a class="page-link">3</a></li>
+                              <li class="page-item" (click)="updatePaginator(1)">
+                                  <a class="page-link">&raquo;</a>
+                              </li>
                             </ul>
                           </nav>
                     </div>
+                    <hr class="mt-2">
                 </div>
 
                 <div>
-                    <div *ngFor="let state of states" class="row status-wrapper-container mt-2">
+                    <div *ngFor="let state of paginatedStates;" class="row status-wrapper-container mt-2">
                         <div class="col">
                             <div class="row status-wrapper mx-2">
                                 <div class="col-md-3  col-12 status-item text-center ">
@@ -66,10 +67,11 @@
                         </div>
                     </div>
                 </div>
-                <form [formGroup]="newTicketStatusForm" class="needs-validation status-container-wrapper" novalidate>
+
+                <form [formGroup]="newTicketStatusForm" class="needs-validation status-container-wrapper" novalidate> 
                     <div class="row mx-2 align-items-end">
                             <div class="col-12 px-0" >
-                                <label for="exampleFormControlTextarea1" class="form-label">Guardar información de la solicitud</label>
+                                <label for="exampleFormControlTextarea1" class="form-label mt-2 "> {{ 'SAVE_REQUEST_INFORMATION' | translate }}</label>
                                 <textarea formControlName="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                             </div>
                     </div>
@@ -86,7 +88,7 @@
                                     <option [ngValue]="state.state" *ngFor="let state of ticketStatesConstant">{{state.state | translate}}</option>
                                 </select>
                             </div>
-                            <div class="col-md-5 col-7 px-0 switch-wrapper">
+                            <div class="col-md-6 col-7 px-0 switch-wrapper">
                                 <div class="form-switch">
                                     <input class="form-check-input" 
                                         type="checkbox" 
@@ -94,11 +96,19 @@
                                         formControlName="send_notification"
                                         checked
                                     >
-                                    <p>Enviar notificación</p>
+                                    <p> {{ 'SEND_NOTIFICATION' | translate }}</p>
                                 </div>
                             </div>
                             <div class="col-md-3 col-12 px-0" style="margin-left: auto;">
-                                <button class="btn secondary-btn btn-sm" (click)="createNewStatus()">Guardar</button>            
+                                <button class="btn secondary-btn btn-sm" (click)="createNewStatus()">
+                                    <span *ngIf="!spinnerLoader; else loading">{{"SAVE" | translate}}</span>
+
+                                    <ng-template class="text-center" #loading>
+                                        <div class="spinner-border spinner-border-sm" role="status">
+                                          <span class="sr-only"></span>
+                                        </div>
+                                      </ng-template>
+                                </button>            
                             </div>
                     </div>
                 </form>
