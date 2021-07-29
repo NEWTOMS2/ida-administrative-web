@@ -94,15 +94,14 @@ export class TicketsComponent implements OnInit, AfterViewInit {
       this.allTickets = content;
 
       let tickets = content.map((ticket) =>{
-        const state = (ticket.states?.find((state) => state.finalDate == null || state.stateName == 'COMPLETED'))?.stateName
-        const date =  (ticket.states?.find((state) => state.stateName == 'NEW'))?.initialDate
+        const currentStatus = this.getCurrentTicketStatus(ticket);
         
         return {
           id: ticket.id || 0,
           type: searchTranslation(this.translateService, ticket.type || ""),
           user: ticket.client?.email  || "",
-          date:  this.localizePipe.transform( new Date (date || ""), 'MMMM d, y'),
-          state: searchTranslation(this.translateService, state || ""),
+          date:  this.localizePipe.transform( new Date (currentStatus.date || ""), 'MMMM d, y'),
+          state: searchTranslation(this.translateService, currentStatus.state || ""),
           agent: ticket.employee?.email  || "",
         }
       })
@@ -143,7 +142,6 @@ export class TicketsComponent implements OnInit, AfterViewInit {
     return classColor
   }
 
-
   applyFilter(filterValue: any): void {
     const value =  filterValue.value === null ? '' : filterValue.value;
     filterValue = value.trim();
@@ -156,9 +154,16 @@ export class TicketsComponent implements OnInit, AfterViewInit {
     this.applyFilter({value: filter});
   }
 
+  getCurrentTicketStatus(ticket: any): any {
+    return {
+      state: (ticket.states?.find((state: any) => state.finalDate == null || state.stateName == 'COMPLETED'))?.stateName,
+      date: (ticket.states?.find((state: any) => state.stateName == 'NEW'))?.initialDate
+    }
+  }
+
   seeTicket(selectedTicket: Ticket): void{
     const ticket = this.allTickets.filter((ticket) => ticket.id == selectedTicket.id)[0]
-
+    const currentStatus = this.getCurrentTicketStatus(ticket);
 
     this.router.navigateByUrl('/account/tickets/details', { state: {
       detail: {
@@ -169,7 +174,8 @@ export class TicketsComponent implements OnInit, AfterViewInit {
         phoneNumber: ticket.client.phoneNumber,
         description: ticket.description,
         agent: ticket.employee.email,
-        type: ticket.type
+        type: ticket.type,
+        currentStatus
       },
       states: ticket.states
     } });  }

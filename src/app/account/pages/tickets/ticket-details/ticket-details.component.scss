@@ -1,7 +1,6 @@
 @import "../../../../styles/variables";
 @import "../../../../styles/app";
 
-
 .ticket-header {
     background-color: #fff !important;
     box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
@@ -93,8 +92,8 @@
 
 
     .update-status-container{
-        border-bottom: 1px solid #63709F;
-        justify-content: space-between !important;
+        border-bottom: 1px solid $ligth-blue;
+        // justify-content: space-between !important;
         border-radius: 0.25rem;
 
         .form-select{
@@ -121,13 +120,34 @@
     textarea {
         border-bottom-left-radius: 0 !important;
         border-bottom-right-radius: 0 !important;
-        border-top: 1px solid #63709F;
-        border-left: 1px solid #63709F;
-        border-right: 1px solid #63709F;
+        border-top: 1px solid $ligth-blue;
+        border-left: 1px solid $ligth-blue;
+        border-right: 1px solid $ligth-blue;
+        font-size: 13px;
     }
 
 
     .status-container-wrapper{
         margin-top: auto;
     }
+}
+
+.form-switch {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    p {
+        margin-bottom: 0;
+        font-size: 12px;
+        margin-left: 0.5rem;
+    }
+}
+
+.switch-wrapper {
+    display: flex;
+}
+
+.form-check-input:checked {
+    background-color: $ligth-blue;
+    border-color: $ligth-blue;
 }

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule, DatePipe, TitleCasePipe } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { FormsModule } from '@angular/forms';
 
 import { TicketsRoutingModule } from './tickets-routing.module';
 import { TicketsComponent } from './tickets/tickets.component';
@@ -23,7 +24,8 @@ import { TicketDetailsComponent } from './ticket-details/ticket-details.componen
     TicketsRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    TranslateModule
+    TranslateModule,
+    FormsModule
   ],
   providers: [
     TicketsResolver,

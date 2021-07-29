@@ -3,10 +3,10 @@
         <div class="row ticket-header">
             <div class="col-md-4 col-12 d-flex py-2 ticket-header-container">
                 <div class="secondary-badge status-tag">
-                    En progreso
+                    {{ticketCurrentStatus.state | translate | titlecase}}
                 </div>
                 <div class="mx-3 request-id">
-                    Solicitud #2
+                    Solicitud # {{ticketCurrentStatus.id}}
                 </div>
 
             </div>
@@ -66,30 +66,42 @@
                         </div>
                     </div>
                 </div>
+                <form [formGroup]="newTicketStatusForm" class="needs-validation status-container-wrapper" novalidate>
+                    <div class="row mx-2 align-items-end">
+                            <div class="col-12 px-0" >
+                                <label for="exampleFormControlTextarea1" class="form-label">Guardar información de la solicitud</label>
+                                <textarea formControlName="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+                    </div>
 
-
-
-                
-    
-                <div class="row mx-2 align-items-end status-container-wrapper">
-                        <div class="col-12 px-0" >
-                            <label for="exampleFormControlTextarea1" class="form-label">Guardar información de la solicitud</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                        </div>
-                </div>
-
-                <div class="row mx-2 update-status-container">
-                        <div class="col-md-3 col-12 px-0">
-                            <select class="form-select " aria-label="Default select example">
-                                <option selected>Cambiar estado</option>
-                                <option value="1">En progreso</option>
-                                <option value="2">Culminado</option>
-                            </select>
-                        </div>
-                        <div class="col-md-3 col-12 px-0 ">
-                                <button class="btn secondary-btn btn-sm">Guardar</button>            
-                        </div>
-                </div>
+                    <div class="row mx-2 update-status-container">
+                            <div class="col-md-3 col-5 px-0">
+                                <select  [ngClass]="{
+                                    'is-invalid':
+                                      this.newTicketStatusForm.get('state')?.invalid &&
+                                      this.newTicketStatusForm.get('state')?.touched
+                                     }" 
+                                    formControlName="state" class="form-select form-control" aria-label="Default select example">
+                                    <option value="" disabled>{{"STATUS" | translate}}</option>
+                                    <option [ngValue]="state.state" *ngFor="let state of ticketStatesConstant">{{state.state | translate}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-5 col-7 px-0 switch-wrapper">
+                                <div class="form-switch">
+                                    <input class="form-check-input" 
+                                        type="checkbox" 
+                                        id="flexSwitchCheckDefault" 
+                                        formControlName="send_notification"
+                                        checked
+                                    >
+                                    <p>Enviar notificación</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-12 px-0" style="margin-left: auto;">
+                                <button class="btn secondary-btn btn-sm" (click)="createNewStatus()">Guardar</button>            
+                            </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

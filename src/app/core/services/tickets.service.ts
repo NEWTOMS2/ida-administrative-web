@@ -34,6 +34,12 @@ export class TicketsService {
       )
   }
 
+  createStatus(status: any, ticketId: string): Observable<any>{
+    return this.http.post(administrative_exp_api_host + `/claims/${ticketId}/states`, JSON.stringify(status), this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    )  }
+
   buildTicket(tickets: any[]): Ticket[]{
     return tickets.map((data) => {
        
