@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ContentChild, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
@@ -11,6 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { searchTranslation } from 'src/app/utils/searchTranslation';
 import { faqTypes } from 'src/app/core/config/configuration';
 import { Faq } from 'src/app/core/models/faq.interface';
+import { FaqAnswersService } from '../services/faq-answers.service';
 
 @Component({
   selector: 'app-faqs',
@@ -30,19 +31,40 @@ export class FaqsComponent implements OnInit {
   @ViewChild(MatTable) table!: MatTable<any>;
   public title =  searchTranslation(this.translateService, 'FREQUENTLY_QUESTIONS');
   public dataSource!: MatTableDataSource<Faq>;
-  public faqTypes!: string[];
+  public faqTypes!: any[];
   public displayedColumns = ['intent_name', 'question'];
   public searchIcon = faSearch;
   public expandedElement!: Faq | null;
   public faqForm!: FormGroup;
 
+
+  get actions(): TemplateRef<any> {
+    return this.itemTmpl;
+  }
+  
+  public itemTmpl!: TemplateRef<any>;
+  
+  @Input() itemTemplate: any
+  set actions(value: TemplateRef<any>) {
+    this.itemTmpl= value;
+  }
+  
+  @ContentChild(TemplateRef)
+  set viewActions(value: TemplateRef<any>) {
+    if (!this.itemTmpl && value) {
+      this.itemTmpl = value;
+    }
+  }
+
+
   constructor(
     private formBuilder: FormBuilder,
     private translateService: TranslateService,
-    private activatedRoute: ActivatedRoute,) { }
+    private activatedRoute: ActivatedRoute,
+    private faqAnswersService: FaqAnswersService
+    ) { }
 
   ngOnInit(): void {
-    this.buildSelectorData();
     this.buildTable();
   }
 
@@ -55,9 +77,7 @@ export class FaqsComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
   
-  private buildSelectorData(): void {
-    this.faqTypes = faqTypes.map((type) => searchTranslation(this.translateService, type))
-  }
+
 
   applyFilter(filterValue: any): void {
     const value =  filterValue.value === null ? '' : filterValue.value;
@@ -71,13 +91,15 @@ export class FaqsComponent implements OnInit {
       let faqs = data.FaqsResolver.map((faq: any) => {
         return {
           id: faq.id,
-          type: searchTranslation(this.translateService, faq.type),
+          type: faq.type,
           intent_name: faq.intent_name,
           dw_intent: faq.dw_intent,
           question: faq.question,
           answers: faq.answers
         }
       })
+
+      console.log(faqs)
       this.dataSource = new MatTableDataSource(faqs);
     });
   }

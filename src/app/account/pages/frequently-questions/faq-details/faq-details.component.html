@@ -1,0 +1,60 @@
+<div>
+    <form [formGroup]="faqForm" class="needs-validation" novalidate>
+
+        <!-- FAQ Answers -->
+        <div class="row faq-form-wrapper">
+            <div class="col-6">
+                <div class="form-row mb-2" *ngFor="let answer of faq.answers; let i = index">
+                    <div class="col-12">
+                      <label class="form-label">{{ 'ANSWER' | translate }} {{ i + 1}}</label>
+                      <textarea
+                        type="text"
+                        formControlName="{{ 'answer-' + i}}"
+                        value="{{answer}}"
+                        class="form-control textarea-form"
+      
+                      ></textarea>
+                      <div class="invalid-feedback">
+                        {{"INTRODUCE_CONTENT" | translate}}
+                      </div> 
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4 actions-container" >
+                <!-- FAQ Type selector -->
+                <div class="form-row mb-2">
+                    <label class="form-label">{{ 'TYPE' | translate }}</label>
+                    <select 
+                    class="form-select" 
+                    formControlName="type"
+                >
+                    <option *ngFor="let type of faqTypes" [selected]="type.type == faq.type">
+                            {{  type.translatedType }}
+                    </option>
+                </select>
+              </div>
+
+               <!-- FAQ Actions -->
+              <div class="form-row actions mb-2">
+                <button class="btn secondary-btn" (click)="updateFAQ()" >
+                    {{ 'ADD_ANSWER' | translate | uppercase }}
+                </button>
+              </div>
+
+              <div class="form-row">
+                  <button class="btn secondary-btn" (click)="updateFAQ()" >
+                    <span *ngIf="!spinnerLoader; else loading" class="btn-content"> {{"SAVE" | translate | uppercase }}</span>
+                    <ng-template class="text-center" #loading>
+                      <div class="spinner-border spinner-border-sm" role="status">
+                        <span class="sr-only"></span>
+                      </div>
+                    </ng-template>
+                  </button>
+              </div>
+
+              
+            </div>
+        </div>
+    </form>
+</div>

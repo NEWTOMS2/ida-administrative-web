@@ -21,5 +21,5 @@ export interface Answer {
     answer: string;
     id: number;
     intent: string;
-    slots: string;
+    slots?: string;
 }

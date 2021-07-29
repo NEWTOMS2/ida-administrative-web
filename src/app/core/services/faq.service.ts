@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { retry, catchError, map } from 'rxjs/operators';
 
 import { administrative_exp_api_host } from '../config/configuration';
-import { Faq } from 'src/app/core/models/faq.interface';
+import { Answer, Faq } from 'src/app/core/models/faq.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -12,43 +12,82 @@ import { Faq } from 'src/app/core/models/faq.interface';
 export class FaqService {
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  }  
+      'Content-Type': 'application/json',
+    }),
+  };
 
-  constructor(
-    private http: HttpClient
-  ) {}
+  constructor(private http: HttpClient) {}
 
-  get(): Observable<Faq[]>{
-      return this.http.get(administrative_exp_api_host + '/faqs', this.httpOptions)
+  get(): Observable<Faq[]> {
+    return this.http
+      .get(administrative_exp_api_host + '/faqs', this.httpOptions)
       .pipe(
-          map((data: any) => {
-              return this.buildFaq(data.data) as Faq[]
-          })
+        map((data: any) => {
+          return this.buildFaq(data.data) as Faq[];
+        })
       )
-      .pipe(
-        catchError(this.handleError)
-      )
+      .pipe(catchError(this.handleError));
   }
 
-  buildFaq(faqs: any[]): any{
-    return faqs.map((faq: Faq) => {  
-       const faqObject = {
-            id: faq.id,
-            type: faq.type.name,
-            intent_name: faq.intent_name,
-            dw_intent: faq.dw_intent,
-            question: faq.question,
-            intent_type: faq.intent_type,
-            answers: faq.answers.map(fa => fa.answer)
-       }
-       return faqObject;
-    })
+  buildFaq(faqs: any[]): any {
+    return faqs.map((faq: Faq) => {
+      const faqObject = {
+        id: faq.id,
+        type: faq.type.name,
+        intent_name: faq.intent_name,
+        dw_intent: faq.dw_intent,
+        question: faq.question,
+        intent_type: faq.intent_type,
+        answers: faq.answers.map((fa) => {
+          return {
+            answer: fa.answer,
+            intent: fa.intent,
+            id: fa.id,
+          };
+        }),
+      };
+      return faqObject;
+    });
   }
 
-  handleError(error: any ) {
+  updateFaqAnswer(answer: Answer): Observable<boolean> {
+    console.log(`/faqs/${answer.intent}/answers/${answer.id}`);
+    return this.http
+      .patch(
+        administrative_exp_api_host +
+          `/faqs/${answer.intent}/answers/${answer.id}`,
+        {
+          answer: answer.answer,
+          faq_name: answer.intent,
+        },
+        this.httpOptions
+      )
+      .pipe(
+        map((data: any) => {
+          return true
+        })
+      )
+      .pipe(catchError(this.handleError));
+  }
+
+
+  udpateFaqType(intent: string, type: string): Observable<boolean> {
+    console.log(intent)
+    console.log(type)
+    return this.http
+      .patch(
+        administrative_exp_api_host + `/faqs/${intent}`, { type }, this.httpOptions
+      )
+      .pipe(
+        map((data: any) => {
+          return true
+        })
+      )
+      .pipe(catchError(this.handleError));
+  }
+
+  handleError(error: any) {
     console.log(error);
     return throwError(error.error.error[0].error_description);
- }
+  }
 }

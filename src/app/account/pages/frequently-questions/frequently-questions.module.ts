@@ -7,11 +7,13 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { FrequentlyQuestionsRoutingModule } from './frequently-questions-routing.module';
 import { FaqsComponent } from './faqs/faqs.component';
 import { FaqsResolver } from './resolvers/faqs.resolver';
+import { FaqDetailsComponent } from './faq-details/faq-details.component';
 
 
 @NgModule({
   declarations: [
-    FaqsComponent
+    FaqsComponent,
+    FaqDetailsComponent,
   ],
   imports: [
     CommonModule,

@@ -4,6 +4,7 @@
   "WRONG_CREDENTIALS": "El correo electrónico o la contraseña es incorrecta.",
   "GENERIC_ERROR": "Ocurrió un error inesperado.",
   "USER_CREATED": "Usuario creado satisfactoriamente.",
+  "FAQ_UPDATED": "Pregunta frecuente actualizada exitosamente",
   "SIGN_IN": "Inicia sesión en tu cuenta",
   "EMAIL_ADDRESS": "Correo electrónico",
   "PASSWORD": "Contraseña",
@@ -98,5 +99,8 @@
   "SIM_SHIPPING_ISSUE": "Envío de tarjeta SIM", 
   "PURCHASES": "Compras", 
   "INTERNET_ISSUE": "Problema de internet", 
-  "BLOCKING_SERVICES": "Bloqueo de servicios"
+  "BLOCKING_SERVICES": "Bloqueo de servicios",
+
+  "ANSWER": "Respuesta",
+  "ADD_ANSWER": "Añadir respuesta"
 }
