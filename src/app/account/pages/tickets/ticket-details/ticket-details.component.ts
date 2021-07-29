@@ -72,6 +72,14 @@ export class TicketDetailsComponent implements OnInit {
     });
   }
 
+  
+  resetForm(controls: string[]): void {
+    controls.forEach((control) => {
+      this.newTicketStatusForm.get(control)?.reset('');
+    });
+  }
+
+
   createNewStatus(): void {
     this.newTicketStatusForm.markAllAsTouched();
     if(this.newTicketStatusForm.valid){
@@ -82,6 +90,7 @@ export class TicketDetailsComponent implements OnInit {
         const ticket = await this.ticketService.getById(id).toPromise()
         this.states = this.setStates(ticket.states || [])
         this.setPaginatedStates();
+        this.resetForm(['state', 'description'])
         this.spinnerLoader = false;
         this.notification.showSuccessToast('CLAIM_STATE_CREATED');
       })
@@ -91,6 +100,7 @@ export class TicketDetailsComponent implements OnInit {
       });
     }
   }
+  
 
   setStates(statesList: any[]): any [] {
     return  this.sortListByDate((statesList.map((state: any) => {
@@ -102,6 +112,7 @@ export class TicketDetailsComponent implements OnInit {
     }) || []  ))
   }
 
+  
   sortListByDate(statesList: any[]): any [ ] {
     return statesList.sort((a,b) => new Date(b.initialDate) as any - (new Date(a.initialDate) as any))
   }
