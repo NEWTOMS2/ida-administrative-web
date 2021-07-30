@@ -56,7 +56,7 @@ export class SideNavComponent implements OnInit {
 
   ngOnInit(): void {
     const user = JSON.parse((this.authService.decrypt(localStorage.getItem('user') || "", environment.encryptKey)))
-    console.log(user)
+
     let roleRoutes = ((user.role == 'ADMIN') ? routes.ADMIN : routes.AGENT).map((route) => `/account/${route}`)
     this.menuOptions.forEach((option) => {
       if (roleRoutes.includes(option.link))

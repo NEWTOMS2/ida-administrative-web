@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot} from '@angular/router';
-
-
-import { Observable } from 'rxjs';
 import { routes } from 'src/app/core/config/configuration';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { environment } from 'src/environments/environment';
@@ -19,13 +16,13 @@ export class RolesGuard implements CanActivate {
     const user = JSON.parse((this.authService.decrypt(localStorage.getItem('user') || "", environment.encryptKey)))
     const path = state.url.split('/')
     const nextRoute = path[path.length-1]
-    let routesAllow = []
-    if(user.role == 'ADMIN')
-      routesAllow = routes.ADMIN;
-    else 
-      routesAllow = routes.AGENT;
+    let routesAllow = user.role == 'ADMIN' ?  routes.ADMIN : routes.AGENT
    
-    return routesAllow.includes(nextRoute) ? true : false
+    if (!routesAllow.includes(nextRoute)){
+      this.router.navigate(['/account']);
+      return false;
+    }
+    return true;
    }  
   
 }
