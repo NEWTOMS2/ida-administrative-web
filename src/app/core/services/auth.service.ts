@@ -30,13 +30,16 @@ export class AuthService {
   }
 
   storeUserData(user: any): void {
+    console.log(user)
       const userData: User = {
         name: user.user.name,
         lastname: user.user.lastname,
         phoneNumber: user.user.phone_number,
-        email:  user.user.email
+        email:  user.user.email,
+        role: user.role
       }
 
+      console.log(userData)
       localStorage.setItem('user', this.crypto(JSON.stringify(userData), environment.encryptKey));
       localStorage.setItem('Token', this.crypto(user.token, environment.encryptKey));
   }

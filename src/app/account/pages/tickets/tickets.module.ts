@@ -10,6 +10,7 @@ import { TicketsResolver } from './resolvers/tickets.resolver';
 import { UserResolver } from '../../resolvers/user.resolver';
 
 import { LocalizedDatePipe } from 'src/app/shared/pipes/localized.pipe';
+import { RolesGuard } from '../../guards/roles.guard';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { LocalizedDatePipe } from 'src/app/shared/pipes/localized.pipe';
     UserResolver,
     LocalizedDatePipe,
     DatePipe,
-    TitleCasePipe
+    TitleCasePipe,
+    RolesGuard
   ]
 })
 export class TicketsModule { }

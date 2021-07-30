@@ -3,7 +3,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { faPhoneAlt, faQuestionCircle, faEnvelopeOpenText, faCogs, faUsers} from '@fortawesome/free-solid-svg-icons';
 
 import { searchTranslation } from 'src/app/utils/searchTranslation';
-import { images } from '../../../core/config/configuration'
+import { images, routes } from '../../../core/config/configuration'
+import { AuthService } from 'src/app/core/services/auth.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -18,7 +20,7 @@ export class SideNavComponent implements OnInit {
   public mvnoInformationIcon = faCogs
   public users = faUsers
   public sideNavLogo = images.applicationLogo
-
+  public allowedOptions: any[] = [];
   public menuOptions = [
     {
       name: searchTranslation(this.translateService, 'ATTENTION_CENTER'),
@@ -46,10 +48,19 @@ export class SideNavComponent implements OnInit {
       icon: this.users
     }
   ]
+
   constructor(
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
+    const user = JSON.parse((this.authService.decrypt(localStorage.getItem('user') || "", environment.encryptKey)))
+    console.log(user)
+    let roleRoutes = ((user.role == 'ADMIN') ? routes.ADMIN : routes.AGENT).map((route) => `/account/${route}`)
+    this.menuOptions.forEach((option) => {
+      if (roleRoutes.includes(option.link))
+        this.allowedOptions.push(option)
+    })
   }
 }

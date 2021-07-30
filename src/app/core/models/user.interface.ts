@@ -9,4 +9,5 @@ export interface User {
   country?: string;
   city?: string;
   address?: string;
+  role?: string;
 }
