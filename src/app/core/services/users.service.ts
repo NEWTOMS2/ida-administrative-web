@@ -29,7 +29,6 @@ export class UsersService {
   ) {}
 
   create(user: User): Observable<any> {
-      console.log(user)
     return this.http.post(administrative_exp_api_host + '/users', [user], this.httpOptions)
     .pipe(
       catchError(this.handleError)

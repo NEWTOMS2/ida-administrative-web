@@ -34,11 +34,33 @@ export class TicketsService {
       )
   }
 
+  getById(id: number): Observable<Ticket>{
+    return this.http.get(administrative_exp_api_host + '/claims', {
+      ...this.httpOptions,
+      params: { id }
+    })
+    .pipe(
+        map((data: any) => {
+            return (this.buildTicket(data.data))[0] as Ticket
+        })
+    )
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  createStatus(status: any, ticketId: string): Observable<any>{
+    return this.http.post(administrative_exp_api_host + `/claims/${ticketId}/states`, JSON.stringify(status), this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    )  
+  }
+
   buildTicket(tickets: any[]): Ticket[]{
     return tickets.map((data) => {
-       
        const ticket = {
         id: data.uuid,
+        claimId: data.id,
         type: data.type,
         description: data.description,
         client: {

@@ -4,6 +4,7 @@
   "WRONG_CREDENTIALS": "The email address or password is incorrect.",
   "GENERIC_ERROR": "Some unexpected error occurs.",
   "USER_CREATED": "User successfully created.",
+  "CLAIM_STATE_CREATED": "State claim successfully saved",
   "SIGN_IN": "Sign into your account",
   "EMAIL_ADDRESS": "Email address",
   "PASSWORD": "Password",
@@ -92,5 +93,16 @@
   "FULLNAME": "Full name",
   "CLIENT_DATA": "Customer information",
   "CLEAN_CLIENT_DATA": "Clean information",
-  "OPEN_CONTACT_PANEL": "Open contact panel"
+  "OPEN_CONTACT_PANEL": "Open contact panel",
+
+  "CLIENT": "Client",
+  "PHONENUMBER": "Phone Number",
+  "EMAIL": "Email",
+
+  "ACTIONS_MADE": "Made Actions",
+  "REQUEST": "Request",
+
+  "SAVE_REQUEST_INFORMATION": "Save request information",
+  "SEND_NOTIFICATION": "Send notification"
+
 }

@@ -3,7 +3,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -40,6 +40,7 @@ export class TicketsComponent implements OnInit, AfterViewInit {
   public searchIcon = faSearch;
   public ticketStates!: any[];
   public ticketTypes!: string[];
+  private allTickets!: any[];
   public   displayedColumns = [
     'select',
     'id',
@@ -54,9 +55,12 @@ export class TicketsComponent implements OnInit, AfterViewInit {
   constructor(
     private translateService: TranslateService,
     private activatedRoute: ActivatedRoute,
-    private localizePipe: LocalizedDatePipe
+    private localizePipe: LocalizedDatePipe,
+    private router: Router
     ) { }
 
+
+  
   ngOnInit(): void {
     this.buildUser();
     this.buildSelectorData();
@@ -87,16 +91,17 @@ export class TicketsComponent implements OnInit, AfterViewInit {
 
     this.activatedRoute.data.subscribe((data: Partial<{ tickets: Ticket[]}>) => {
       const content = data.tickets != null ? data.tickets : []
+      this.allTickets = content;
+
       let tickets = content.map((ticket) =>{
-        const state = (ticket.states?.find((state) => state.finalDate == null || state.stateName == 'COMPLETED'))?.stateName
-        const date =  (ticket.states?.find((state) => state.stateName == 'NEW'))?.initialDate
+        const currentStatus = this.getCurrentTicketStatus(ticket);
         
         return {
           id: ticket.id || 0,
           type: searchTranslation(this.translateService, ticket.type || ""),
           user: ticket.client?.email  || "",
-          date:  this.localizePipe.transform( new Date (date || ""), 'MMMM d, y'),
-          state: searchTranslation(this.translateService, state || ""),
+          date:  this.localizePipe.transform( new Date (currentStatus.date || ""), 'MMMM d, y'),
+          state: searchTranslation(this.translateService, currentStatus.state || ""),
           agent: ticket.employee?.email  || "",
         }
       })
@@ -137,7 +142,6 @@ export class TicketsComponent implements OnInit, AfterViewInit {
     return classColor
   }
 
-
   applyFilter(filterValue: any): void {
     const value =  filterValue.value === null ? '' : filterValue.value;
     filterValue = value.trim();
@@ -149,4 +153,30 @@ export class TicketsComponent implements OnInit, AfterViewInit {
     const filter = value == 'MY_REQUESTS' ? this.user?.email : ''
     this.applyFilter({value: filter});
   }
+
+  getCurrentTicketStatus(ticket: any): any {
+    return {
+      state: (ticket.states?.find((state: any) => state.finalDate == null || state.stateName == 'COMPLETED'))?.stateName,
+      date: (ticket.states?.find((state: any) => state.stateName == 'NEW'))?.initialDate
+    }
+  }
+
+  seeTicket(selectedTicket: Ticket): void{
+    const ticket = this.allTickets.filter((ticket) => ticket.id == selectedTicket.id)[0]
+    const currentStatus = this.getCurrentTicketStatus(ticket);
+
+    this.router.navigateByUrl('/account/tickets/details', { state: {
+      detail: {
+        id: ticket.claimId,
+        client: ticket.client.email,
+        lastname: ticket.client.lastname,
+        name: ticket.client.name,
+        phoneNumber: ticket.client.phoneNumber,
+        description: ticket.description,
+        agent: ticket.employee.email,
+        type: ticket.type,
+        currentStatus
+      },
+      states: ticket.states
+    } });  }
 }
