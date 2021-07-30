@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule, DatePipe, TitleCasePipe } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { FormsModule } from '@angular/forms';
 
 import { TicketsRoutingModule } from './tickets-routing.module';
 import { TicketsComponent } from './tickets/tickets.component';
@@ -11,18 +12,21 @@ import { UserResolver } from '../../resolvers/user.resolver';
 
 import { LocalizedDatePipe } from 'src/app/shared/pipes/localized.pipe';
 import { RolesGuard } from '../../guards/roles.guard';
+import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
 
 
 @NgModule({
   declarations: [
-    TicketsComponent
+    TicketsComponent,
+    TicketDetailsComponent
   ],
   imports: [
     CommonModule,
     TicketsRoutingModule,
     SharedModule,
     ReactiveFormsModule,
-    TranslateModule
+    TranslateModule,
+    FormsModule
   ],
   providers: [
     TicketsResolver,

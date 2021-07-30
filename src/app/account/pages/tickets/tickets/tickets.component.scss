@@ -105,6 +105,17 @@ mat-header-row {
   background-color: $white;
 }
 
+mat-row{
+  cursor: pointer;
+  &:hover{
+    background-color: $ligth-blue;
+
+    mat-cell{
+        color: $white !important;
+  }
+}
+}
+
 .table-header  {
   border-top-left-radius: 9px;
   border-top-right-radius: 9px;
@@ -124,10 +135,8 @@ mat-cell{
 }
 
 .mat-header-cell {
-  color: $dark-blue !important
+  color: $dark-blue !important;
 }
-
-
 
 .table-row-item{
   background-color:$secondary-ligther-color;

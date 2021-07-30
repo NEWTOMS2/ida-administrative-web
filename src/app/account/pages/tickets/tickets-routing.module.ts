@@ -3,19 +3,33 @@ import { RouterModule, Routes } from '@angular/router';
 import { RolesGuard } from '../../guards/roles.guard';
 import { UserResolver } from '../../resolvers/user.resolver';
 import { TicketsResolver } from './resolvers/tickets.resolver';
+import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
 import { TicketsComponent } from './tickets/tickets.component';
 
-const routes: Routes = [
-  {
-    path: '',
-    component: TicketsComponent,
-    canActivate: [RolesGuard],
-    resolve: {
-      user: UserResolver,
-      tickets: TicketsResolver,
+const routes: Routes = [{
+  path: '',
+  resolve: {
+    user: UserResolver,
+ },
+  children: [
+    {
+      path: '',
+      redirectTo: '/account/tickets',
+      pathMatch: 'full',
     },
-  },
-];
+    {
+      path: '',
+      component: TicketsComponent,
+      resolve: {
+        tickets: TicketsResolver,
+     },
+    },
+    {
+      path: 'details',
+      component: TicketDetailsComponent
+    },
+  ]
+}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
