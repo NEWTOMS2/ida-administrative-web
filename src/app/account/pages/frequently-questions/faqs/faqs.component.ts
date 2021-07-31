@@ -86,14 +86,6 @@ export class FaqsComponent implements OnInit {
     this.dataSource.filter = value;
   }
 
-
-  applyTypeFilter(filterValue: any): void {
-    const value =  filterValue.value === null ? '' : filterValue.value;
-    filterValue = value.trim();
-    filterValue = value.toLowerCase();
-    this.dataSource.filter = value;
-  }
-
   private buildTable(): void {
     this.activatedRoute.data.subscribe((data: any) => {
       let faqs = data.FaqsResolver.map((faq: any) => {

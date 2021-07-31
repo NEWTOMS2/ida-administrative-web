@@ -5,6 +5,7 @@
   "GENERIC_ERROR": "Some unexpected error occurs.",
   "USER_CREATED": "User successfully created.",
   "FAQ_UPDATED": "Frequently question successfully updated",
+  "CLAIM_STATE_CREATED": "State claim successfully saved",
   "SIGN_IN": "Sign into your account",
   "EMAIL_ADDRESS": "Email address",
   "PASSWORD": "Password",
@@ -106,5 +107,15 @@
   "ANSWER": "Answer",
   "NEW_ANSWER": "New answer",
   "ADD_ANSWER": "Add answer",
-  "ANSWER_ADDED": "New answer successfully added"
+  "ANSWER_ADDED": "New answer successfully added",
+  "CLIENT": "Client",
+  "PHONENUMBER": "Phone Number",
+  "EMAIL": "Email",
+
+  "ACTIONS_MADE": "Made Actions",
+  "REQUEST": "Request",
+
+  "SAVE_REQUEST_INFORMATION": "Save request information",
+  "SEND_NOTIFICATION": "Send notification"
+
 }

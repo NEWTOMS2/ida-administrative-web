@@ -94,6 +94,61 @@
     }
 }
 
+/*--- Data Table ---  */
+
+.table {
+  margin-bottom: 0px !important;
+  font-family: $font-family;
+}
+
+.mat-table {
+  box-shadow: 0px 1px 3px 1px rgba(181, 181, 181, 0.56);
+}
+
+
+/*--- Table header ---  */
+
+mat-header-row {
+  background-color: $white;
+}
+
+mat-row{
+  cursor: pointer;
+  &:hover{
+    background-color: $ligth-blue;
+
+    mat-cell{
+        color: $white !important;
+  }
+}
+}
+
+.table-header  {
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+  background-color: #f6f7f9;
+  box-shadow: 0px 1px 3px 1px rgba(181, 181, 181, 0.56);
+}
+
+.row {
+  --bs-gutter-x: 0rem !important
+}
+
+
+/*--- Data cells ---  */
+mat-cell{
+    color: $primary-color !important;
+    font-weight: 400;
+}
+
+.mat-header-cell {
+  color: $dark-blue !important;
+}
+
+.table-row-item{
+  background-color:$secondary-ligther-color;
+}
+
 /*--- Data cells sizes ---  */
 
 th.mat-header-cell:last-of-type, 

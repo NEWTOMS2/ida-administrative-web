@@ -5,6 +5,7 @@
   "GENERIC_ERROR": "Ocurrió un error inesperado.",
   "USER_CREATED": "Usuario creado satisfactoriamente.",
   "FAQ_UPDATED": "Pregunta frecuente actualizada exitosamente",
+  "CLAIM_STATE_CREATED": "Estado del reclamo creado satisfactoriamente",
   "SIGN_IN": "Inicia sesión en tu cuenta",
   "EMAIL_ADDRESS": "Correo electrónico",
   "PASSWORD": "Contraseña",
@@ -104,5 +105,14 @@
   "ANSWER": "Respuesta",
   "NEW_ANSWER": "Nueva respuesta",
   "ADD_ANSWER": "Añadir respuesta",
-  "ANSWER_ADDED": "La respuesta se ha agregado exitosamente"
+  "ANSWER_ADDED": "La respuesta se ha agregado exitosamente",
+  "CLIENT": "Cliente",
+  "PHONENUMBER": "Número telefónico",
+  "EMAIL": "Correo electrónico",
+
+  "ACTIONS_MADE": "Acciones realizadas",
+  "REQUEST": "Solicitud",
+
+  "SAVE_REQUEST_INFORMATION": "Guardar información de la solicitud",
+  "SEND_NOTIFICATION": "Enviar notificación"
 }
