@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UserResolver } from '../../resolvers/user.resolver';
+import { UsersResolver } from './resolvers/users.resolver';
 import { UsersComponent } from './users/users.component';
 
 const routes: Routes = [
@@ -9,6 +10,7 @@ const routes: Routes = [
     component: UsersComponent,
     resolve: {
       user: UserResolver,
+      users: UsersResolver
     },
   },
 ];

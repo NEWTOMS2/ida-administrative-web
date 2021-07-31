@@ -47,6 +47,37 @@ export class UsersService {
         )
    }
 
+   get(): Observable<User[]> {
+    return this.http.get(administrative_exp_api_host + '/users', this.httpOptions)
+    .pipe(
+      map((data: any) => {
+          return this.buildUser(data.data) as User[]
+      })
+    )
+    .pipe(
+        catchError(this.handleError)
+    )
+   }
+
+  
+  buildUser(users: any[]) : User[] {
+    console.log(users)
+    return users.map((u) => {
+      return {
+        id: u.id, 
+        name: u.name,
+        lastname: u.last_name,
+        email: u.email,
+        phoneNumber: u.phone_number,
+        country: (u.address.find((address: any) => address.type == 'COUNTRY'))?.name,
+        city: (u.address.find((address: any) => address.type == 'CITY'))?.name,
+        address: u.detail_address,
+        role: u.role.name,
+        state: (u.is_active) ? 'ACTIVE' : 'INACTIVE',
+      }
+    })
+  }
+
   handleError(error: any ) {
     console.log(error);
     return throwError(error.error.error[0].error_description);
