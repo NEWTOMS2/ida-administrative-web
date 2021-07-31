@@ -18,8 +18,8 @@ export interface Faq {
 }
 
 export interface Answer {
-    answer: string;
-    id: number;
-    intent: string;
+    answer?: string;
+    id?: number;
+    intent?: string;
     slots?: string;
 }

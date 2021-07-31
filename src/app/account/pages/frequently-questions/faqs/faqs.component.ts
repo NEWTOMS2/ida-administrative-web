@@ -31,7 +31,7 @@ export class FaqsComponent implements OnInit {
   @ViewChild(MatTable) table!: MatTable<any>;
   public title =  searchTranslation(this.translateService, 'FREQUENTLY_QUESTIONS');
   public dataSource!: MatTableDataSource<Faq>;
-  public faqTypes!: any[];
+  public faqTypes = faqTypes;
   public displayedColumns = ['intent_name', 'question'];
   public searchIcon = faSearch;
   public expandedElement!: Faq | null;
@@ -80,6 +80,14 @@ export class FaqsComponent implements OnInit {
 
 
   applyFilter(filterValue: any): void {
+    const value =  filterValue.value === null ? '' : filterValue.value;
+    filterValue = value.trim();
+    filterValue = value.toLowerCase();
+    this.dataSource.filter = value;
+  }
+
+
+  applyTypeFilter(filterValue: any): void {
     const value =  filterValue.value === null ? '' : filterValue.value;
     filterValue = value.trim();
     filterValue = value.toLowerCase();

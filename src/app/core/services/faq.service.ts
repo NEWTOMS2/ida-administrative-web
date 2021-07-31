@@ -18,9 +18,9 @@ export class FaqService {
 
   constructor(private http: HttpClient) {}
 
-  get(): Observable<Faq[]> {
+  get(queryParam?: string): Observable<Faq[]> {
     return this.http
-      .get(administrative_exp_api_host + '/faqs', this.httpOptions)
+      .get(administrative_exp_api_host + `/faqs${queryParam ? queryParam : ""}`, this.httpOptions)
       .pipe(
         map((data: any) => {
           return this.buildFaq(data.data) as Faq[];
@@ -51,7 +51,6 @@ export class FaqService {
   }
 
   updateFaqAnswer(answer: Answer): Observable<boolean> {
-    console.log(`/faqs/${answer.intent}/answers/${answer.id}`);
     return this.http
       .patch(
         administrative_exp_api_host +
@@ -72,8 +71,7 @@ export class FaqService {
 
 
   udpateFaqType(intent: string, type: string): Observable<boolean> {
-    console.log(intent)
-    console.log(type)
+
     return this.http
       .patch(
         administrative_exp_api_host + `/faqs/${intent}`, { type }, this.httpOptions
@@ -84,6 +82,13 @@ export class FaqService {
         })
       )
       .pipe(catchError(this.handleError));
+  }
+
+  createAnswer(answers: any, intent: string): Observable<any>{
+    return this.http.post(administrative_exp_api_host + `/faqs/${intent}/answers`, JSON.stringify(answers), this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    )
   }
 
   handleError(error: any) {

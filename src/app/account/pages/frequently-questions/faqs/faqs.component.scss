@@ -1,7 +1,16 @@
 @import "../../../../styles/variables";
 
+.table {
+  vertical-align: middle !important;
+}
+
+.header-table {
+  vertical-align: middle !important;
+}
+
 tr.example-detail-row {
   height: 0;
+  box-shadow: 4px 0px 0px #63709f inset;
 }
 
 .example-element-row td {
@@ -13,8 +22,14 @@ tr.example-detail-row {
   display: flex;
 }
 
-.example-element-description {
-  padding: 16px;
+.element-expand-content {
+  padding: 30px;
+}
+
+@media (max-width: 600px) {
+  .element-expand-content {
+    padding: 10px;
+  }
 }
 
 /*--- Table header ---  */
@@ -28,6 +43,16 @@ th.mat-header-cell,
 td.mat-cell,
 td.mat-footer-cell {
 border-bottom-style: none;
+}
+
+.mat-row {
+  border-bottom: none;
+  cursor: pointer;
+}
+
+.example-expanded-row {
+  border-bottom: 0.1px solid #63709f73;
+  box-shadow: 4px 0px 0px #63709f inset;
 }
 
 .paginator-table {

@@ -3,6 +3,7 @@ import { CommonModule, DatePipe, TitleCasePipe } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { FormsModule } from '@angular/forms'; 
 
 import { FrequentlyQuestionsRoutingModule } from './frequently-questions-routing.module';
 import { FaqsComponent } from './faqs/faqs.component';
@@ -20,7 +21,8 @@ import { FaqDetailsComponent } from './faq-details/faq-details.component';
     FrequentlyQuestionsRoutingModule,
     SharedModule,
     TranslateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     FaqsResolver

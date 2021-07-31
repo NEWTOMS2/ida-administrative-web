@@ -104,5 +104,7 @@
   "BLOCKING_SERVICES": "Service blocking",
 
   "ANSWER": "Answer",
-  "ADD_ANSWER": "Add answer"
+  "NEW_ANSWER": "New answer",
+  "ADD_ANSWER": "Add answer",
+  "ANSWER_ADDED": "New answer successfully added"
 }

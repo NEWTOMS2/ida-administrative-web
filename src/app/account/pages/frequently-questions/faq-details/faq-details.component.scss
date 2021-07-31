@@ -22,3 +22,25 @@
 .actions{
     margin-top: auto;
 }
+
+.add-faq-btn-wrapper {
+    display: flex;
+    align-items: flex-end;
+}
+
+.add-faq-btn {
+    background: $ligth-blue;
+    height: 29px;
+    border-radius: 50px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: 20px;
+    width: 30px;
+    color: $white;
+    margin-bottom: 7px;
+
+    &:hover {
+        background: $dark-blue;
+    }
+}

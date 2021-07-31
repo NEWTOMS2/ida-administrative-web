@@ -102,5 +102,7 @@
   "BLOCKING_SERVICES": "Bloqueo de servicios",
 
   "ANSWER": "Respuesta",
-  "ADD_ANSWER": "Añadir respuesta"
+  "NEW_ANSWER": "Nueva respuesta",
+  "ADD_ANSWER": "Añadir respuesta",
+  "ANSWER_ADDED": "La respuesta se ha agregado exitosamente"
 }

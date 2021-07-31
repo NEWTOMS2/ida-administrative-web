@@ -10,6 +10,10 @@ import { NotificationsService } from 'src/app/shared/services/notifications.serv
 import { searchTranslation } from 'src/app/utils/searchTranslation';
 import { take } from 'rxjs/operators';
 
+interface newAnswer {
+  answer: string;
+}
+
 @Component({
   selector: 'app-faq-details',
   templateUrl: './faq-details.component.html',
@@ -18,6 +22,8 @@ import { take } from 'rxjs/operators';
 export class FaqDetailsComponent implements OnInit {
   @Input() faq!: Faq
   faqForm!: FormGroup;
+  newAnswersForm!: FormGroup;
+  newAnswers: newAnswer[] = [];
   faqTypes!: any[]
   spinnerLoader =false;
   constructor(
@@ -33,7 +39,6 @@ export class FaqDetailsComponent implements OnInit {
   @ViewChild('autosize') autosize!: CdkTextareaAutosize;
 
   triggerResize() {
-    // Wait for changes to be applied, then trigger textarea resize.
     this._ngZone.onStable.pipe(take(1))
         .subscribe(() => this.autosize.resizeToFitContent(true));
   }
@@ -41,7 +46,6 @@ export class FaqDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.buildSelectorData()
     this.buildForm();
-
   }
 
   private buildSelectorData(): void {
@@ -54,7 +58,7 @@ export class FaqDetailsComponent implements OnInit {
   }
 
 
- async  updateFAQ(): Promise<void> {
+ async saveChanges(): Promise<void> {
     if (this.faqForm.valid && this.faqForm.dirty){
       try{
         this.spinnerLoader = true;
@@ -68,6 +72,27 @@ export class FaqDetailsComponent implements OnInit {
          this.notification.showErrorToast("GENERIC_ERROR");
       }  
     }
+    if (this.newAnswersForm.dirty){
+      let newAnswersArray:any[] = [];
+      Object.values(this.newAnswersForm.value).map((answer)=> {
+        if (answer != "") newAnswersArray.push({answer})
+      });
+      if (newAnswersArray.length > 0) {
+        try{
+          this.spinnerLoader = true;
+          await this.createNewAnswers(newAnswersArray);
+          this.newAnswers = [];
+          this.addNewAnswerToExistingAnswersFormControl(newAnswersArray);
+          this.refreshAnswers();
+          this.newAnswersForm = this.formBuilder.group({})
+          this.spinnerLoader = false;
+          this.notification.showSuccessToast('ANSWER_ADDED');
+        }catch(err){
+          this.spinnerLoader = false;
+          this.notification.showErrorToast("GENERIC_ERROR");
+        }  
+      }
+    }
   }
 
   async updateFaqType(): Promise<void>{
@@ -79,10 +104,13 @@ export class FaqDetailsComponent implements OnInit {
 
   async updateFaqAnswers(): Promise<void>{
        const answers = this.getFaqAnswer();
-
        await Promise.all(answers.map(async (answer) => {
         return  await this.faqService.updateFaqAnswer(answer).toPromise()
        }))
+  }
+
+  async createNewAnswers(newAnswersArray: any): Promise<void>{
+    return  await this.faqService.createAnswer(newAnswersArray,this.faq.dw_intent).toPromise();
   }
 
   getFaqAnswer(): Answer[]{
@@ -96,18 +124,38 @@ export class FaqDetailsComponent implements OnInit {
     })
   }
 
+  addAnswer(): void {
+    const newAnswer = {
+      answer: ""
+    }
+    const le = this.newAnswers.length;
+    this.newAnswersForm.addControl('answer-' + (le), this.formBuilder.control(newAnswer.answer, Validators.compose([Validators.required])));
+    this.newAnswers.push(newAnswer);
+  }
+
+  addNewAnswerToExistingAnswersFormControl(answers: any): void {
+    const le = this.faq.answers.length;
+    answers.map((a: any, index: number) => {
+      this.faqForm.addControl('answer-' + (le + index), this.formBuilder.control(a.answer, Validators.compose([Validators.required])));
+    })
+  }
+
+  refreshAnswers(): void {
+    this.faqService.get("?intent=" + this.faq.dw_intent).toPromise().then((faq)=>{
+      this.faq.answers = faq[0].answers;
+    })
+  };
 
   private buildForm(): void {
     let allFaqs: any = {}
-    console.log( this.faq)
     this.faq.answers.map((answer, i) => {
       allFaqs['answer-' + i] = [answer.answer, Validators.compose([Validators.required])]
     })
-
-    console.log(this.faq)
     this.faqForm = this.formBuilder.group({
       ...allFaqs,
       type: [this.faq.type]
-  });
+    });
+
+    this.newAnswersForm = this.formBuilder.group({})
   }
 }
