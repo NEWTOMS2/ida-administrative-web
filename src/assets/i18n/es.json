@@ -114,5 +114,7 @@
   "REQUEST": "Solicitud",
 
   "SAVE_REQUEST_INFORMATION": "Guardar información de la solicitud",
-  "SEND_NOTIFICATION": "Enviar notificación"
+  "SEND_NOTIFICATION": "Enviar notificación",
+  "DELETE_ANSWERS_AGREE": "¿Estás seguro que deseas eliminar las respuestas?"
+
 }

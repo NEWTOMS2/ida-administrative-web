@@ -14,7 +14,6 @@ export interface Faq {
         description: string
     };
     answers: Answer[];
-
 }
 
 export interface Answer {
@@ -22,4 +21,5 @@ export interface Answer {
     id?: number;
     intent?: string;
     slots?: string;
+    selectedToBeDeleted?: boolean;
 }

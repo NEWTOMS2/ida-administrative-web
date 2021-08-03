@@ -3,17 +3,29 @@
 
     <!-- FAQ Answers -->
     <div class="row faq-form-wrapper">
-      <div class="col-md-7 col-12">
-        <div class="form-row mb-2" *ngFor="let answer of faq.answers; let i = index">
-          <div class="col-12">
-            <label class="form-label">{{ 'ANSWER' | translate }} {{ i + 1}}</label>
-            <textarea type="text" formControlName="{{ 'answer-' + i}}" value="{{answer}}"
-              class="form-control textarea-form"></textarea>
-            <div class="invalid-feedback">
-              {{"INTRODUCE_CONTENT" | translate}}
+      <div class="col-md-7 col-12" [ngClass]="{'spinner-wrapper': updatingAnswers}">
+        <div *ngIf="!updatingAnswers; else loadingAnswers">
+          <div class="form-row mb-2" *ngFor="let answer of faq.answers; let i = index">
+            <div class="col-12 answers-wrapper">
+              <input class="form-check-input" type="checkbox" (change)="toogleDeleteAnswer(answer.id!)"
+                aria-label="...">
+              <div style="width: 100%;">
+                <p>id: {{answer.id}}</p>
+                <label class="form-label">{{ 'ANSWER' | translate }} {{ i + 1}}</label>
+                <textarea type="text" formControlName="{{ 'answer-' + i}}" [value]="answer"
+                  class="form-control textarea-form"></textarea>
+                <div class="invalid-feedback">
+                  {{"INTRODUCE_CONTENT" | translate}}
+                </div>
+              </div>
             </div>
           </div>
         </div>
+        <ng-template #loadingAnswers>
+          <div class="spinner-border" role="status">
+            <span class="sr-only"></span>
+          </div>
+        </ng-template>
         <form [formGroup]="newAnswersForm" class="needs-validation" novalidate>
           <div class="form-row mb-2" *ngFor="let answer of newAnswers; let i = index">
             <div class="col-12">
@@ -27,14 +39,17 @@
           </div>
         </form>
       </div>
-      
+
       <div class="col-md-1 col-12 add-faq-btn-wrapper">
-        <button class="btn add-faq-btn" (click)="addAnswer()">+</button>
+        <button class="btn delete-faq-btn faq-btns" (click)="openConfirmationModal(content)">
+          <fa-icon [icon]="faTrash"></fa-icon>
+        </button>
+        <button class="btn add-faq-btn faq-btns" (click)="addAnswer()">+</button>
       </div>
 
       <div class="col-md-4 col-12 actions-container">
         <!-- FAQ Type selector -->
-        <div class="form-row mb-2">
+        <div class="form-row mb-2" *ngIf="!updatingAnswers">
           <label class="form-label">{{ 'TYPE' | translate }}</label>
           <select class="form-select" formControlName="type">
             <option *ngFor="let type of faqTypes" [selected]="type.type == faq.type">
@@ -58,3 +73,23 @@
     </div>
   </form>
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-body mt-3 mb-3 mx-md-3">
+    <div>
+      <div class="row">
+        <div class="col-12 text-center">
+          {{ "DELETE_ANSWERS_AGREE" | translate }}
+        </div>
+        <div class="col-12 mt-4 confirm-btn-wrapper px-5">
+          <button class="btn primary-btn confirm-btn" (click)="deleteAnswers()">
+            {{ "AGREE" | translate }}
+          </button>
+          <button class="btn secondary-btn confirm-btn" (click)="modal.dismiss('Cross click')">
+            {{ "CANCEL" | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

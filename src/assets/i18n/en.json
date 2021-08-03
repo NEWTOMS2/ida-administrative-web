@@ -116,6 +116,6 @@
   "REQUEST": "Request",
 
   "SAVE_REQUEST_INFORMATION": "Save request information",
-  "SEND_NOTIFICATION": "Send notification"
-
+  "SEND_NOTIFICATION": "Send notification",
+  "DELETE_ANSWERS_AGREE": "Are you sure you want to delete the answers?"
 }

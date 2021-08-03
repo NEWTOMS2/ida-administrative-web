@@ -98,8 +98,6 @@ export class FaqsComponent implements OnInit {
           answers: faq.answers
         }
       })
-
-      console.log(faqs)
       this.dataSource = new MatTableDataSource(faqs);
     });
   }

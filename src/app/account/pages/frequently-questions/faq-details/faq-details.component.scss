@@ -4,6 +4,19 @@
     justify-content: space-between;
 }
 
+.answers-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.form-check-input {
+    margin-right: 20px;
+}
+
+.form-check-input:checked {
+    background-color: $ligth-blue;
+    border-color: $ligth-blue;
+}
 
 .textarea-form {
     background-color: #fff0 !important;
@@ -25,22 +38,50 @@
 
 .add-faq-btn-wrapper {
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
-.add-faq-btn {
-    background: $ligth-blue;
+.faq-btns {
     height: 29px;
     border-radius: 50px;
     align-items: center;
     justify-content: center;
     display: flex;
-    font-size: 20px;
     width: 30px;
     color: $white;
     margin-bottom: 7px;
+}
+
+.add-faq-btn {
+    background: $ligth-blue;
+    font-size: 20px;
 
     &:hover {
         background: $dark-blue;
     }
+}
+
+.delete-faq-btn {
+    background: $red;
+    font-size: 12px;
+    
+    &:hover {
+        background: $dark-red;
+    }
+}
+
+.spinner-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.confirm-btn {
+    width: 35%;
+}
+
+.confirm-btn-wrapper { 
+    display: flex;
+    justify-content: space-between;
 }
