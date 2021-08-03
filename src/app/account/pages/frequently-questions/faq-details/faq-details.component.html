@@ -10,7 +10,6 @@
               <input class="form-check-input" type="checkbox" (change)="toogleDeleteAnswer(answer.id!)"
                 aria-label="...">
               <div style="width: 100%;">
-                <p>id: {{answer.id}}</p>
                 <label class="form-label">{{ 'ANSWER' | translate }} {{ i + 1}}</label>
                 <textarea type="text" formControlName="{{ 'answer-' + i}}" [value]="answer"
                   class="form-control textarea-form"></textarea>

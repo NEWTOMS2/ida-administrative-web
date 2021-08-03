@@ -42,6 +42,22 @@
     justify-content: flex-end;
 }
 
+@media (max-width: 760px) {
+    .add-faq-btn-wrapper {
+        flex-direction: row;
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    .delete-faq-btn {
+        margin-right: 0.5rem;
+    }
+
+    .add-faq-btn {
+        margin-left: 0.5rem;
+    }
+}
+
 .faq-btns {
     height: 29px;
     border-radius: 50px;
