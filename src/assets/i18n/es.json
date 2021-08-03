@@ -114,5 +114,9 @@
   "REQUEST": "Solicitud",
 
   "SAVE_REQUEST_INFORMATION": "Guardar información de la solicitud",
-  "SEND_NOTIFICATION": "Enviar notificación"
+  "SEND_NOTIFICATION": "Enviar notificación",
+  "INACTIVE": "Inactivo",
+  "ACTIVE": "Activo",
+  "SEE_REQUESTS": "Ver solicitudes",
+  "SELECT_CITY": "Elige una ciudad"
 }

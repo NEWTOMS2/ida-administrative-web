@@ -53,8 +53,8 @@
           multiTemplateDataRows
         >
           <ng-container
-            matColumnDef="{{ column }}"
             *ngFor="let column of displayedColumns"
+            matColumnDef="{{ column | translate }}"
           >
             <th class="header-table" mat-header-cell *matHeaderCellDef>
               {{ column | translate }}
@@ -73,7 +73,9 @@
                   element == expandedElement ? 'expanded' : 'collapsed'
                 "
               >
-                <div class="element-expand-content">hello</div>
+                <div class="element-expand-content">
+                  <app-user-details [user]="element"></app-user-details>
+                </div>
               </div>
             </td>
           </ng-container>

@@ -34,7 +34,7 @@ export const ticketStates = [
 ]
 export const ticketTypes = ["SERVICES", "PROBLEMS"]
 export const faqTypes = ["SERVICES", "PROSPECTS", "SIM_SHIPPING_ISSUE", "PURCHASES", "INTERNET_ISSUE", "BLOCKING_SERVICES"]
-
+export const userStates = ["ACTIVE", "INACTIVE"]
 export const loaderConfig = Object.freeze({
   animationType: 'pulse',
   backdropBackgroundColour: "#182249",
@@ -45,43 +45,7 @@ export const loaderConfig = Object.freeze({
 });
 
 export const userTypes = [ 'agent', 'admin']
-export const address = [{
-    country: 'México',
-    code: 'MÉXICO',
-    cities: [
-    'Aguascalientes',
-    'Baja California',
-    'Baja California Sur',
-    'Campeche',
-    'Chiapas',
-    'Chihuahua',
-    'Coahuila',
-    'Colima',
-    'Distrito Federal',
-    'Durango',
-    'Guanajuato',
-    'Guerrero',
-    'Hidalgo',
-    'Jalisco',
-    'México',
-    'Michoacán',
-    'Morelos',
-    'Nayarit',
-    'Nuevo León',
-    'Oaxaca',
-    'Puebla',
-    'Querétaro',
-    'Quintana Roo',
-    'San Luis Potosí',
-    'Sinaloa',
-    'Sonora',
-    'Tabasco',
-    'Tamaulipas',
-    'Tlaxcala',
-    'Veracruz',
-    'Yucatán',
-    'Zacatecas']
-  },
+export const address = [
   {
     country: 'United States',
     code: 'UNITED_STATES',
@@ -140,6 +104,43 @@ export const address = [{
       'Wyoming'
       ]
   },
+{
+  country: 'México',
+  code: 'MÉXICO',
+  cities: [
+  'Aguascalientes',
+  'Baja California',
+  'Baja California Sur',
+  'Campeche',
+  'Chiapas',
+  'Chihuahua',
+  'Coahuila',
+  'Colima',
+  'Distrito Federal',
+  'Durango',
+  'Guanajuato',
+  'Guerrero',
+  'Hidalgo',
+  'Jalisco',
+  'México',
+  'Michoacán',
+  'Morelos',
+  'Nayarit',
+  'Nuevo León',
+  'Oaxaca',
+  'Puebla',
+  'Querétaro',
+  'Quintana Roo',
+  'San Luis Potosí',
+  'Sinaloa',
+  'Sonora',
+  'Tabasco',
+  'Tamaulipas',
+  'Tlaxcala',
+  'Veracruz',
+  'Yucatán',
+  'Zacatecas']
+},
   {
     country: 'Canadá',
     code: 'CANADÁ',

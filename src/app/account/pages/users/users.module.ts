@@ -10,12 +10,14 @@ import { UsersComponent } from './users/users.component';
 import { UserResolver } from '../../resolvers/user.resolver';
 import { UsersCreationComponent } from './users-creation/users-creation.component';
 import { UsersResolver } from './resolvers/users.resolver';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 
 @NgModule({
   declarations: [
     UsersComponent,
-    UsersCreationComponent
+    UsersCreationComponent,
+    UserDetailsComponent
   ],
   imports: [
     CommonModule,

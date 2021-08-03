@@ -116,6 +116,10 @@
   "REQUEST": "Request",
 
   "SAVE_REQUEST_INFORMATION": "Save request information",
-  "SEND_NOTIFICATION": "Send notification"
+  "SEND_NOTIFICATION": "Send notification",
+  "ACTIVE": "Active",
+  "INACTIVE": "Inactive",
+  "SEE_REQUESTS": "See requests",
+  "SELECT_CITY": "Select a city"
 
 }
