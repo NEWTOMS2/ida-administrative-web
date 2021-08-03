@@ -33,6 +33,8 @@ export const ticketStates = [
   }
 ]
 export const ticketTypes = ["SERVICES", "PROBLEMS"]
+export const faqTypes = ["SERVICES", "PROSPECTS", "SIM_SHIPPING_ISSUE", "PURCHASES", "INTERNET_ISSUE", "BLOCKING_SERVICES"]
+
 export const loaderConfig = Object.freeze({
   animationType: 'pulse',
   backdropBackgroundColour: "#182249",

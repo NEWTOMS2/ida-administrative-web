@@ -96,7 +96,6 @@ export class TicketsService {
   }
 
   handleError(error: any ) {
-    console.log(error);
     return throwError(error.error.error[0].error_description);
  }
 }

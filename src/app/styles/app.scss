@@ -20,22 +20,22 @@ body {
 
 .primary-btn {
   width: 100%;
-  color: $secondary-text;
-  background: $primary-color;
-  font-size: 14px;
+  color: $secondary-text !important;
+  background: $primary-color !important;
+  font-size: 14px !important;
   &:hover{
-    color: $white;
+    color: $white !important;
   }
 }
 
 .secondary-btn {
   width: 100%;
-  color: $white;
-  background: $secondary-color;
-  font-size: 14px;
+  color: $white !important;
+  background: $secondary-color !important;
+  font-size: 14px !important;
 
   &:hover{
-    background: $primary-color;
+    background: $primary-color !important;
     color: $white !important
   }
 }
@@ -108,4 +108,42 @@ body {
 
 .toast-message {
   font-size: 13px !important;
+}
+
+/*--- Data Table ---  */
+
+.table {
+  margin-bottom: 0px !important;
+  font-family: $font-family;
+}
+
+.mat-table {
+  box-shadow: 0px 1px 3px 1px rgba(181, 181, 181, 0.56);
+}
+
+/*--- Table header ---  */
+
+mat-header-row {
+  background-color: $white;
+}
+
+.table-header  {
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+  background-color: #f6f7f9;
+  box-shadow: 0px 1px 3px 1px rgba(181, 181, 181, 0.56);
+}
+
+/*--- Data cells ---  */
+mat-cell{
+  color: $primary-color !important;
+  font-weight: 400;
+}
+
+.mat-header-cell {
+color: $dark-blue !important
+}
+
+.table-row-item{
+background-color:$secondary-ligther-color;
 }

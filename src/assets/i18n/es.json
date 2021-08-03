@@ -4,6 +4,7 @@
   "WRONG_CREDENTIALS": "El correo electrónico o la contraseña es incorrecta.",
   "GENERIC_ERROR": "Ocurrió un error inesperado.",
   "USER_CREATED": "Usuario creado satisfactoriamente.",
+  "FAQ_UPDATED": "Pregunta frecuente actualizada exitosamente",
   "CLAIM_STATE_CREATED": "Estado del reclamo creado satisfactoriamente",
   "SIGN_IN": "Inicia sesión en tu cuenta",
   "EMAIL_ADDRESS": "Correo electrónico",
@@ -54,7 +55,7 @@
   "STATUS": "Estatus",
 
   "ATTENTION_CENTER": "Centro de Atención",
-  "FREQUENTLY-QUESTIONS": "Preguntas frecuentes",
+  "FREQUENTLY_QUESTIONS": "Preguntas frecuentes",
   "ATTENTION_REQUESTS": "Solicitudes de atención",
   "MVNO_INFORMATION": "Información del OMV",
   "USERS": "Usuarios",
@@ -92,6 +93,19 @@
   "CLIENT_DATA": "Datos del cliente",
   "CLEAN_CLIENT_DATA": "Limpiar información",
   "OPEN_CONTACT_PANEL": "Abrir panel de contacto",
+
+  "intent_name": "Intención",
+  "question": "Pregunta",
+  "PROSPECTS": "Prospectos",
+  "SIM_SHIPPING_ISSUE": "Envío de tarjeta SIM", 
+  "PURCHASES": "Compras", 
+  "INTERNET_ISSUE": "Problema de internet", 
+  "BLOCKING_SERVICES": "Bloqueo de servicios",
+
+  "ANSWER": "Respuesta",
+  "NEW_ANSWER": "Nueva respuesta",
+  "ADD_ANSWER": "Añadir respuesta",
+  "ANSWER_ADDED": "La respuesta se ha agregado exitosamente",
   "CLIENT": "Cliente",
   "PHONENUMBER": "Número telefónico",
   "EMAIL": "Correo electrónico",
@@ -100,5 +114,7 @@
   "REQUEST": "Solicitud",
 
   "SAVE_REQUEST_INFORMATION": "Guardar información de la solicitud",
-  "SEND_NOTIFICATION": "Enviar notificación"
+  "SEND_NOTIFICATION": "Enviar notificación",
+  "DELETE_ANSWERS_AGREE": "¿Estás seguro que deseas eliminar las respuestas?"
+
 }

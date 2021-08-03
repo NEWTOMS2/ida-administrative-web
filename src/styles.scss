@@ -49,3 +49,6 @@ html, body { height: 100%; }
 .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
   background-color: $dark-blue !important;
 }
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
