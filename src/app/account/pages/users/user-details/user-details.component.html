@@ -155,7 +155,7 @@
 
       <div class="col-md-6 col-12 actions-wrapper">
         <div class="row form-row mb-4 justify-content-center">
-          <div class="col-12 col-md-6 mb-4 mb-md-0">
+          <div class="col-12 col-md-8 mb-4 mb-md-0">
             <label class="form-label">{{ "USER_TYPE" | translate }}</label>
             <select
               class="form-select"
@@ -168,9 +168,9 @@
             >
               <option
                 *ngFor="let type of userTypes"
-                [selected]="type == user.role?.toLowerCase()"
+                [selected]="type.translatedType == user.role?.toLowerCase()"
               >
-                {{ formatContent(type) | translate | titlecase }}
+                {{ formatContent(type.type) | translate | titlecase }}
               </option>
             </select>
             <div class="invalid-feedback">
@@ -180,7 +180,7 @@
         </div>
 
         <div class="row form-row mb-4 justify-content-center">
-          <div class="col-12 col-md-6 mb-4 mb-md-0">
+          <div class="col-12 col-md-8 mb-4 mb-md-0">
             <label class="form-label">{{ "STATE" | translate }}</label>
             <select
               class="form-select"
@@ -193,9 +193,9 @@
             >
               <option
                 *ngFor="let state of userStates"
-                [selected]="state == user.state"
+                [selected]="state.translatedState == user.state"
               >
-                {{ formatContent(state) | translate | titlecase }}
+                {{ state.state | translate | titlecase }}
               </option>
             </select>
             <div class="invalid-feedback">
@@ -205,7 +205,7 @@
         </div>
 
         <div class="row form-row justify-content-center form-actions">
-          <div class="col-md-6 col-12 mb-1">
+          <div class="col-md-8 col-12 mb-1">
             <button class="btn light-btn" (click)="seeRequests()">
               {{ "SEE_REQUESTS" | translate }}
             </button>
@@ -213,8 +213,15 @@
         </div>
 
         <div class="row form-row mb-4 justify-content-center">
-          <div class="col-md-6 col-12 mb-4 mb-md-0">
-            <button class="btn secondary-btn">{{ "SAVE" | translate }}</button>
+          <div class="col-md-8 col-12 mb-4 mb-md-0" (click)="updateUser()">
+            <button class="btn secondary-btn">
+              <span *ngIf="!spinnerLoader; else loading">{{ "SAVE" | translate }}</span>
+              <ng-template class="text-center" #loading>
+                <div class="spinner-border spinner-border-sm" role="status">
+                  <span class="sr-only"></span>
+                </div>
+              </ng-template>
+            </button>
           </div>
         </div>
       </div>

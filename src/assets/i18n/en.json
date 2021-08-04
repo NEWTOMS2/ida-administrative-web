@@ -6,6 +6,8 @@
   "USER_CREATED": "User successfully created.",
   "FAQ_UPDATED": "Frequently question successfully updated",
   "CLAIM_STATE_CREATED": "State claim successfully saved",
+  "USER_SUCCESSFULLY_UPDATED": "User successfully updated",
+  "DUPLICATED_PHONE_NUMBER": "Phone number already exists",
   "SIGN_IN": "Sign into your account",
   "EMAIL_ADDRESS": "Email address",
   "PASSWORD": "Password",
@@ -120,6 +122,8 @@
   "ACTIVE": "Active",
   "INACTIVE": "Inactive",
   "SEE_REQUESTS": "See requests",
-  "SELECT_CITY": "Select a city"
+  "SELECT_CITY": "Select a city",
+  "ROLE": "Role"
+
 
 }

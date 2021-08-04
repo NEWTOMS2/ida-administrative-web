@@ -7,6 +7,8 @@ import { administrative_exp_api_host } from '../config/configuration';
 import { User } from '../models/user.interface';
 import { AuthService } from './auth.service';
 import { environment } from 'src/environments/environment';
+import { TranslateService } from '@ngx-translate/core';
+import { searchTranslation } from 'src/app/utils/searchTranslation';
 
 
 
@@ -25,7 +27,8 @@ export class UsersService {
 
   constructor(
     private http: HttpClient,
-    private authService: AuthService
+    private authService: AuthService,
+    private translateService: TranslateService
   ) {}
 
   create(user: User): Observable<any> {
@@ -47,6 +50,13 @@ export class UsersService {
         )
    }
 
+  update(user: User, userId: number): Observable<any>{
+    return this.http.patch(administrative_exp_api_host + `/users/${userId}`, user, this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
    get(): Observable<User[]> {
     return this.http.get(administrative_exp_api_host + '/users', this.httpOptions)
     .pipe(
@@ -61,7 +71,6 @@ export class UsersService {
 
   
   buildUser(users: any[]) : User[] {
-    console.log(users)
     return users.map((u) => {
       return {
         id: u.id, 
@@ -70,17 +79,16 @@ export class UsersService {
         email: u.email,
         phoneNumber: u.phone_number,
         country: (u.address.find((address: any) => address.type == 'COUNTRY'))?.name,
-        city: (u.address.find((address: any) => address.type == 'CITY'))?.name,
+        city: (u.address.find((address: any) => address.type == 'STATE'))?.name,
         address: u.detail_address,
-        role: u.role.name,
-        state: (u.is_active) ? 'ACTIVE' : 'INACTIVE',
+        role: searchTranslation(this.translateService, (u.role.name.toUpperCase())),
+        state: (u.is_active) ? searchTranslation(this.translateService,'ACTIVE') : searchTranslation(this.translateService,'INACTIVE'),
       }
     })
   }
 
   handleError(error: any ) {
-    console.log(error);
-    return throwError(error.error.error[0].error_description);
+    return throwError(error.error.error[0].error_message);
  }
 
 }

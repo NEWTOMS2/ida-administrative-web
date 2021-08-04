@@ -6,6 +6,8 @@
   "USER_CREATED": "Usuario creado satisfactoriamente.",
   "FAQ_UPDATED": "Pregunta frecuente actualizada exitosamente",
   "CLAIM_STATE_CREATED": "Estado del reclamo creado satisfactoriamente",
+  "USER_SUCCESSFULLY_UPDATED": "Usuario actualizado exitosamente",
+  "DUPLICATED_PHONE_NUMBER": "El número telefónico ya existe en el sistema",
   "SIGN_IN": "Inicia sesión en tu cuenta",
   "EMAIL_ADDRESS": "Correo electrónico",
   "PASSWORD": "Contraseña",
@@ -118,5 +120,6 @@
   "INACTIVE": "Inactivo",
   "ACTIVE": "Activo",
   "SEE_REQUESTS": "Ver solicitudes",
-  "SELECT_CITY": "Elige una ciudad"
+  "SELECT_CITY": "Elige una ciudad",
+  "ROLE": "Rol"
 }

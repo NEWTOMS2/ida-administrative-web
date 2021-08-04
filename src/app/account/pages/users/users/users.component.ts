@@ -52,6 +52,30 @@ export class UsersComponent implements OnInit, AfterViewInit {
     this.initDataTable();
   }
 
+  updateUser(updatedUser: any): void {
+    console.log('udpdated')
+    console.log(updatedUser)
+    this.users = this.users.map((user)=> {
+      if (  user.email != updatedUser.email) return user;
+      else {
+        return {
+          name: updatedUser.name,
+          lastname: updatedUser.last_name,
+          phoneNumber: updatedUser.phone_number,
+          email: updatedUser.email,
+          country: updatedUser.country,
+          address: updatedUser.detail_address,
+          role: updatedUser.role,
+          state: updatedUser.state
+        } as User;
+      }
+    })
+
+    console.log(this.users)
+    this.refresh()
+  }
+
+
   getUsers(): void {
     this.activatedRoute.data.subscribe((data: Partial<{ users: User[]}>) => {
       this.users = data.users || []
@@ -65,17 +89,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
     });
   }
 
-  private buildTable(): void {
-    this.dataSource = new MatTableDataSource(this.users as User[]);
-  }
-
-  
-  private initDataTable(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-
-  
+    
   applyFilter(filterValue: any): void {
     const value =  filterValue.value === null ? '' : filterValue.value;
     filterValue = value.trim();
@@ -90,6 +104,19 @@ export class UsersComponent implements OnInit, AfterViewInit {
     return classColor
   }
 
+  private buildTable(): void {
+    this.dataSource = new MatTableDataSource(this.users as User[]);
+  }
 
+  
+  private initDataTable(): void {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
 
+  private refresh(): void {
+    this.buildTable();
+    this.table.renderRows();
+    this.initDataTable();
+  }
 }
