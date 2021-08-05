@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { address, emailPattern, userStates, userTypes } from 'src/app/core/config/configuration';
 import { User } from 'src/app/core/models/user.interface';
@@ -21,6 +21,8 @@ export class UserDetailsComponent implements OnInit {
   userTypes!: any[];
   userStates!: any[];
   spinnerLoader = false;
+  showUpdate = false;
+  actualUser!: User;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,11 +30,14 @@ export class UserDetailsComponent implements OnInit {
     private router: Router,
     private userService: UsersService,
     private notification: NotificationsService,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
     this.buildEnums();
+    this.buildUser();
     this.buildForm();
+
   }
 
   
@@ -56,6 +61,15 @@ export class UserDetailsComponent implements OnInit {
     })
   }
 
+  
+  private buildUser(): void{
+    this.activatedRoute.data.subscribe((data: Partial<{ user: User}>) => {
+      this.actualUser = data.user as User
+      this.showUpdate = (data.user?.email == this.user.email) ? false : true
+    });
+  }
+
+
   public searchStates(
     selectedCountry: string
   ): String [] | [] {
@@ -67,12 +81,10 @@ export class UserDetailsComponent implements OnInit {
     if (this.userDetailsForm.valid && this.userDetailsForm.dirty){
       this.spinnerLoader= true;
       const cleanedUser: any =  {};
-       (Object.entries(this.userDetailsForm.value).filter((value) => value[1] != null)).forEach((value) => {
+
+      (Object.entries(this.userDetailsForm.value).filter((value) => value[1] != null)).forEach((value) => {
         cleanedUser[value[0]] = value[1]
       })
-
-      console.log(cleanedUser)
-
 
       let {state, role, email, ...user} = cleanedUser;
       state = (this.userStates.find((s)=> (s.translatedState == state) || (s.state == state) ))?.state
@@ -83,7 +95,6 @@ export class UserDetailsComponent implements OnInit {
         state: state == 'INACTIVE' ? 'OFF_LINE': 'AVAILABLE',
         role,
       }
-
 
       this.userService
           .update(updatedUser, this.user.id || 0)
@@ -105,13 +116,17 @@ export class UserDetailsComponent implements OnInit {
   }
 
   private buildForm(): void {
-    console.log(this.user)
+    let country = (this.addresses.find((address) => (address.code == (this.user.country)) ||  (address.country == (this.user.country))))?.code
+    if (this.user.city) {
+      country = (this.addresses.find((address) => address.cities.some((city) => city == this.user.city)))?.code
+    }
+   
     this.userDetailsForm = this.formBuilder.group({
       name: [this.user.name, Validators.compose([Validators.required, Validators.minLength(3)])],
       last_name: [this.user.lastname, Validators.compose([Validators.required, Validators.minLength(3)])],
       phone_number: [this.user.phoneNumber, Validators.compose([Validators.required, Validators.minLength(7)])],
       email: [this.user.email, Validators.compose([Validators.required, Validators.pattern(emailPattern)])],
-      country: [(this.addresses.find((address) => address.code == (this.user.country || 'MÉXICO')))?.code, []],
+      country: [country, []],
       city: [this.user.city],
       detail_address: [this.user.address],
       role: [this.user.role],

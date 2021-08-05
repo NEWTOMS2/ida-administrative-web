@@ -63,6 +63,7 @@
           <div class="col-12 col-md-6">
             <label class="form-label">{{ "EMAIL_ADDRESS" | translate }}</label>
             <input
+              readonly
               type="text"
               formControlName="email"
               class="form-control"
@@ -92,7 +93,7 @@
             >
               <option
                 *ngFor="let address of addresses"
-                [selected]="address.code == user.country"
+                [selected]="address.code == this.userDetailsForm.get('country')?.value "
               >
                 {{ address.country }}
               </option>
@@ -158,6 +159,7 @@
           <div class="col-12 col-md-8 mb-4 mb-md-0">
             <label class="form-label">{{ "USER_TYPE" | translate }}</label>
             <select
+              *ngIf="showUpdate == true"
               class="form-select"
               formControlName="role"
               [ngClass]="{
@@ -165,14 +167,22 @@
                   this.userDetailsForm.get('role')?.invalid &&
                   this.userDetailsForm.get('role')?.touched
               }"
+              (disabled)="(true)"
             >
               <option
                 *ngFor="let type of userTypes"
-                [selected]="type.translatedType == user.role?.toLowerCase()"
+                [selected]="type.translatedType.toLowerCase() == user.role?.toLowerCase()"
               >
                 {{ formatContent(type.type) | translate | titlecase }}
               </option>
             </select>
+            <input
+              *ngIf="showUpdate == false"
+              readonly
+              type="text"
+              formControlName="role"
+              class="form-control"
+            />
             <div class="invalid-feedback">
               {{ "INTRODUCE_USER_TYPE" | translate }}
             </div>
@@ -183,6 +193,7 @@
           <div class="col-12 col-md-8 mb-4 mb-md-0">
             <label class="form-label">{{ "STATE" | translate }}</label>
             <select
+              *ngIf="showUpdate == true"
               class="form-select"
               formControlName="state"
               [ngClass]="{
@@ -198,6 +209,13 @@
                 {{ state.state | translate | titlecase }}
               </option>
             </select>
+            <input
+              *ngIf="showUpdate == false"
+              readonly
+              type="text"
+              formControlName="state"
+              class="form-control"
+          />
             <div class="invalid-feedback">
               {{ "INTRODUCE_USER_TYPE" | translate }}
             </div>
@@ -215,7 +233,9 @@
         <div class="row form-row mb-4 justify-content-center">
           <div class="col-md-8 col-12 mb-4 mb-md-0" (click)="updateUser()">
             <button class="btn secondary-btn">
-              <span *ngIf="!spinnerLoader; else loading">{{ "SAVE" | translate }}</span>
+              <span *ngIf="!spinnerLoader; else loading">{{
+                "SAVE" | translate
+              }}</span>
               <ng-template class="text-center" #loading>
                 <div class="spinner-border spinner-border-sm" role="status">
                   <span class="sr-only"></span>

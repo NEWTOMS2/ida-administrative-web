@@ -35,7 +35,6 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
   users!: User[]
 
-
   constructor(
     private translateService: TranslateService,
     private dialog: MatDialog,
@@ -53,17 +52,18 @@ export class UsersComponent implements OnInit, AfterViewInit {
   }
 
   updateUser(updatedUser: any): void {
-    console.log('udpdated')
-    console.log(updatedUser)
+
     this.users = this.users.map((user)=> {
       if (  user.email != updatedUser.email) return user;
       else {
         return {
+          id: user.id,
           name: updatedUser.name,
           lastname: updatedUser.last_name,
           phoneNumber: updatedUser.phone_number,
           email: updatedUser.email,
           country: updatedUser.country,
+          city: updatedUser.city,
           address: updatedUser.detail_address,
           role: updatedUser.role,
           state: updatedUser.state
@@ -71,7 +71,6 @@ export class UsersComponent implements OnInit, AfterViewInit {
       }
     })
 
-    console.log(this.users)
     this.refresh()
   }
 
