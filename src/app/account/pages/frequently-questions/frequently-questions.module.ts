@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { FormsModule } from '@angular/forms'; 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { FrequentlyQuestionsRoutingModule } from './frequently-questions-routing.module';
 import { FaqsComponent } from './faqs/faqs.component';
@@ -22,7 +23,8 @@ import { FaqDetailsComponent } from './faq-details/faq-details.component';
     SharedModule,
     TranslateModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [
     FaqsResolver

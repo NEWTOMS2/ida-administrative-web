@@ -123,7 +123,8 @@
   "INACTIVE": "Inactive",
   "SEE_REQUESTS": "See requests",
   "SELECT_CITY": "Select a city",
-  "ROLE": "Role"
+  "ROLE": "Role",
 
 
+  "DELETE_ANSWERS_AGREE": "Are you sure you want to delete the answers?"
 }

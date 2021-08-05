@@ -121,5 +121,7 @@
   "ACTIVE": "Activo",
   "SEE_REQUESTS": "Ver solicitudes",
   "SELECT_CITY": "Elige una ciudad",
-  "ROLE": "Rol"
+  "ROLE": "Rol",
+  "DELETE_ANSWERS_AGREE": "¿Estás seguro que deseas eliminar las respuestas?"
+
 }

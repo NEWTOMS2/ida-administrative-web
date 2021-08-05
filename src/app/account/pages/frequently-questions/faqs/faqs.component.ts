@@ -98,7 +98,6 @@ export class FaqsComponent implements OnInit {
           answers: faq.answers
         }
       })
-
       this.dataSource = new MatTableDataSource(faqs);
     });
   }
