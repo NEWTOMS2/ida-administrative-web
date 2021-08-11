@@ -100,7 +100,7 @@ export class TicketDetailsComponent implements OnInit {
       const id = this.newTicketStatusForm.value.claim_id;
       this.ticketService.createStatus(this.newTicketStatusForm.value, id).toPromise()
       .then(async () => {
-        const ticket = await this.ticketService.getById(id).toPromise()
+        const ticket = await this.ticketService.getById(id).toPromise();
         this.states = this.setStates(ticket.states || [])
         this.setPaginatedStates();
         this.resetForm(['state', 'description'])
