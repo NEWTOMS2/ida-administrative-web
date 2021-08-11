@@ -34,7 +34,7 @@ export const ticketStates = [
 ]
 export const ticketTypes = ["SERVICES", "PROBLEMS"]
 export const faqTypes = ["SERVICES", "PROSPECTS", "SIM_SHIPPING_ISSUE", "PURCHASES", "INTERNET_ISSUE", "BLOCKING_SERVICES"]
-
+export const userStates = ["ACTIVE", "INACTIVE"]
 export const loaderConfig = Object.freeze({
   animationType: 'pulse',
   backdropBackgroundColour: "#182249",
@@ -49,7 +49,8 @@ export const routes = {
   "AGENT": ['attention', 'tickets']
 }
 export const userTypes = [ 'agent', 'admin']
-export const address = [{
+export const address = [
+  {
     country: 'México',
     code: 'MÉXICO',
     cities: [

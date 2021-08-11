@@ -1,4 +1,5 @@
 export interface User {
+  id?: number;
   name?: string;
   lastname?: string;
   email?: string;
@@ -10,4 +11,5 @@ export interface User {
   city?: string;
   address?: string;
   role?: string;
+  state?: string;
 }

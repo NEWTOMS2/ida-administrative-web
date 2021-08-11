@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         })
         .catch((error) => {
           this.spinnerLoader = false;
-          if (error == "Invalid credentials"){
+          if (error == "Invalid credentials" || error == 'User is not active'){
             error = "WRONG_CREDENTIALS"
           }else error = "GENERIC_ERROR"
           this.notification.showErrorToast(error);

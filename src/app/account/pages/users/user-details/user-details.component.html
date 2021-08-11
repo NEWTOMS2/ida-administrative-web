@@ -1,0 +1,250 @@
+<div>
+  <form
+    [formGroup]="userDetailsForm"
+    class="needs-validation basic-form"
+    novalidate
+  >
+    <div class="row">
+      <div class="col-md-6 col-12">
+        <div class="row form-row mb-4">
+          <div class="col-12 col-md-6 mb-4 mb-md-0">
+            <label class="form-label">{{ "NAME" | translate }}</label>
+            <input
+              type="text"
+              formControlName="name"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid':
+                  this.userDetailsForm.get('name')?.invalid &&
+                  this.userDetailsForm.get('name')?.touched
+              }"
+            />
+            <div class="invalid-feedback">
+              {{ "INTRODUCE_NAME" | translate }}
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <label class="form-label">{{ "LAST_NAME" | translate }}</label>
+            <input
+              type="text"
+              formControlName="last_name"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid':
+                  this.userDetailsForm.get('last_name')?.invalid &&
+                  this.userDetailsForm.get('last_name')?.touched
+              }"
+            />
+            <div class="invalid-feedback">
+              {{ "INTRODUCE_LAST_NAME" | translate }}
+            </div>
+          </div>
+        </div>
+
+        <div class="row form-row mb-4">
+          <div class="col-12 col-md-6 mb-4 mb-md-0">
+            <label class="form-label">{{ "PHONE_NUMBER" | translate }}</label>
+            <input
+              type="text"
+              formControlName="phone_number"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid':
+                  this.userDetailsForm.get('phone_number')?.invalid &&
+                  this.userDetailsForm.get('phone_number')?.touched
+              }"
+            />
+            <div class="invalid-feedback">
+              {{ "INTRODUCE_PHONE_NUMBER" | translate }}
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <label class="form-label">{{ "EMAIL_ADDRESS" | translate }}</label>
+            <input
+              readonly
+              type="text"
+              formControlName="email"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid':
+                  this.userDetailsForm.get('email')?.invalid &&
+                  this.userDetailsForm.get('email')?.touched
+              }"
+            />
+            <div class="invalid-feedback">
+              {{ "INTRODUCE_EMAIL" | translate }}
+            </div>
+          </div>
+        </div>
+
+        <div class="row form-row mb-4">
+          <div class="col-12 col-md-6">
+            <label class="form-label">{{ "COUNTRY" | translate }}</label>
+            <select
+              class="form-select"
+              formControlName="country"
+              [ngClass]="{
+                'is-invalid':
+                  this.userDetailsForm.get('country')?.invalid &&
+                  this.userDetailsForm.get('country')?.touched
+              }"
+            >
+              <option
+                *ngFor="let address of addresses"
+                [selected]="address.code == this.userDetailsForm.get('country')?.value "
+              >
+                {{ address.country }}
+              </option>
+            </select>
+            <div class="invalid-feedback">
+              {{ "INTRODUCE_COUNTRY" | translate }}
+            </div>
+          </div>
+
+          <div class="col-12 col-md-6 mb-4 mb-md-0">
+            <label class="form-label">{{ "CITY" | translate }}</label>
+            <select
+              class="form-select"
+              formControlName="city"
+              [ngClass]="{
+                'is-invalid':
+                  this.userDetailsForm.get('city')?.invalid &&
+                  this.userDetailsForm.get('city')?.touched
+              }"
+            >
+              <option [selected]="!this.user.city" value="">
+                {{ "SELECT_CITY" | translate }}
+              </option>
+              <option
+                *ngFor="
+                  let city of searchStates(
+                    userDetailsForm.get('country')?.value || ''
+                  )
+                "
+                [selected]="city == this.user.city"
+              >
+                {{ city }}
+              </option>
+            </select>
+            <div class="invalid-feedback">
+              {{ "INTRODUCE_CITY" | translate }}
+            </div>
+          </div>
+        </div>
+
+        <div class="row form-row mb-4">
+          <div class="col-12">
+            <label class="form-label">{{ "ADDRESS" | translate }}</label>
+            <input
+              type="text"
+              formControlName="detail_address"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid':
+                  this.userDetailsForm.get('detail_address')?.invalid &&
+                  this.userDetailsForm.get('detail_address')?.touched
+              }"
+            />
+            <div class="invalid-feedback">
+              {{ "INTRODUCE_ADDRESS" | translate }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-12 actions-wrapper">
+        <div class="row form-row mb-4 justify-content-center">
+          <div class="col-12 col-md-8 mb-4 mb-md-0">
+            <label class="form-label">{{ "USER_TYPE" | translate }}</label>
+            <select
+              *ngIf="showUpdate == true"
+              class="form-select"
+              formControlName="role"
+              [ngClass]="{
+                'is-invalid':
+                  this.userDetailsForm.get('role')?.invalid &&
+                  this.userDetailsForm.get('role')?.touched
+              }"
+              (disabled)="(true)"
+            >
+              <option
+                *ngFor="let type of userTypes"
+                [selected]="type.translatedType.toLowerCase() == user.role?.toLowerCase()"
+              >
+                {{ formatContent(type.type) | translate | titlecase }}
+              </option>
+            </select>
+            <input
+              *ngIf="showUpdate == false"
+              readonly
+              type="text"
+              formControlName="role"
+              class="form-control"
+            />
+            <div class="invalid-feedback">
+              {{ "INTRODUCE_USER_TYPE" | translate }}
+            </div>
+          </div>
+        </div>
+
+        <div class="row form-row mb-4 justify-content-center">
+          <div class="col-12 col-md-8 mb-4 mb-md-0">
+            <label class="form-label">{{ "STATE" | translate }}</label>
+            <select
+              *ngIf="showUpdate == true"
+              class="form-select"
+              formControlName="state"
+              [ngClass]="{
+                'is-invalid':
+                  this.userDetailsForm.get('state')?.invalid &&
+                  this.userDetailsForm.get('state')?.touched
+              }"
+            >
+              <option
+                *ngFor="let state of userStates"
+                [selected]="state.translatedState == user.state"
+              >
+                {{ state.state | translate | titlecase }}
+              </option>
+            </select>
+            <input
+              *ngIf="showUpdate == false"
+              readonly
+              type="text"
+              formControlName="state"
+              class="form-control"
+          />
+            <div class="invalid-feedback">
+              {{ "INTRODUCE_USER_TYPE" | translate }}
+            </div>
+          </div>
+        </div>
+
+        <div class="row form-row justify-content-center form-actions">
+          <div class="col-md-8 col-12 mb-1">
+            <button class="btn light-btn" (click)="seeRequests()">
+              {{ "SEE_REQUESTS" | translate }}
+            </button>
+          </div>
+        </div>
+
+        <div class="row form-row mb-4 justify-content-center">
+          <div class="col-md-8 col-12 mb-4 mb-md-0" (click)="updateUser()">
+            <button class="btn secondary-btn">
+              <span *ngIf="!spinnerLoader; else loading">{{
+                "SAVE" | translate
+              }}</span>
+              <ng-template class="text-center" #loading>
+                <div class="spinner-border spinner-border-sm" role="status">
+                  <span class="sr-only"></span>
+                </div>
+              </ng-template>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
