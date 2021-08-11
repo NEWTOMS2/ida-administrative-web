@@ -28,7 +28,7 @@ export class SideNavComponent implements OnInit {
       icon: this.phoneIcon,
     },
     {
-      name: searchTranslation(this.translateService, 'FREQUENTLY-QUESTIONS'),
+      name: searchTranslation(this.translateService, 'FREQUENTLY_QUESTIONS'),
       link: '/account/frequently-questions',
       icon: this.questionIcon
     },

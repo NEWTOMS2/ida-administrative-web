@@ -1,5 +1,12 @@
 @import "../../../../styles/variables";
 
+/*--- Table header ---  */
+
+.row {
+  --bs-gutter-x: 0rem !important
+}
+
+// Mat-Table
 @media screen and (max-width: 960px) {
   .mat-table {
     border: 0;

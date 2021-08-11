@@ -16,6 +16,7 @@ import { AppComponent } from './app.component';
 import { NgxLoadingModule } from 'ngx-loading';
 import { loaderConfig } from './core/config/configuration';
 import { CoreModule } from './core/core.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 export function createTranslateLoader(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -45,7 +46,8 @@ registerLocaleData(localeEs, 'es');
     ToastrModule.forRoot(),
     NgxLoadingModule.forRoot(loaderConfig),
     CoreModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

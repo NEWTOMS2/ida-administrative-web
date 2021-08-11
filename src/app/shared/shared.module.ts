@@ -11,6 +11,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
+import {TextFieldModule} from '@angular/cdk/text-field';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PageWrapperComponent } from './page-wrapper/page-wrapper.component';
@@ -32,6 +33,7 @@ import { PageWrapperComponent } from './page-wrapper/page-wrapper.component';
     MatCheckboxModule,
     MatSelectModule,
     FontAwesomeModule,
+    TextFieldModule
   ],
   exports: [
     MatSidenavModule,
@@ -43,7 +45,8 @@ import { PageWrapperComponent } from './page-wrapper/page-wrapper.component';
     FontAwesomeModule,
     MatCheckboxModule,
     MatSelectModule,
-    PageWrapperComponent
+    PageWrapperComponent,
+    TextFieldModule
   ]
 })
 export class SharedModule { }

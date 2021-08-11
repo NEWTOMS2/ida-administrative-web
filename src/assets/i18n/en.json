@@ -4,6 +4,7 @@
   "WRONG_CREDENTIALS": "The email address or password is incorrect.",
   "GENERIC_ERROR": "Some unexpected error occurs.",
   "USER_CREATED": "User successfully created.",
+  "FAQ_UPDATED": "Frequently question successfully updated",
   "CLAIM_STATE_CREATED": "State claim successfully saved",
   "SIGN_IN": "Sign into your account",
   "EMAIL_ADDRESS": "Email address",
@@ -55,7 +56,7 @@
   "STATUS": "Status",
 
   "ATTENTION_CENTER": "Attention Center",
-  "FREQUENTLY-QUESTIONS": "Frecuently Questions",
+  "FREQUENTLY_QUESTIONS": "Frecuently Asked Questions",
   "ATTENTION_REQUESTS": "Attention Requests",
   "MVNO_INFORMATION": "MVNO Information",
   "USERS": "Users",
@@ -95,6 +96,18 @@
   "CLEAN_CLIENT_DATA": "Clean information",
   "OPEN_CONTACT_PANEL": "Open contact panel",
 
+  "intent_name": "Intent",
+  "question": "Question",
+  "PROSPECTS": "Prospects",
+  "SIM_SHIPPING_ISSUE": "Sim card shipping", 
+  "PURCHASES": "Purchases", 
+  "INTERNET_ISSUE": "Internet issue", 
+  "BLOCKING_SERVICES": "Service blocking",
+
+  "ANSWER": "Answer",
+  "NEW_ANSWER": "New answer",
+  "ADD_ANSWER": "Add answer",
+  "ANSWER_ADDED": "New answer successfully added",
   "CLIENT": "Client",
   "PHONENUMBER": "Phone Number",
   "EMAIL": "Email",
@@ -103,6 +116,6 @@
   "REQUEST": "Request",
 
   "SAVE_REQUEST_INFORMATION": "Save request information",
-  "SEND_NOTIFICATION": "Send notification"
-
+  "SEND_NOTIFICATION": "Send notification",
+  "DELETE_ANSWERS_AGREE": "Are you sure you want to delete the answers?"
 }
