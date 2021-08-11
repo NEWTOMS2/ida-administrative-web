@@ -2,6 +2,7 @@
   "EN": "English",
   "ES": "Español",
   "WRONG_CREDENTIALS": "The email address or password is incorrect.",
+  "USER_INACTIVE": "The currente state of the client is inactive",
   "GENERIC_ERROR": "Some unexpected error occurs.",
   "USER_CREATED": "User successfully created.",
   "FAQ_UPDATED": "Frequently question successfully updated",
