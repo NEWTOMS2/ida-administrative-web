@@ -14,7 +14,7 @@
     <!-- Side-nav options -->
     <div class="side-nav-content">
         <a
-        *ngFor="let option of menuOptions"
+        *ngFor="let option of allowedOptions"
         class="simple-menu-item"
         [routerLinkActive]="['active']"
         [routerLink]="[option.link]"

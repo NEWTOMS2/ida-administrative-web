@@ -6,6 +6,8 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { ticketStates, ticketTypes } from 'src/app/core/config/configuration';
 
@@ -41,6 +43,7 @@ export class TicketsComponent implements OnInit, AfterViewInit {
   public ticketStates!: any[];
   public ticketTypes!: string[];
   private allTickets!: any[];
+  private state$!: Observable<object>;
   public   displayedColumns = [
     'select',
     'id',
@@ -65,6 +68,7 @@ export class TicketsComponent implements OnInit, AfterViewInit {
     this.buildUser();
     this.buildSelectorData();
     this.buildTable();
+    this.filterByUser()
   }
 
   ngAfterViewInit(): void {
@@ -116,6 +120,14 @@ export class TicketsComponent implements OnInit, AfterViewInit {
     this.activatedRoute.data.subscribe((data: Partial<{ user: User}>) => {
       this.user = data.user
     });
+  }
+
+  private filterByUser():void{
+    this.state$ = this.activatedRoute.paramMap
+    .pipe(map(() => window.history?.state))
+    this.state$.subscribe((data:  any) => {
+      if(data.userToFilter) this.applyFilter({value: data.userToFilter});
+    })
   }
 
   isAllSelected(): boolean {

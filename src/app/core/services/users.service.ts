@@ -7,6 +7,8 @@ import { administrative_exp_api_host } from '../config/configuration';
 import { User } from '../models/user.interface';
 import { AuthService } from './auth.service';
 import { environment } from 'src/environments/environment';
+import { TranslateService } from '@ngx-translate/core';
+import { searchTranslation } from 'src/app/utils/searchTranslation';
 
 
 
@@ -25,7 +27,8 @@ export class UsersService {
 
   constructor(
     private http: HttpClient,
-    private authService: AuthService
+    private authService: AuthService,
+    private translateService: TranslateService
   ) {}
 
   create(user: User): Observable<any> {
@@ -47,8 +50,45 @@ export class UsersService {
         )
    }
 
+  update(user: User, userId: number): Observable<any>{
+    return this.http.patch(administrative_exp_api_host + `/users/${userId}`, user, this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    )
+  }
+
+   get(): Observable<User[]> {
+    return this.http.get(administrative_exp_api_host + '/users', this.httpOptions)
+    .pipe(
+      map((data: any) => {
+          return this.buildUser(data.data) as User[]
+      })
+    )
+    .pipe(
+        catchError(this.handleError)
+    )
+   }
+
+  
+  buildUser(users: any[]) : User[] {
+    return users.map((u) => {
+      return {
+        id: u.id, 
+        name: u.name,
+        lastname: u.last_name,
+        email: u.email,
+        phoneNumber: u.phone_number,
+        country: (u.address.find((address: any) => address.type == 'COUNTRY'))?.name,
+        city: (u.address.find((address: any) => address.type == 'STATE'))?.name,
+        address: u.detail_address,
+        role: searchTranslation(this.translateService, (u.role.name.toUpperCase())),
+        state: (u.is_active) ? searchTranslation(this.translateService,'ACTIVE') : searchTranslation(this.translateService,'INACTIVE'),
+      }
+    })
+  }
+
   handleError(error: any ) {
-    return throwError(error.error.error[0].error_description);
+    return throwError(error.error.error[0].error_message);
  }
 
 }
