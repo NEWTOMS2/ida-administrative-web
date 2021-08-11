@@ -105,6 +105,7 @@
   "PURCHASES": "Purchases", 
   "INTERNET_ISSUE": "Internet issue", 
   "BLOCKING_SERVICES": "Service blocking",
+  "BOT_CLAIM": "Digital Worker Request",
 
   "ANSWER": "Answer",
   "NEW_ANSWER": "New answer",
