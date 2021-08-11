@@ -9,6 +9,7 @@ import { UsersComponent } from './users/users.component';
 import { UserResolver } from '../../resolvers/user.resolver';
 import { UsersCreationComponent } from './users-creation/users-creation.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RolesGuard } from '../../guards/roles.guard';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   providers: [
-    UserResolver
+    UserResolver,
+    RolesGuard
   ]
 })
 export class UsersModule { }

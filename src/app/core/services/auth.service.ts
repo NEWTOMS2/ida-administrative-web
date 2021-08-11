@@ -34,7 +34,8 @@ export class AuthService {
         name: user.user.name,
         lastname: user.user.lastname,
         phoneNumber: user.user.phone_number,
-        email:  user.user.email
+        email:  user.user.email,
+        role: user.role
       }
 
       localStorage.setItem('user', this.crypto(JSON.stringify(userData), environment.encryptKey));
