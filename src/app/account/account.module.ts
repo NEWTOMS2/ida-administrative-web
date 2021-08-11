@@ -10,6 +10,7 @@ import { LayoutService } from './layout/layout.service';
 import { SharedModule } from '../shared/shared.module';
 import { LocalizedDatePipe } from '../shared/pipes/localized.pipe';
 import { UserResolver } from './resolvers/user.resolver';
+import { RolesGuard } from './guards/roles.guard';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { UserResolver } from './resolvers/user.resolver';
   ],
   providers: [
     LayoutService,
-    UserResolver
+    UserResolver,
+    RolesGuard
   ]
 })
 export class AccountModule { }

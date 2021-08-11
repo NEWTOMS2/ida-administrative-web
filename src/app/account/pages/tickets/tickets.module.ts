@@ -11,6 +11,7 @@ import { TicketsResolver } from './resolvers/tickets.resolver';
 import { UserResolver } from '../../resolvers/user.resolver';
 
 import { LocalizedDatePipe } from 'src/app/shared/pipes/localized.pipe';
+import { RolesGuard } from '../../guards/roles.guard';
 import { TicketDetailsComponent } from './ticket-details/ticket-details.component';
 
 
@@ -32,7 +33,8 @@ import { TicketDetailsComponent } from './ticket-details/ticket-details.componen
     UserResolver,
     LocalizedDatePipe,
     DatePipe,
-    TitleCasePipe
+    TitleCasePipe,
+    RolesGuard
   ]
 })
 export class TicketsModule { }

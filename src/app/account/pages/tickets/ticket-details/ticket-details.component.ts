@@ -7,6 +7,7 @@ import { LocalizedDatePipe } from 'src/app/shared/pipes/localized.pipe';
 import { ticketStates } from 'src/app/core/config/configuration';
 import { TicketsService } from 'src/app/core/services/tickets.service';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
+import { User } from 'src/app/core/models/user.interface';
 
 @Component({
   selector: 'app-ticket-details',
@@ -26,7 +27,7 @@ export class TicketDetailsComponent implements OnInit {
   spinnerLoader = false;
   paginatorIndex = 0; 
   paginatedStates!: any [];
-
+  user!: any;
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -59,6 +60,15 @@ export class TicketDetailsComponent implements OnInit {
       }
       this.buildForm()
     })
+
+    this.buildUser()
+  }
+
+  private buildUser(): void{
+
+    this.activatedRoute.data.subscribe((data: Partial<{ user: User}>) => {
+      this.user = data.user
+    });
   }
 
   buildForm(): void{
@@ -72,6 +82,9 @@ export class TicketDetailsComponent implements OnInit {
     });
   }
 
+  showAdminPanel(): boolean {
+    return this.ticketDetails.agent == this.user.email ? true : false
+  }
   
   resetForm(controls: string[]): void {
     controls.forEach((control) => {

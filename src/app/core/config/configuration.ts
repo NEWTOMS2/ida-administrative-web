@@ -44,6 +44,10 @@ export const loaderConfig = Object.freeze({
   tertiaryColour: '#EBF1FA',
 });
 
+export const routes = {
+  "ADMIN": ['attention', 'frequently-questions', 'tickets', 'mvno-information', 'users'],
+  "AGENT": ['attention', 'tickets']
+}
 export const userTypes = [ 'agent', 'admin']
 export const address = [
   {
