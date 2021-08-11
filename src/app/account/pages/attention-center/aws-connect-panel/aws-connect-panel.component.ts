@@ -79,6 +79,8 @@ export class AwsConnectPanelComponent implements OnInit {
     connect.contact((contact) => {
       contact.onAccepted((contact) => {
         var attributeMap: any = contact.getAttributes();
+        console.log('este es el id')
+        console.log(contact.contactId ) 
         var phone = JSON.stringify(attributeMap["phoneNumber"]["value"]).split('+')[1].split('"')[0];
         this.userService.getUserByPhoneNumber(phone).toPromise().then((user) => {
           this.setEmptyCustomerInfo();
@@ -98,6 +100,7 @@ export class AwsConnectPanelComponent implements OnInit {
         // this.setEmptyCustomerInfo();
       });
 
+      // console.log(contact.contactId ) 
       // contact.onIncoming(function(contact) {});
       // contact.onRefresh(function(contact) {});
       // contact.onConnected(function() {});
