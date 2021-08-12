@@ -51,12 +51,18 @@
                 </div>
                 <div  class="row  mt-auto">
                     <button
-                    class="btn secondary-btn "
-                    type="button"
-                    (click)="saveContactDetails()"
-                    >
-                    {{'REGISTER_USER' | translate}}
-                </button>
+                        class="btn secondary-btn "
+                        type="button"
+                        (click)="saveContactDetails()"
+                        >
+                        <span *ngIf="!spinnerLoader; else loading">{{"REGISTER_USER" | translate}}</span>
+
+                        <ng-template class="text-center" #loading>
+                            <div class="spinner-border spinner-border-sm" role="status">
+                            <span class="sr-only"></span>
+                            </div>
+                        </ng-template>
+                   </button>
                     <button
                         class="btn secondary-btn mt-2"
                         type="button"

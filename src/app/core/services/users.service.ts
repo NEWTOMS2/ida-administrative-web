@@ -73,6 +73,7 @@ export class UsersService {
   buildUser(users: any[]) : User[] {
     return users.map((u) => {
       return {
+        uuid: u.uuid,
         id: u.id, 
         name: u.name,
         lastname: u.last_name,

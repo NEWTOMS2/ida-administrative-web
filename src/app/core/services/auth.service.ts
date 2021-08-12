@@ -31,6 +31,7 @@ export class AuthService {
 
   storeUserData(user: any): void {
       const userData: User = {
+        uuid: user.user.uuid,
         name: user.user.name,
         lastname: user.user.lastname,
         phoneNumber: user.user.phone_number,

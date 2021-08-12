@@ -7,6 +7,9 @@ import { aws_connect, images } from 'src/app/core/config/configuration';
 
 import 'amazon-connect-streams';
 import { RealtimeCommunicationsService } from 'src/app/core/services/realtime-communications.service';
+import { ActivatedRoute } from '@angular/router';
+import { User } from 'src/app/core/models/user.interface';
+import { NotificationsService } from 'src/app/shared/services/notifications.service';
 
 @Component({
   selector: 'app-aws-connect-panel',
@@ -19,23 +22,29 @@ export class AwsConnectPanelComponent implements OnInit {
   public showCcp = true;
   public contactLogo = images.contactLogo;
   private contactId!: string;
+  private employee!: User | undefined;
+  spinnerLoader = false;
   constructor(
       private translateService: TranslateService,
       private userService: UsersService,
-      private realtimeCommunications: RealtimeCommunicationsService
+      private realtimeCommunications: RealtimeCommunicationsService,
+      private activatedRoute: ActivatedRoute,
+      private notification: NotificationsService
     ) { }
 
   setEmptyCustomerInfo(): void {
     this.customer = {
-      "email":"",
-      "name": "",
-      "lastname": "",
-      "phoneNumber":""
+      uuid: 0,
+      email:"",
+      name: "",
+      lastname: "",
+      phoneNumber:""
     }
   }
 
   ngOnInit(): void {
     this.setEmptyCustomerInfo();
+    this.buildUser()
   }
 
   ngOnDestroy(): void {
@@ -50,6 +59,13 @@ export class AwsConnectPanelComponent implements OnInit {
 
   ngAfterViewInit(): void {
     this.initAwsCcp();
+  }
+
+  private buildUser(): void{
+
+    this.activatedRoute.data.subscribe((data: Partial<{ user: User}>) => {
+      this.employee = data.user
+    });
   }
 
   initAwsCcp(): void {
@@ -87,10 +103,11 @@ export class AwsConnectPanelComponent implements OnInit {
           this.setEmptyCustomerInfo();
           if (user){
             this.customer = {
-              "email": user.email,
-              "name": user.name,
-              "lastname": user.last_name,
-              "phoneNumber": "+" + user.phone_number
+              uuid: user.uuid,
+              email: user.email,
+              name: user.name,
+              lastname: user.last_name,
+              phoneNumber: "+" + user.phone_number
              }
           }else {
             this.customer.phoneNumber = "+" + phone
@@ -112,7 +129,21 @@ export class AwsConnectPanelComponent implements OnInit {
     window.location.reload();
 }
 
-  saveContactDetails(): void {
-    console.log(this.contactId)
+  async saveContactDetails(): Promise<void> {
+  this.spinnerLoader = true;
+   await this.realtimeCommunications.updateDetails(
+      this.contactId,
+      this.customer.uuid,
+      this.employee?.uuid || 0 
+    ).toPromise()
+    .then(() => {
+      this.notification.showSuccessToast('USER_CREATED');
+    })
+    .catch((error) => {
+      this.spinnerLoader = false;
+      error = "GENERIC_ERROR"
+      this.notification.showErrorToast(error);
+    })
+    .finally(() => this.spinnerLoader = false)
   }
 }
