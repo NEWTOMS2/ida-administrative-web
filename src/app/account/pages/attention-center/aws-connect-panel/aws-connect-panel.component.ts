@@ -6,6 +6,7 @@ import { Customer } from 'src/app/core/models/customer.interface';
 import { aws_connect, images } from 'src/app/core/config/configuration';
 
 import 'amazon-connect-streams';
+import { RealtimeCommunicationsService } from 'src/app/core/services/realtime-communications.service';
 
 @Component({
   selector: 'app-aws-connect-panel',
@@ -17,10 +18,11 @@ export class AwsConnectPanelComponent implements OnInit {
   public customer!: Customer;
   public showCcp = true;
   public contactLogo = images.contactLogo;
-
+  private contactId!: string;
   constructor(
       private translateService: TranslateService,
       private userService: UsersService,
+      private realtimeCommunications: RealtimeCommunicationsService
     ) { }
 
   setEmptyCustomerInfo(): void {
@@ -79,8 +81,7 @@ export class AwsConnectPanelComponent implements OnInit {
     connect.contact((contact) => {
       contact.onAccepted((contact) => {
         var attributeMap: any = contact.getAttributes();
-        console.log('este es el id')
-        console.log(contact.contactId ) 
+        this.contactId= contact.contactId
         var phone = JSON.stringify(attributeMap["phoneNumber"]["value"]).split('+')[1].split('"')[0];
         this.userService.getUserByPhoneNumber(phone).toPromise().then((user) => {
           this.setEmptyCustomerInfo();
@@ -110,4 +111,8 @@ export class AwsConnectPanelComponent implements OnInit {
   reloadCurrentRoute() {
     window.location.reload();
 }
+
+  saveContactDetails(): void {
+    console.log(this.contactId)
+  }
 }

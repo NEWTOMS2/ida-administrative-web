@@ -49,13 +49,23 @@
                         />
                     </div>
                 </div>
-                <button
-                    class="btn secondary-btn mt-auto"
+                <div  class="row  mt-auto">
+                    <button
+                    class="btn secondary-btn "
                     type="button"
-                    (click)="setEmptyCustomerInfo()"
+                    (click)="saveContactDetails()"
                     >
-                    {{'CLEAN_CLIENT_DATA' | translate}}
+                    {{'REGISTER_USER' | translate}}
                 </button>
+                    <button
+                        class="btn secondary-btn mt-2"
+                        type="button"
+                        (click)="setEmptyCustomerInfo()"
+                        >
+                        {{'CLEAN_CLIENT_DATA' | translate}}
+                    </button>
+                </div>
+
             </div>
         </div>
     </div>

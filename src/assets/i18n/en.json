@@ -117,5 +117,7 @@
 
   "SAVE_REQUEST_INFORMATION": "Save request information",
   "SEND_NOTIFICATION": "Send notification",
-  "DELETE_ANSWERS_AGREE": "Are you sure you want to delete the answers?"
+  "DELETE_ANSWERS_AGREE": "Are you sure you want to delete the answers?",
+
+  "REGISTER_USER": "Register user"
 }
