@@ -2,10 +2,13 @@
   "EN": "English",
   "ES": "Español",
   "WRONG_CREDENTIALS": "The email address or password is incorrect.",
+  "USER_INACTIVE": "The currente state of the client is inactive",
   "GENERIC_ERROR": "Some unexpected error occurs.",
   "USER_CREATED": "User successfully created.",
   "FAQ_UPDATED": "Frequently question successfully updated",
   "CLAIM_STATE_CREATED": "State claim successfully saved",
+  "USER_SUCCESSFULLY_UPDATED": "User successfully updated",
+  "DUPLICATED_PHONE_NUMBER": "Phone number already exists",
   "SIGN_IN": "Sign into your account",
   "EMAIL_ADDRESS": "Email address",
   "PASSWORD": "Password",
@@ -103,6 +106,7 @@
   "PURCHASES": "Purchases", 
   "INTERNET_ISSUE": "Internet issue", 
   "BLOCKING_SERVICES": "Service blocking",
+  "BOT_CLAIM": "Digital Worker Request",
 
   "ANSWER": "Answer",
   "NEW_ANSWER": "New answer",
@@ -117,7 +121,13 @@
 
   "SAVE_REQUEST_INFORMATION": "Save request information",
   "SEND_NOTIFICATION": "Send notification",
-  "DELETE_ANSWERS_AGREE": "Are you sure you want to delete the answers?",
+  "REGISTER_USER": "Register user",
+  "ACTIVE": "Active",
+  "INACTIVE": "Inactive",
+  "SEE_REQUESTS": "See requests",
+  "SELECT_CITY": "Select a city",
+  "ROLE": "Role",
 
-  "REGISTER_USER": "Register user"
+
+  "DELETE_ANSWERS_AGREE": "Are you sure you want to delete the answers?"
 }

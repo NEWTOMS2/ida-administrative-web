@@ -2,10 +2,13 @@
   "EN": "English",
   "ES": "Español",
   "WRONG_CREDENTIALS": "El correo electrónico o la contraseña es incorrecta.",
+  "USER_INACTIVE": "Usuario no se encuentra en estado Activo",
   "GENERIC_ERROR": "Ocurrió un error inesperado.",
   "USER_CREATED": "Usuario creado satisfactoriamente.",
   "FAQ_UPDATED": "Pregunta frecuente actualizada exitosamente",
   "CLAIM_STATE_CREATED": "Estado del reclamo creado satisfactoriamente",
+  "USER_SUCCESSFULLY_UPDATED": "Usuario actualizado exitosamente",
+  "DUPLICATED_PHONE_NUMBER": "El número telefónico ya existe en el sistema",
   "SIGN_IN": "Inicia sesión en tu cuenta",
   "EMAIL_ADDRESS": "Correo electrónico",
   "PASSWORD": "Contraseña",
@@ -101,6 +104,7 @@
   "PURCHASES": "Compras", 
   "INTERNET_ISSUE": "Problema de internet", 
   "BLOCKING_SERVICES": "Bloqueo de servicios",
+  "BOT_CLAIM": "Digital Worker",
 
   "ANSWER": "Respuesta",
   "NEW_ANSWER": "Nueva respuesta",
@@ -115,8 +119,12 @@
 
   "SAVE_REQUEST_INFORMATION": "Guardar información de la solicitud",
   "SEND_NOTIFICATION": "Enviar notificación",
-  "DELETE_ANSWERS_AGREE": "¿Estás seguro que deseas eliminar las respuestas?",
-
-  "REGISTER_USER": "Registrar usuario"
+  "REGISTER_USER": "Registrar usuario",
+  "INACTIVE": "Inactivo",
+  "ACTIVE": "Activo",
+  "SEE_REQUESTS": "Ver solicitudes",
+  "SELECT_CITY": "Elige una ciudad",
+  "ROLE": "Rol",
+  "DELETE_ANSWERS_AGREE": "¿Estás seguro que deseas eliminar las respuestas?"
 
 }

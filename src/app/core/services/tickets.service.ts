@@ -41,7 +41,7 @@ export class TicketsService {
     })
     .pipe(
         map((data: any) => {
-            return (this.buildTicket(data.data))[0] as Ticket
+            return this.buildTicket([(data.data as any[]).find((ticket) => ticket.id == id)])[0]
         })
     )
     .pipe(

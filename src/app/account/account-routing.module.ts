@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { RolesGuard } from './guards/roles.guard';
 
 import { LayoutComponent } from './layout/layout.component';
 import { UserResolver } from './resolvers/user.resolver';
@@ -14,6 +15,7 @@ const routes: Routes = [
         path: '',
         redirectTo: '/account/attention',
         pathMatch: 'full',
+
       },
       {
         path: 'attention',
@@ -24,6 +26,7 @@ const routes: Routes = [
       },
       {
         path: 'frequently-questions',
+
         loadChildren: () =>
           import('./pages/frequently-questions/frequently-questions.module').then(
             (m) => m.FrequentlyQuestionsModule
@@ -31,6 +34,7 @@ const routes: Routes = [
       },
       {
         path: 'tickets',
+
         loadChildren: () =>
           import('./pages/tickets/tickets.module').then(
             (m) => m.TicketsModule
@@ -38,6 +42,7 @@ const routes: Routes = [
       },
       {
         path: 'mvno-information',
+
         loadChildren: () =>
           import('./pages/mvno-information/mvno-information.module').then(
             (m) => m.MvnoInformationModule
@@ -45,6 +50,7 @@ const routes: Routes = [
       },
       {
         path: 'users',
+
         loadChildren: () =>
           import('./pages/users/users.module').then(
             (m) => m.UsersModule

@@ -46,9 +46,9 @@ export class LoginComponent implements OnInit {
         })
         .catch((error) => {
           this.spinnerLoader = false;
-          if (error == "Invalid credentials"){
-            error = "WRONG_CREDENTIALS"
-          }else error = "GENERIC_ERROR"
+          if (error == "Invalid credentials")error = "WRONG_CREDENTIALS"
+          else if (error.includes('Current user status is inactive')) error  = 'USER_INACTIVE'
+          else error = "GENERIC_ERROR"
           this.notification.showErrorToast(error);
         });
     }
