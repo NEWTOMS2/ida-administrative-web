@@ -64,6 +64,7 @@ export class TicketsService {
         type: data.type,
         description: data.description,
         client: {
+            uuid: data.client.uuid,
             id: data.client.id,
             name: data.client.name,
             lastname:  data.client.last_name,
