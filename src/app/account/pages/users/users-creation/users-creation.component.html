@@ -87,7 +87,7 @@
                                 this.userForm.get('role')?.touched
                             }"
                         >
-                            <option *ngFor="let type of userTypes">
+                            <option *ngFor="let type of userTypes" value="{{type}}">
                                     {{  formatContent(type) | translate | titlecase }}
                             </option>
                         </select>
