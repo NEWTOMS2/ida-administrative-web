@@ -125,6 +125,20 @@
   "SEE_REQUESTS": "Ver solicitudes",
   "SELECT_CITY": "Elige una ciudad",
   "ROLE": "Rol",
-  "DELETE_ANSWERS_AGREE": "¿Estás seguro que deseas eliminar las respuestas?"
+  "DELETE_ANSWERS_AGREE": "¿Estás seguro que deseas eliminar las respuestas?",
 
+  "PHONE_PLANS": "Planes telefónicos",
+  "MINUTES": "Minutos",
+  "SMS": "Sms",
+  "MB": "Datos (Mb)",
+  "SIMPLE": "Simple",
+  "RECURRING": "Recurrente",
+  "AVAILABLE": "Disponible",
+  "UNAVAILABLE": "No disponible",
+  "PHONE_PLAN_SUCCESSFULLY_UPDATED": "Plan telefónico actualizado exitosamente",
+  "DESCRIPTION": "Descripción",
+  "DURATION_DAYS": "Duración (días)",
+  "INTRODUCE_VALUE": "Introduce un valor",
+  "PRICE": "Precio ($)",
+  "PHONE_PLAN_CREATED": "Plan telefónico creado exitosamente"
 }

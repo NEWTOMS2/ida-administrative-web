@@ -1,0 +1,136 @@
+<div>
+    <form [formGroup]="phonePlanDetailForm" class="needs-validation basic-form" novalidate>
+        <div class="row">
+            <div class="col-md-4 col-12">
+                <div class="row form-row">
+                    <div class="col-12 mb-4">
+                        <label class="form-label">{{ "NAME" | translate }}</label>
+                        <input type="text" formControlName="name" class="form-control" [ngClass]="{
+                  'is-invalid':
+                    this.phonePlanDetailForm.get('name')?.invalid &&
+                    this.phonePlanDetailForm.get('name')?.touched
+                }" />
+                        <div class="invalid-feedback">
+                            {{ "INTRODUCE_NAME" | translate }}
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div style="width: 100%;">
+                            <label class="form-label">{{ 'DESCRIPTION' | translate }}</label>
+                            <textarea rows="8" type="text" formControlName="description" value="description"
+                                class="form-control textarea-form" [ngClass]="{
+                                'is-invalid':
+                                  this.phonePlanDetailForm.get('description')?.invalid &&
+                                  this.phonePlanDetailForm.get('description')?.touched
+                              }"></textarea>
+                            <div class="invalid-feedback">
+                                {{"INTRODUCE_CONTENT" | translate}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-12">
+                <div class="row form-row">
+                    <div class="col-12 mb-4">
+                        <label class="form-label">{{ "MINUTES" | translate }}</label>
+                        <input type="number" formControlName="minutes" class="form-control" [ngClass]="{
+                  'is-invalid':
+                    this.phonePlanDetailForm.get('minutes')?.invalid &&
+                    this.phonePlanDetailForm.get('minutes')?.touched
+                }" />
+                        <div class="invalid-feedback">
+                            {{ "INTRODUCE_VALUE" | translate }}
+                        </div>
+                    </div>
+
+                    <div class="col-12 mb-4">
+                        <label class="form-label">{{ "SMS" | translate }}</label>
+                        <input type="number" formControlName="sms" class="form-control" [ngClass]="{
+                  'is-invalid':
+                    this.phonePlanDetailForm.get('sms')?.invalid &&
+                    this.phonePlanDetailForm.get('sms')?.touched
+                }" />
+                        <div class="invalid-feedback">
+                            {{ "INTRODUCE_VALUE" | translate }}
+                        </div>
+                    </div>
+
+                    <div class="col-12 mb-4">
+                        <label class="form-label">{{ "MB" | translate }}</label>
+                        <input type="number" formControlName="mb" class="form-control" [ngClass]="{
+                  'is-invalid':
+                    this.phonePlanDetailForm.get('mb')?.invalid &&
+                    this.phonePlanDetailForm.get('mb')?.touched
+                }" />
+                        <div class="invalid-feedback">
+                            {{ "INTRODUCE_VALUE" | translate }}
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">{{ "DURATION_DAYS" | translate }}</label>
+                        <input type="number" formControlName="duration" class="form-control" [ngClass]="{
+                  'is-invalid':
+                    this.phonePlanDetailForm.get('duration')?.invalid &&
+                    this.phonePlanDetailForm.get('duration')?.touched
+                }" />
+                        <div class="invalid-feedback">
+                            {{ "INTRODUCE_VALUE" | translate }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-12 actions-wrapper">
+                <div class="row form-row">
+                    <div class="col-12 mb-4">
+                        <label class="form-label">{{ "USER_TYPE" | translate }}</label>
+                        <select *ngIf="showUpdate == true" class="form-select" formControlName="type" [ngClass]="{
+                          'is-invalid':
+                            this.phonePlanDetailForm.get('type')?.invalid &&
+                            this.phonePlanDetailForm.get('type')?.touched
+                        }" (disabled)="(true)">
+                            <option *ngFor="let type of phonePlanTypes"
+                                [selected]="type.type.toLowerCase() == phonePlan.type?.toLowerCase()">
+                                {{ formatContent(type.type) | translate }}
+                            </option>
+                        </select>
+                        <input *ngIf="showUpdate == false" readonly type="text" formControlName="role"
+                            class="form-control" />
+                        <div class="invalid-feedback">
+                            {{ "INTRODUCE_VALUE" | translate }}
+                        </div>
+                    </div>
+                    <div class="col-12 mb-4">
+                        <label class="form-label">{{ "STATE" | translate }}</label>
+                        <select *ngIf="showUpdate == true" class="form-select" formControlName="state" [ngClass]="{
+                            'is-invalid':
+                              this.phonePlanDetailForm.get('state')?.invalid &&
+                              this.phonePlanDetailForm.get('state')?.touched
+                          }">
+                            <option *ngFor="let state of phonePlanStates" [selected]="state.state == phonePlanState">
+                                {{ state.state | translate }}
+                            </option>
+                        </select>
+                        <input *ngIf="showUpdate == false" readonly type="text" formControlName="state"
+                            class="form-control" />
+                        <div class="invalid-feedback">
+                            {{ "INTRODUCE_VALUE" | translate }}
+                        </div>
+                    </div>
+                </div>
+                <button class="btn secondary-btn" (click)="updatePhonePlan()">
+                    <span *ngIf="!spinnerLoader; else loading">{{
+                        "SAVE" | translate
+                        }}</span>
+                    <ng-template class="text-center" #loading>
+                        <div class="spinner-border spinner-border-sm" role="status">
+                            <span class="sr-only"></span>
+                        </div>
+                    </ng-template>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
