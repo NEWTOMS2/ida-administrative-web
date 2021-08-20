@@ -10,6 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { User } from 'src/app/core/models/user.interface';
 import { searchTranslation } from 'src/app/utils/searchTranslation';
 import { UsersCreationComponent } from '../users-creation/users-creation.component';
+import { userTypes } from 'src/app/core/config/configuration';
 
 @Component({
   selector: 'app-users',
@@ -32,6 +33,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
   public displayedColumns = ['role', 'name','email', 'state'];
   public expandedElement!: User | null;
   public searchIcon = faSearch;
+  public userTypes = userTypes;
 
   users!: User[]
 

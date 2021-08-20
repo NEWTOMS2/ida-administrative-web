@@ -65,7 +65,6 @@ export class UsersCreationComponent implements OnInit {
         const errorDetail = error.includes("already exists") ? 'USER_ALREADY_EXISTS' : 'GENERIC_ERROR'
         this.notification.showErrorToast(errorDetail);
       });
-  
     }
   }
 
