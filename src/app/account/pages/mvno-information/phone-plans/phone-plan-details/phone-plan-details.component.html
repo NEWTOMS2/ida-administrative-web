@@ -15,10 +15,22 @@
                         </div>
                     </div>
 
-                    <div class="col-12">
+                    <div class="col-12 mb-4">
+                        <label class="form-label">{{ "PRICE" | translate }}</label>
+                        <input type="number" formControlName="price" class="form-control" [ngClass]="{
+                  'is-invalid':
+                    this.phonePlanDetailForm.get('price')?.invalid &&
+                    this.phonePlanDetailForm.get('price')?.touched
+                }" />
+                        <div class="invalid-feedback">
+                            {{ "INTRODUCE_VALUE" | translate }}
+                        </div>
+                    </div>
+
+                    <div class="col-12 mb-4">
                         <div style="width: 100%;">
                             <label class="form-label">{{ 'DESCRIPTION' | translate }}</label>
-                            <textarea rows="8" type="text" formControlName="description" value="description"
+                            <textarea rows="5" type="text" formControlName="description" value="description"
                                 class="form-control textarea-form" [ngClass]="{
                                 'is-invalid':
                                   this.phonePlanDetailForm.get('description')?.invalid &&
@@ -69,7 +81,7 @@
                         </div>
                     </div>
 
-                    <div class="col-12">
+                    <div class="col-12 mb-4">
                         <label class="form-label">{{ "DURATION_DAYS" | translate }}</label>
                         <input type="number" formControlName="duration" class="form-control" [ngClass]="{
                   'is-invalid':
@@ -120,7 +132,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn secondary-btn" (click)="updatePhonePlan()">
+                <button class="btn secondary-btn mb-4" (click)="updatePhonePlan()">
                     <span *ngIf="!spinnerLoader; else loading">{{
                         "SAVE" | translate
                         }}</span>

@@ -12,12 +12,14 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="table-header row pb-5 pt-3 px-4">
                     <div class="col-12 col-md-3">
                         <label class="form-label">{{ "TYPE" | translate }}</label>
                         <select class="form-select small-searcher" (change)="applyFilter($event.target)">
-                            <option selected value="">{{ "ALL" | translate }}</option>
+                            <option selected value="">{{'ALL' | translate}}</option>
+                            <option *ngFor="let type of phonePlanTypes" value="{{type}}">
+                                {{ type | translate }}
+                            </option>
                         </select>
                     </div>
 

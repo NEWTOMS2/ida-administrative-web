@@ -10,6 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { PhonePlan } from 'src/app/core/models/phone-plans.interface';
 import { searchTranslation } from 'src/app/utils/searchTranslation';
 import { PhonePlanCreationComponent } from '../phone-plan-creation/phone-plan-creation.component'
+import { phonePlanTypes } from 'src/app/core/config/configuration';
 
 @Component({
   selector: 'app-phone-plans',
@@ -32,6 +33,7 @@ export class PhonePlansComponent implements OnInit, AfterViewInit {
   public displayedColumns = ['name', 'minutes','sms', 'mb', 'type'];
   public expandedElement!: PhonePlan | null;
   public searchIcon = faSearch;
+  public phonePlanTypes = phonePlanTypes;
 
   phonePlans!: PhonePlan[]
 
@@ -50,9 +52,11 @@ export class PhonePlansComponent implements OnInit, AfterViewInit {
   }
 
   getPhonePlans(): void {
+    console.log('a');
     this.activatedRoute.data.subscribe((data: Partial<{ phonePlans: PhonePlan[]}>) => {
       this.phonePlans = data.phonePlans || []
     });
+    console.log(this.phonePlans);
   }
 
   openUserCreationModal(): void {
