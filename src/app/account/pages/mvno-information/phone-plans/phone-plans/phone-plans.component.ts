@@ -11,6 +11,7 @@ import { PhonePlan } from 'src/app/core/models/phone-plans.interface';
 import { searchTranslation } from 'src/app/utils/searchTranslation';
 import { PhonePlanCreationComponent } from '../phone-plan-creation/phone-plan-creation.component'
 import { phonePlanTypes } from 'src/app/core/config/configuration';
+import { PhonePlanService } from 'src/app/core/services/phone-plan.service';
 
 @Component({
   selector: 'app-phone-plans',
@@ -40,7 +41,12 @@ export class PhonePlansComponent implements OnInit, AfterViewInit {
   constructor(    
     private translateService: TranslateService,
     private dialog: MatDialog,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private phonePlanService: PhonePlanService) {
+      this.phonePlanService.userCreatedObservable.subscribe(() => {
+        this.reloadPhonePlans();
+      })
+     }
 
   ngOnInit(): void {    
     this.getPhonePlans();
@@ -52,11 +58,9 @@ export class PhonePlansComponent implements OnInit, AfterViewInit {
   }
 
   getPhonePlans(): void {
-    console.log('a');
     this.activatedRoute.data.subscribe((data: Partial<{ phonePlans: PhonePlan[]}>) => {
       this.phonePlans = data.phonePlans || []
     });
-    console.log(this.phonePlans);
   }
 
   openUserCreationModal(): void {
@@ -100,6 +104,13 @@ export class PhonePlansComponent implements OnInit, AfterViewInit {
     })
 
     this.refresh()
+  }
+
+  reloadPhonePlans(): void {
+    this.phonePlanService.get().subscribe((data)=> {
+      this.phonePlans = data;
+      this.refresh();
+    });
   }
 
   private buildTable(): void {

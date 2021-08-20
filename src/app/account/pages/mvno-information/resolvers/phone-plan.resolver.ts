@@ -18,7 +18,6 @@ export class PhonePlanResolver implements Resolve<PhonePlan[]> {
 
   resolve(): Observable<PhonePlan[]> {
     const phonePlans$ = this.phonePlanService.get();
-    console.log(phonePlans$)
     return phonePlans$;
   }
 }

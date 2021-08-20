@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, throwError, from } from 'rxjs';
+import { Observable, throwError, from, Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map } from 'rxjs/operators';
 
@@ -15,6 +15,9 @@ export class PhonePlanService {
       'Content-Type': 'application/json',
     })
   }  
+
+  public userCreatedSubject = new Subject<boolean>();
+  public userCreatedObservable = this.userCreatedSubject.asObservable();
 
   constructor(
     private http: HttpClient
@@ -38,7 +41,6 @@ export class PhonePlanService {
     return this.http.get(administrative_exp_api_host + '/phone-plans', this.httpOptions)
     .pipe(
       map((data: any) => {
-          console.log(data.data);
           return data.data as PhonePlan[]
       })
     )

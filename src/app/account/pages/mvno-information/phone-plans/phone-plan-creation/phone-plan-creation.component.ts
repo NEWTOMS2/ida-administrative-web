@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
@@ -13,6 +13,8 @@ import { searchTranslation } from 'src/app/utils/searchTranslation';
   styleUrls: ['./phone-plan-creation.component.scss']
 })
 export class PhonePlanCreationComponent implements OnInit {
+  @Output() phonePlanCreated = new EventEmitter<any>();
+
   phonePlanForm!: FormGroup;
   spinnerLoader = false;
   phonePlanTypes = phonePlanTypes;
@@ -44,11 +46,14 @@ export class PhonePlanCreationComponent implements OnInit {
       this.phonePlanService.create(phonePlan).toPromise().then(() => {
         this.spinnerLoader = false;
         this.notification.showSuccessToast('PHONE_PLAN_CREATED');
-        this.dialogRef.close()
+        this.phonePlanService.userCreatedSubject.next();
+        this.dialogRef.close();
       }).catch((error) => {
         this.spinnerLoader = false;
         this.notification.showErrorToast("GENERIC_ERROR");
       });
+      this.phonePlanCreated.emit(true);
+
     }
   }
 

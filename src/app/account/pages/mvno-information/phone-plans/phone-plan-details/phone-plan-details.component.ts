@@ -72,7 +72,6 @@ export class PhonePlanDetailsComponent implements OnInit {
       this.spinnerLoader = true;
       const phonePlan = {...this.phonePlanDetailForm.value};
 
-      console.log("Datos a insertar ", phonePlan);
       const state = (this.phonePlanStates.find((s) => (s.translatedState == phonePlan.state) || (s.state == phonePlan.state)))?.state
 
       if (this.phonePlanState != state) {
