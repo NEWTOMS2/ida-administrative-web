@@ -1,4 +1,4 @@
-@import "../../../../styles/variables";
+@import "../../../../../styles/variables";
 
 .basic-form{
     background-color: rgba(255, 255, 255, 0) !important;
@@ -8,13 +8,22 @@
 
     display: flex;
     flex-direction: column;
-    .form-actions{
+    .btn{
         margin-top: auto;
     }
 }
 
 .invalid-feedback {
-    position: absolute !important
+    position: absolute !important;
+    font-size: 12px;
+}
+
+.form-btn {
+    justify-content: center;
+
+    .btn-content{ 
+        font-size: 0.8rem !important;
+    }
 }
 
 .form-select {

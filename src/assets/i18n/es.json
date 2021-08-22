@@ -135,6 +135,20 @@
 
   "REGISTER_CLAIM": "Registrar solicitud",
   "NEW_USER": "Nuevo usuario",
-  "USER_DATA": "Datos del usuario"
+  "USER_DATA": "Datos del usuario",
 
+  "PHONE_PLANS": "Planes telefónicos",
+  "MINUTES": "Minutos",
+  "SMS": "Sms",
+  "MB": "Datos (Mb)",
+  "SIMPLE": "Simple",
+  "RECURRING": "Recurrente",
+  "AVAILABLE": "Disponible",
+  "UNAVAILABLE": "No disponible",
+  "PHONE_PLAN_SUCCESSFULLY_UPDATED": "Plan telefónico actualizado exitosamente",
+  "DESCRIPTION": "Descripción",
+  "DURATION_DAYS": "Duración (días)",
+  "INTRODUCE_VALUE": "Introduce un valor",
+  "PRICE": "Precio ($)",
+  "PHONE_PLAN_CREATED": "Plan telefónico creado exitosamente"
 }

@@ -1,7 +1,13 @@
+@import "../../../../styles/variables";
+
 .form-btn {
     justify-content: center;
 
     .btn-content{ 
         font-size: 0.8rem !important;
     }
+}
+
+.form-select {
+    border: 1px solid $ligth-blue;
 }

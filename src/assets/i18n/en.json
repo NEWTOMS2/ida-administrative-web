@@ -132,12 +132,24 @@
   "SEE_REQUESTS": "See requests",
   "SELECT_CITY": "Select a city",
   "ROLE": "Role",
-
-
   "DELETE_ANSWERS_AGREE": "Are you sure you want to delete the answers?",
   "ATTENTION_REQUEST": "Attention Request",
   "REGISTER_CLAIM": "Register Claim",
   "NEW_USER": "New user",
-  "USER_DATA": "User data"
+  "USER_DATA": "User data",
   
+  "PHONE_PLANS": "Phone plans",
+  "MINUTES": "Minutes",
+  "SMS": "Sms",
+  "MB": "Data (Mb)",
+  "SIMPLE": "Simple",
+  "RECURRING": "Recurring",
+  "AVAILABLE": "Available",
+  "UNAVAILABLE": "Unavailable",
+  "PHONE_PLAN_SUCCESSFULLY_UPDATED": "Phone plan successfully added",
+  "DESCRIPTION": "Description",
+  "DURATION_DAYS": "Duration (days)",
+  "INTRODUCE_VALUE": "Enter a value",
+  "PRICE": "Price ($)",
+  "PHONE_PLAN_CREATED": "Phone plan successfully created"
 }
