@@ -9,6 +9,7 @@
   "CLAIM_STATE_CREATED": "Estado del reclamo creado satisfactoriamente",
   "USER_SUCCESSFULLY_UPDATED": "Usuario actualizado exitosamente",
   "DUPLICATED_PHONE_NUMBER": "El número telefónico ya existe en el sistema",
+  "TICKET_SUCCESSFULLY_CREATED": "La solicitud ha sido creada satisfactoriamente",
   "SIGN_IN": "Inicia sesión en tu cuenta",
   "EMAIL_ADDRESS": "Correo electrónico",
   "PASSWORD": "Contraseña",
@@ -17,6 +18,7 @@
   "INTRODUCE_PASSWORD": "Introduce la contraseña",
   "INTRODUCE_LAST_NAME": "Introduce un apellido",
   "INTRODUCE_PHONE_NUMBER": "Introduce un número de teléfono",
+  "INTRODUCE_CLAIM_DESCRIPTION": "Introduce una descripción",
   "LOGIN": "Iniciar sesión",
   "LOGOUT": "Cerrar sesión",
   "FORGOT_PASSWORD": "¿Olvidaste tu contraseña?",
@@ -105,6 +107,9 @@
   "INTERNET_ISSUE": "Problema de internet", 
   "BLOCKING_SERVICES": "Bloqueo de servicios",
   "BOT_CLAIM": "Digital Worker",
+  "PAYMENT_ISSUE": "Inconveniente de pago",
+  "SERVICE_COVERAGE_ISSUE": "Señal del servicio",
+  "PACKAGE_ISSUE": "Planes telefónicos",
 
   "ANSWER": "Respuesta",
   "NEW_ANSWER": "Nueva respuesta",
@@ -126,6 +131,11 @@
   "SELECT_CITY": "Elige una ciudad",
   "ROLE": "Rol",
   "DELETE_ANSWERS_AGREE": "¿Estás seguro que deseas eliminar las respuestas?",
+  "ATTENTION_REQUEST": "Solicitud de atención",
+
+  "REGISTER_CLAIM": "Registrar solicitud",
+  "NEW_USER": "Nuevo usuario",
+  "USER_DATA": "Datos del usuario",
 
   "PHONE_PLANS": "Planes telefónicos",
   "MINUTES": "Minutos",

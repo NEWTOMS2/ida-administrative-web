@@ -1,15 +1,19 @@
 import { Component, OnInit, ElementRef, ViewChild, Renderer2 } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { MatDialog } from '@angular/material/dialog';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { searchTranslation } from 'src/app/utils/searchTranslation';
 import { UsersService } from 'src/app/core/services/users.service';
 import { Customer } from 'src/app/core/models/customer.interface';
-import { aws_connect, images } from 'src/app/core/config/configuration';
+import { aws_connect, emailPattern, images } from 'src/app/core/config/configuration';
 
 import 'amazon-connect-streams';
 import { RealtimeCommunicationsService } from 'src/app/core/services/realtime-communications.service';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/core/models/user.interface';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
+import { RegisterClaimDialogComponent } from './register-claim-dialog/register-claim-dialog.component';
+
 
 @Component({
   selector: 'app-aws-connect-panel',
@@ -18,18 +22,22 @@ import { NotificationsService } from 'src/app/shared/services/notifications.serv
 })
 export class AwsConnectPanelComponent implements OnInit {
   public title =  searchTranslation(this.translateService, 'ATTENTION_REQUESTS');
+  public claimForm!: FormGroup; 
   public customer!: Customer;
   public showCcp = true;
   public contactLogo = images.contactLogo;
   private contactId!: string;
   private employee!: User | undefined;
   spinnerLoader = false;
+
   constructor(
       private translateService: TranslateService,
       private userService: UsersService,
       private realtimeCommunications: RealtimeCommunicationsService,
       private activatedRoute: ActivatedRoute,
-      private notification: NotificationsService
+      private notification: NotificationsService,
+      private dialog: MatDialog,
+      private formBuilder: FormBuilder
     ) { }
 
   setEmptyCustomerInfo(): void {
@@ -44,7 +52,8 @@ export class AwsConnectPanelComponent implements OnInit {
 
   ngOnInit(): void {
     this.setEmptyCustomerInfo();
-    this.buildUser()
+    this.buildUser();
+    this.buildForm();
   }
 
   ngOnDestroy(): void {
@@ -146,4 +155,23 @@ export class AwsConnectPanelComponent implements OnInit {
     })
     .finally(() => this.spinnerLoader = false)
   }
+
+  registerClaim(): void {
+    this.dialog.open(RegisterClaimDialogComponent, {
+      width: '700px',
+      autoFocus: false,
+      data: {
+        email: this.claimForm.get('email')?.value
+      }
+    });
+  }
+
+  private buildForm(): void {
+    this.claimForm = this.formBuilder.group({
+      email: ['', Validators.compose([Validators.required, Validators.pattern(emailPattern)])],
+      type: ['',  Validators.compose([Validators.required])],
+      description: ['',  Validators.compose([Validators.required])]
+    });
+  }
+
 }

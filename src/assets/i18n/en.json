@@ -9,6 +9,7 @@
   "CLAIM_STATE_CREATED": "State claim successfully saved",
   "USER_SUCCESSFULLY_UPDATED": "User successfully updated",
   "DUPLICATED_PHONE_NUMBER": "Phone number already exists",
+  "TICKET_SUCCESSFULLY_CREATED": "Ticket has been successfulyy created",
   "SIGN_IN": "Sign into your account",
   "EMAIL_ADDRESS": "Email address",
   "PASSWORD": "Password",
@@ -18,6 +19,7 @@
   "INTRODUCE_PASSWORD": "Introduce a password",
   "INTRODUCE_LAST_NAME": "Introduce a last name",
   "INTRODUCE_PHONE_NUMBER": "Introduce a phone number",
+  "INTRODUCE_CLAIM_DESCRIPTION": "Introduce a description",
   "LOGIN": "Login",
   "LOGOUT": "Logout",
   "FORGOT_PASSWORD": "Forgot password?",
@@ -107,6 +109,9 @@
   "INTERNET_ISSUE": "Internet issue", 
   "BLOCKING_SERVICES": "Service blocking",
   "BOT_CLAIM": "Digital Worker Request",
+  "PAYMENT_ISSUE": "Payment issue",
+  "SERVICE_COVERAGE_ISSUE": "Service coverage",
+  "PACKAGE_ISSUE": "Phone plans",
 
   "ANSWER": "Answer",
   "NEW_ANSWER": "New answer",
@@ -127,9 +132,12 @@
   "SEE_REQUESTS": "See requests",
   "SELECT_CITY": "Select a city",
   "ROLE": "Role",
-
   "DELETE_ANSWERS_AGREE": "Are you sure you want to delete the answers?",
-
+  "ATTENTION_REQUEST": "Attention Request",
+  "REGISTER_CLAIM": "Register Claim",
+  "NEW_USER": "New user",
+  "USER_DATA": "User data",
+  
   "PHONE_PLANS": "Phone plans",
   "MINUTES": "Minutes",
   "SMS": "Sms",

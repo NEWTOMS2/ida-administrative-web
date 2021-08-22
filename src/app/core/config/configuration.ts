@@ -52,6 +52,7 @@ export const routes = {
   "AGENT": ['attention', 'tickets']
 }
 export const userTypes = [ 'agent', 'admin']
+export const claimTypes = ['INTERNET_ISSUE', 'SIM_SHIPPING_ISSUE', 'PACKAGE_ISSUE', 'BLOCKING_SERVICES', 'PAYMENT_ISSUE', 'SERVICE_COVERAGE_ISSUE']
 export const address = [
   {
     country: 'México',

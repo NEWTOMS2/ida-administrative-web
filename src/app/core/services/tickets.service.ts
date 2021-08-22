@@ -49,6 +49,15 @@ export class TicketsService {
     )
   }
 
+  create(ticket: any):  Observable<any>{
+    const tickets = []
+    tickets.push(ticket)
+    return this.http.post(administrative_exp_api_host + `/claims`, JSON.stringify(tickets), this.httpOptions)
+    .pipe(
+      catchError(this.handleError)
+    ) 
+  }
+
   createStatus(status: any, ticketId: string): Observable<any>{
     return this.http.post(administrative_exp_api_host + `/claims/${ticketId}/states`, JSON.stringify(status), this.httpOptions)
     .pipe(

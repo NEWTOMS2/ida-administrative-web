@@ -160,3 +160,13 @@ color: $dark-blue !important
 .table-row-item{
 background-color:$secondary-ligther-color;
 }
+
+/*--- Switchs ---*/
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar,
+.mat-slide-toggle.mat-checked .mat-ripple-element {
+  background-color: $clear-primary-color !important;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  background-color:  $primary-color  !important;
+}

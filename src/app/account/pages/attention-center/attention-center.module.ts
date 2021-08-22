@@ -6,16 +6,20 @@ import { AttentionCenterRoutingModule } from './attention-center-routing.module'
 import { AwsConnectPanelComponent } from './aws-connect-panel/aws-connect-panel.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { UserResolver } from '../../resolvers/user.resolver';
+import { RegisterClaimDialogComponent } from './aws-connect-panel/register-claim-dialog/register-claim-dialog.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AwsConnectPanelComponent
+    AwsConnectPanelComponent,
+    RegisterClaimDialogComponent
   ],
   imports: [
     CommonModule,
     AttentionCenterRoutingModule,
     SharedModule,
-    TranslateModule
+    TranslateModule,
+    ReactiveFormsModule
   ],
   providers: [
     UserResolver
