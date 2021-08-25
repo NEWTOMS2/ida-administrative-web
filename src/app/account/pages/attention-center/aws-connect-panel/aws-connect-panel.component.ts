@@ -6,6 +6,7 @@ import { searchTranslation } from 'src/app/utils/searchTranslation';
 import { UsersService } from 'src/app/core/services/users.service';
 import { Customer } from 'src/app/core/models/customer.interface';
 import { aws_connect, emailPattern, images } from 'src/app/core/config/configuration';
+import { faUserPlus, faEnvelopeOpenText} from '@fortawesome/free-solid-svg-icons';
 
 import 'amazon-connect-streams';
 import { RealtimeCommunicationsService } from 'src/app/core/services/realtime-communications.service';
@@ -13,6 +14,8 @@ import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/core/models/user.interface';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { RegisterClaimDialogComponent } from './register-claim-dialog/register-claim-dialog.component';
+import { RegisterCustomerComponent } from './register-customer/register-customer.component';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -21,33 +24,39 @@ import { RegisterClaimDialogComponent } from './register-claim-dialog/register-c
   styleUrls: ['./aws-connect-panel.component.scss']
 })
 export class AwsConnectPanelComponent implements OnInit {
-  public title =  searchTranslation(this.translateService, 'ATTENTION_REQUESTS');
-  public claimForm!: FormGroup; 
+  public title = searchTranslation(this.translateService, 'ATTENTION_REQUESTS');
+  public claimForm!: FormGroup;
   public customer!: Customer;
   public showCcp = true;
   public contactLogo = images.contactLogo;
   private contactId!: string;
   private employee!: User | undefined;
+  public addUserIcon = faUserPlus;
+  public claimIcon = faEnvelopeOpenText;
+
+  public contactDetailSaved = false;
   spinnerLoader = false;
 
+
   constructor(
-      private translateService: TranslateService,
-      private userService: UsersService,
-      private realtimeCommunications: RealtimeCommunicationsService,
-      private activatedRoute: ActivatedRoute,
-      private notification: NotificationsService,
-      private dialog: MatDialog,
-      private formBuilder: FormBuilder
-    ) { }
+    private translateService: TranslateService,
+    private userService: UsersService,
+    private realtimeCommunications: RealtimeCommunicationsService,
+    private activatedRoute: ActivatedRoute,
+    private notification: NotificationsService,
+    private dialog: MatDialog,
+    private formBuilder: FormBuilder
+  ) { }
 
   setEmptyCustomerInfo(): void {
     this.customer = {
       uuid: 0,
-      email:"",
+      email: "",
       name: "",
       lastname: "",
-      phoneNumber:""
+      phoneNumber: ""
     }
+    this.contactDetailSaved = false;
   }
 
   ngOnInit(): void {
@@ -70,9 +79,9 @@ export class AwsConnectPanelComponent implements OnInit {
     this.initAwsCcp();
   }
 
-  private buildUser(): void{
+  private buildUser(): void {
 
-    this.activatedRoute.data.subscribe((data: Partial<{ user: User}>) => {
+    this.activatedRoute.data.subscribe((data: Partial<{ user: User }>) => {
       this.employee = data.user
     });
   }
@@ -81,23 +90,23 @@ export class AwsConnectPanelComponent implements OnInit {
     const ccpUrl = aws_connect.ccpUrl;
     connect.core.initCCP(this.ccpDiv.nativeElement, {
       ccpUrl,
-     // loginPopup: true,
+      // loginPopup: true,
       loginUrl: aws_connect.loginUrl,
       softphone: {
         allowFramedSoftphone: true
       },
-      loginPopupAutoClose: true,      
-      loginOptions: {        
-        autoClose: true,            
-        height: 520,               
-        width: 420,                 
-        top: 40,                      
-        left: 40                       
+      loginPopupAutoClose: true,
+      loginOptions: {
+        autoClose: true,
+        height: 520,
+        width: 420,
+        top: 40,
+        left: 40
       },
-      region: aws_connect.region,        
-    });    
+      region: aws_connect.region,
+    });
 
-    connect.core.onAuthFail(()=>{
+    connect.core.onAuthFail(() => {
       connect.core.terminate();
       document.getElementById("ccpDiv")?.parentElement?.remove()
       this.showCcp = false;
@@ -106,28 +115,27 @@ export class AwsConnectPanelComponent implements OnInit {
     connect.contact((contact) => {
       contact.onAccepted((contact) => {
         var attributeMap: any = contact.getAttributes();
-        this.contactId= contact.contactId
+        this.contactId = contact.contactId;
+        this.contactDetailSaved = false;
         var phone = JSON.stringify(attributeMap["phoneNumber"]["value"]).split('+')[1].split('"')[0];
         this.userService.getUserByPhoneNumber(phone).toPromise().then((user) => {
           this.setEmptyCustomerInfo();
-          if (user){
+          if (user) {
             this.customer = {
               uuid: user.uuid,
               email: user.email,
               name: user.name,
               lastname: user.last_name,
               phoneNumber: "+" + user.phone_number
-             }
-          }else {
+            }
+            this.saveContactDetails();
+          } else {
             this.customer.phoneNumber = "+" + phone
           }
         });
       });
-      contact.onEnded(()=> {
-        // this.setEmptyCustomerInfo();
-      });
 
-      // console.log(contact.contactId ) 
+      // contact.onEnded(()=> {});
       // contact.onIncoming(function(contact) {});
       // contact.onRefresh(function(contact) {});
       // contact.onConnected(function() {});
@@ -136,41 +144,83 @@ export class AwsConnectPanelComponent implements OnInit {
 
   reloadCurrentRoute() {
     window.location.reload();
-}
+  }
 
   async saveContactDetails(): Promise<void> {
-  this.spinnerLoader = true;
-   await this.realtimeCommunications.updateDetails(
-      this.contactId,
-      this.customer.uuid,
-      this.employee?.uuid || 0 
-    ).toPromise()
-    .then(() => {
-      this.notification.showSuccessToast('USER_CREATED');
+    if (this.contactId) {
+      await this.realtimeCommunications.updateDetails(
+        this.contactId,
+        this.customer.uuid,
+        this.employee?.uuid || 0
+      ).toPromise()
+        .then(() => {
+          this.contactDetailSaved = true;
+        })
+        .catch((error) => {
+          error = "GENERIC_ERROR"
+          this.notification.showErrorToast(error);
+        })
+    }
+  }
+
+  registerCustomer(createClaim: boolean): void {
+    this.openRegisterCustomerModal().subscribe(async (user) => {
+      if (user) {
+        await this.loadNewCustomerData(user);
+        if (!this.contactDetailSaved) {
+          await this.saveContactDetails();
+        }
+        if (createClaim) {
+          this.openRegisterClaimModal();
+        }
+      }
     })
-    .catch((error) => {
-      this.spinnerLoader = false;
-      error = "GENERIC_ERROR"
-      this.notification.showErrorToast(error);
-    })
-    .finally(() => this.spinnerLoader = false)
+  }
+
+  openRegisterCustomerModal(): Observable<any> {
+    return this.dialog.open(RegisterCustomerComponent, {
+      width: '700px',
+      autoFocus: false,
+      data: {
+        phoneNumber: this.customer.phoneNumber,
+      }
+    }).afterClosed();
   }
 
   registerClaim(): void {
+    if (this.customer.email == "") {
+      this.registerCustomer(true);
+    } else {
+      this.openRegisterClaimModal();
+    }
+  }
+
+  openRegisterClaimModal(): void {
     this.dialog.open(RegisterClaimDialogComponent, {
       width: '700px',
       autoFocus: false,
       data: {
-        email: this.claimForm.get('email')?.value
+        email: this.customer.email
       }
     });
+  }
+
+  async loadNewCustomerData(user: any): Promise<void> {
+    const newUser = await this.userService.getUserByPhoneNumber(user.phone_number).toPromise();
+    this.customer = {
+      uuid: newUser.uuid,
+      email: user.email,
+      name: user.name,
+      lastname: user.last_name,
+      phoneNumber: "+" + user.phone_number
+    }
   }
 
   private buildForm(): void {
     this.claimForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.pattern(emailPattern)])],
-      type: ['',  Validators.compose([Validators.required])],
-      description: ['',  Validators.compose([Validators.required])]
+      type: ['', Validators.compose([Validators.required])],
+      description: ['', Validators.compose([Validators.required])]
     });
   }
 

@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: 'account',
-    canActivate: [IsTokenValidGuard],
+    // canActivate: [IsTokenValidGuard],
     loadChildren: () =>
       import('./account/account.module').then((m) => m.AccountModule),
   },

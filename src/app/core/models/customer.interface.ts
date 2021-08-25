@@ -6,5 +6,4 @@ export interface Customer {
     phoneNumber?: string;
     email?: string;
     isMVNOClient?: boolean
-
 }
