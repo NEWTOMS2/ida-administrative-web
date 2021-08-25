@@ -150,5 +150,8 @@
   "DURATION_DAYS": "Duración (días)",
   "INTRODUCE_VALUE": "Introduce un valor",
   "PRICE": "Precio ($)",
-  "PHONE_PLAN_CREATED": "Plan telefónico creado exitosamente"
+  "PHONE_PLAN_CREATED": "Plan telefónico creado exitosamente",
+  "EXIS_CLIENT": "Cliente de EXiS",
+  "PROSPECT": "Prospecto",
+  "DUPLICATED_KEY": "El usuario ya existe, por favor elige otro correo o número telefónico"
 }
