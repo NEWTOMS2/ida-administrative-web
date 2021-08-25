@@ -29,7 +29,7 @@ export class AwsConnectPanelComponent implements OnInit {
   public customer!: Customer;
   public showCcp = true;
   public contactLogo = images.contactLogo;
-  private contactId!: string;
+  private contactId!: string | null;
   private employee!: User | undefined;
   public addUserIcon = faUserPlus;
   public claimIcon = faEnvelopeOpenText;
@@ -135,7 +135,9 @@ export class AwsConnectPanelComponent implements OnInit {
         });
       });
 
-      // contact.onEnded(()=> {});
+      contact.onEnded(()=> {
+        this.contactId = null;
+      });
       // contact.onIncoming(function(contact) {});
       // contact.onRefresh(function(contact) {});
       // contact.onConnected(function() {});
