@@ -1,0 +1,64 @@
+<app-page-wrapper [title]="title">
+    <div class="row">
+        <div class="col-lg-8 col-12">
+            <div #awsWrapper>
+                <div *ngIf="showCcp; else openCcpBtn" class="aws" #ccpDiv></div>
+            </div>
+            <ng-template #openCcpBtn>
+                <div class="open-contact-wrapper">
+                    <div class="open-contact-panel" (click)="reloadCurrentRoute()">
+                        <img [src]="contactLogo" alt="Logo" loading="lazy" />
+                        <p>{{'OPEN_CONTACT_PANEL' | translate }}</p>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+        <div class="col-lg-4 col-12 col-wrapper">
+            <div class="customer-info-form">
+                <p class="contact-title"></p>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label class="form-label">{{'FULLNAME' | translate}}</label>
+                        <input type="text" class="form-control base-form"
+                            [value]="(customer.name + ' ' + customer.lastname)" readonly="true" />
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label class="form-label">{{'EMAIL' | translate}}</label>
+                        <input type="text" class="form-control base-form" [value]="customer.email" readonly="true" />
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label class="form-label">{{'PHONE_NUMBER' | translate}}</label>
+                        <input type="text" class="form-control base-form" [value]="customer.phoneNumber"
+                            readonly="true" />
+                    </div>
+                </div>
+                <div class="row  mt-auto">
+                    <div class="col-md-6 col-12">
+                        <button class="btn secondary-btn " type="button" (click)="registerCustomer(false)">
+                            <span *ngIf="!spinnerLoader; else loading">
+                                <fa-icon  [icon]="addUserIcon"></fa-icon>
+                            </span>
+                            <ng-template class="text-center" #loading>
+                                <div class="spinner-border spinner-border-sm" role="status">
+                                    <span class="sr-only"></span>
+                                </div>
+                            </ng-template>
+                        </button>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <button class="btn secondary-btn" type="button" (click)="registerClaim()">
+                            <fa-icon  [icon]="claimIcon"></fa-icon>
+                        </button>
+                    </div>
+              <div class="col-12">
+                <button class="btn secondary-btn mt-2" type="button" (click)="setEmptyCustomerInfo()">
+                    {{'CLEAN_CLIENT_DATA' | translate}}
+                </button>
+              </div>
+                   
+                </div>
+
+            </div>
+        </div>
+    </div>
+</app-page-wrapper>

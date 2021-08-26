@@ -1,0 +1,179 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/app";
+
+.ticket-header {
+    background-color: #fff !important;
+    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
+    align-items: center;
+
+    .ticket-header-container{
+        align-items: center;
+    }
+
+    .status-tag {
+        color: white;
+        font-weight: 400;
+        text-align: center;
+        padding: 0.2rem 0.75rem;
+        font-size: 1rem;
+        border-radius: 0.25rem;
+    }
+
+    .request-id{
+        color: $dark-blue;
+    }
+}
+
+.ticket-wrapper{
+    min-height: 70vh;
+
+    .ticket-details-wrapper{
+        background-color: $secondary-ligther-color !important;
+        border-top-left-radius: 0.25rem !important;
+        border-bottom-left-radius: 0.25rem !important;
+        padding-top: 3rem;
+        box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
+    }
+
+    .detail-form {
+        @extend .base-form;
+    }
+
+    .ticket-status-wrapper{
+        display: flex;
+        flex-direction: column;
+        background-color: $background-color;
+        border-top-right-radius: 0.25rem !important;
+        border-top-right-radius: 0.25rem !important;
+        box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
+
+    }
+
+    .text-input{
+        line-height: 5 !important;
+    }
+
+    .status-wrapper{
+        @extend .base-form;
+        background-color:  $secondary-ligther-color  !important;
+        border-radius: 100px;
+        min-height: 50px;
+        border-radius: 0.25rem;
+        align-content: center;
+        align-items: center;
+
+    }
+
+    .status-tag {
+        color: white;
+        display: inline-block;
+        font-weight: 400;
+        line-height: 1;
+        text-align: center;
+        padding: 0.375rem 0.75rem;
+        font-size: 0.85rem;
+        border-radius: 0.25rem;
+        min-width: 100%;
+    }
+
+    .status-item {
+        padding: 0.375rem 0.75rem;
+        font-weight: 300 !important;
+
+    }
+
+    .status-title {
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        color: $ligth-blue;
+        padding: 0 !important
+        // margin-bottom: 0 !important
+    }
+
+
+    .update-status-container{
+        border-bottom: 1px solid $ligth-blue;
+        // justify-content: space-between !important;
+        border-radius: 0.25rem;
+
+        .form-select{
+            border-bottom: 0 !important;
+            border-top-left-radius:  0 !important;
+            border-top-right-radius:  0 !important;
+            border-bottom-right-radius:  0 !important;
+            text-transform: uppercase;
+
+        }
+
+        .btn-sm{
+            padding: 0.375rem 2.25rem 0.20rem 0.75rem !important;
+            line-height: 1.5;
+            border-top-left-radius:  0 !important;
+            border-top-right-radius:  0 !important;
+            border-bottom-left-radius:  0 !important;
+            text-transform: uppercase;
+        }
+    }
+
+
+    
+    textarea {
+        border-bottom-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+        border-top: 1px solid $ligth-blue;
+        border-left: 1px solid $ligth-blue;
+        border-right: 1px solid $ligth-blue;
+        font-size: 13px;
+    }
+
+
+    .status-container-wrapper{
+        margin-top: auto;
+    }
+}
+
+.form-switch {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    p {
+        margin-bottom: 0;
+        font-size: 12px;
+        margin-left: 0.5rem;
+    }
+}
+
+.switch-wrapper {
+    display: flex;
+    border-right: 1px solid $ligth-blue;
+}
+
+.form-check-input:checked {
+    background-color: $ligth-blue;
+    border-color: $ligth-blue;
+}
+
+.pagination {
+    padding-left: none !important;
+    user-select: none;
+
+}
+
+.nav-wrapper  {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.page-link {
+    color:  $ligth-blue !important;
+    cursor: pointer;
+
+    &:hover{
+        background-color: $ligth-blue !important;
+        color: $white !important;
+    }
+}
+
+ol, ul, dl {
+    margin-bottom: 0rem !important
+}

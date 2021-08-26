@@ -1,0 +1,64 @@
+@import "../../../../styles/variables.scss";
+
+.aws {
+  height: 75vh;
+}
+
+.openCcpBtn {
+  height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.customer-info-form {
+  background: $contact-info-form;
+  border-radius: 5px;
+  padding: 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+@media (max-width: 991px) {
+  .col-wrapper {
+    margin: 1rem 0rem;
+  }
+}
+
+.contact-title{
+  font-size: 15px;
+  font-weight: bold;
+  color: $contact-title;
+  text-transform: uppercase;
+ }
+
+ .open-contact-wrapper {
+   display: flex;
+   height: 75vh;
+   align-items: center;
+   justify-content: center;
+ }
+
+ .open-contact-panel {
+  text-align: center;
+  width: fit-content;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 500;
+  border: 1px solid $open-contact-panel-button;
+  padding: 10px;
+  border-radius: 8px;
+  cursor:pointer;
+  transition: 0.4s;
+
+  color: $open-contact-panel-button;
+   img {
+     height: 80px;
+   }
+ }
+
+ .open-contact-panel:hover{
+   transition: 0.4s;
+   background: $open-contact-panel-button-hover;
+ }

@@ -1,0 +1,116 @@
+@import "../../../../styles/variables";
+
+
+@media screen and (max-width: 960px) {
+  .small-searcher{
+    width: 100% !important;
+  }
+}
+
+.table {
+  vertical-align: middle !important;
+}
+
+.header-table {
+  vertical-align: middle !important;
+}
+
+tr.example-detail-row {
+  height: 0;
+  box-shadow: 4px 0px 0px #63709f inset;
+}
+
+.example-element-row td {
+  border-bottom-width: 0;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.element-expand-content {
+  padding: 30px;
+}
+
+@media (max-width: 600px) {
+  .element-expand-content {
+    padding: 10px;
+  }
+}
+
+/*--- Table header ---  */
+.row {
+  --bs-gutter-x: 0rem !important
+}
+
+// 
+
+th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+border-bottom-style: none;
+}
+
+.mat-row {
+  border-bottom: none;
+  cursor: pointer;
+}
+
+.example-expanded-row {
+  border-bottom: 0.1px solid #63709f73;
+  box-shadow: 4px 0px 0px #63709f inset;
+}
+
+.paginator-table {
+border-top-left-radius: 0px;
+border-top-right-radius: 0px;
+border-bottom-left-radius: 10px;
+border-bottom-right-radius: 10px;
+overflow: hidden !important;
+box-shadow: 0px 1px 3px 1px rgba(181, 181, 181, 0.56);
+}
+
+
+// /* --- Filters --- */
+.small-searcher {
+    width: 90%;
+}
+
+.form-control {
+    font-size: 0.8rem  !important;
+    font-weight: 400 !important;
+    color: $dark-blue !important;
+    background-color: #fff0  !important;
+    border-top: 1px solid $ligth-blue  !important;
+    border-bottom: 1px solid $ligth-blue  !important;
+    border-left:  1px solid $ligth-blue  !important;
+    border-right: 0 !important;
+}
+
+.form-label-searcher {
+  color: #fff0;
+}
+
+.input-group-text {
+    font-size: 0.85rem;
+    color:  $dark-blue !important;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #fff0;
+    border-top: 1px solid $ligth-blue  !important;
+    border-bottom: 1px solid $ligth-blue  !important;
+    border-right: 1px solid $ligth-blue  !important;
+    border-left: 0 !important;
+}
+
+
+.page-options {
+   .btn-group {
+        min-width: 75%;
+        margin-bottom: 3rem;
+    }
+}
+
+
+

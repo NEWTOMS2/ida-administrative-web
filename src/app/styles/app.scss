@@ -1,0 +1,172 @@
+@import "../styles/variables.scss";
+
+body {
+  font-family: $font-family !important;
+  color: $primary-text;
+  background: $background;
+}
+
+.thin-font {
+  font-weight: 100;
+}
+
+.light-font {
+  font-weight: 300;
+}
+
+.bold-font {
+  font-weight: 700;
+}
+
+.primary-btn {
+  width: 100%;
+  color: $secondary-text !important;
+  background: $primary-color !important;
+  font-size: 14px !important;
+  &:hover{
+    color: $white !important;
+  }
+}
+
+.secondary-btn {
+  width: 100%;
+  color: $white !important;
+  background: $secondary-color !important;
+  font-size: 14px !important;
+
+  &:hover{
+    background: $primary-color !important;
+    color: $white !important
+  }
+}
+
+.light-btn {
+  width: 100%;
+  color: $secondary-color;
+  border: 1px solid $secondary-color;
+  background: #fff0;
+  font-size: 14px;
+
+  &:hover{
+    background:  $secondary-color;
+    color: $white !important;
+  }
+}
+
+.invalid-feedback {
+  position: fixed;
+  font-size: 12px;
+}
+
+.input-group-append .input-group-text {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+
+/* Badge */
+.primary-badge{
+  background-color: $primary-color !important;
+}
+.secondary-badge{
+  background-color: $secondary-color  !important;
+}
+
+.info-badge{
+  background-color: $info-color  !important;
+}
+
+
+/* Forms */
+
+.base-form {
+  background-color: #fff0 !important;
+  color: $dark-blue !important;
+  font-size: 0.8rem !important;
+  border: 1px solid $ligth-blue;
+  font-weight: 400 !important
+}
+
+.basic-form, .mat-dialog-container{
+  background-color:  $ligth-blue-1 !important;
+  
+  .form-control {
+    @extend .base-form
+  }
+}
+
+.form-select {
+  @extend .base-form
+}
+
+.form-label {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: $ligth-blue;
+  margin-bottom: 0 !important
+}
+
+
+.form-control:invalid:focus, .form-control:focus  {
+  box-shadow: none !important;
+}
+
+
+/* Toast alerts*/
+.toast-container .ngx-toastr {
+  box-shadow: none !important;
+}
+
+.toast-message {
+  font-size: 13px !important;
+}
+
+/*--- Data Table ---  */
+
+.table {
+  margin-bottom: 0px !important;
+  font-family: $font-family;
+}
+
+.mat-table {
+  box-shadow: 0px 1px 3px 1px rgba(181, 181, 181, 0.56);
+}
+
+/*--- Table header ---  */
+
+mat-header-row {
+  background-color: $white;
+}
+
+.table-header  {
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+  background-color: #f6f7f9;
+  box-shadow: 0px 1px 3px 1px rgba(181, 181, 181, 0.56);
+}
+
+/*--- Data cells ---  */
+mat-cell{
+  color: $primary-color !important;
+  font-weight: 400;
+}
+
+.mat-header-cell {
+color: $dark-blue !important
+}
+
+.table-row-item{
+background-color:$secondary-ligther-color;
+}
+
+/*--- Switchs ---*/
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar,
+.mat-slide-toggle.mat-checked .mat-ripple-element {
+  background-color: $clear-primary-color !important;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  background-color:  $primary-color  !important;
+}

@@ -1,0 +1,34 @@
+@import "../../../../../styles/variables.scss";
+
+.title-font{
+    font-weight: 500 !important;
+}
+
+.form-title{
+    font-size: 13px;
+    font-weight: bold;
+    color: $contact-title;
+    text-transform: uppercase;
+}
+
+.switch {
+    margin-right: 10px !important;
+}
+
+.invalid-feedback {
+    font-size: 0.80em !important;
+}
+
+.form-checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkbox-label {
+    margin-left: 1rem;
+}
+
+.form-select {
+    border: 1px solid $ligth-blue;
+}

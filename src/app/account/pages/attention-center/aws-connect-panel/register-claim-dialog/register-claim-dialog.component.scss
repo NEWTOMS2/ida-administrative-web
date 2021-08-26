@@ -1,0 +1,20 @@
+@import "../../../../../styles/variables.scss";
+
+.title-font{
+    font-weight: 500 !important;
+}
+
+.form-title{
+    font-size: 13px;
+    font-weight: bold;
+    color: $contact-title;
+    text-transform: uppercase;
+}
+
+.switch {
+    margin-right: 10px !important;
+}
+
+.invalid-feedback {
+    font-size: 0.80em !important;
+}
