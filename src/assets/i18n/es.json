@@ -5,11 +5,13 @@
   "USER_INACTIVE": "Usuario no se encuentra en estado Activo",
   "GENERIC_ERROR": "Ocurrió un error inesperado.",
   "USER_CREATED": "Usuario creado satisfactoriamente.",
+  "REGISTERED_USER": "Usuario registrado satisfactoriamente.",
   "FAQ_UPDATED": "Pregunta frecuente actualizada exitosamente",
   "CLAIM_STATE_CREATED": "Estado del reclamo creado satisfactoriamente",
   "USER_SUCCESSFULLY_UPDATED": "Usuario actualizado exitosamente",
   "DUPLICATED_PHONE_NUMBER": "El número telefónico ya existe en el sistema",
   "TICKET_SUCCESSFULLY_CREATED": "La solicitud ha sido creada satisfactoriamente",
+  
   "SIGN_IN": "Inicia sesión en tu cuenta",
   "EMAIL_ADDRESS": "Correo electrónico",
   "PASSWORD": "Contraseña",

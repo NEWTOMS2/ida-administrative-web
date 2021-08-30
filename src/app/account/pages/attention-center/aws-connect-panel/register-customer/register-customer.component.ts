@@ -84,7 +84,7 @@ export class RegisterCustomerComponent implements OnInit {
       const user = {...this.userForm.value};
       user.is_mvno_client = user.is_mvno_client == "EXIS_CLIENT" ? true : false;
       this.usersService.createCustomer(user).toPromise().then(() => {
-        this.notificationService.showSuccessToast('USER_REGISTERED');
+        this.notificationService.showSuccessToast('REGISTERED_USER');
         this.spinnerLoader = false;
         this.dialogRef.close(user);
       }).catch((error)=>{
