@@ -72,13 +72,11 @@ export class TicketsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    // this.initDataTable();
   }
 
   private initDataTable(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-    console.log(this.dataSource.paginator)
   }
 
   private buildSelectorData(): void {
@@ -101,7 +99,7 @@ export class TicketsComponent implements OnInit, AfterViewInit {
 
       let tickets = content.map((ticket) =>{
         const currentStatus = this.getCurrentTicketStatus(ticket);
-        console.log('holaaaa')
+
         return {
           id: ticket.id || 0,
           type: searchTranslation(this.translateService, ticket.type || ""),
@@ -112,7 +110,6 @@ export class TicketsComponent implements OnInit, AfterViewInit {
         }
       })
 
-      console.log(tickets)
       this.dataSource = new MatTableDataSource(tickets as TableTicket[]);
       this.initDataTable()
     });
