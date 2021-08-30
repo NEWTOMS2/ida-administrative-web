@@ -1,4 +1,4 @@
-import { Component, Input, NgZone, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, NgZone, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
@@ -24,6 +24,7 @@ interface newAnswer {
 })
 export class FaqDetailsComponent implements OnInit {
   @Input() faq!: Faq
+  @Output() faqTypeUpdated = new EventEmitter<any>();
   faqForm!: FormGroup;
   newAnswersForm!: FormGroup;
   newAnswers: newAnswer[] = [];
@@ -110,6 +111,7 @@ export class FaqDetailsComponent implements OnInit {
     if (this.faqForm.get('type')?.dirty) {
       const type = this.faqTypes.find((type) => type.translatedType == this.faqForm.get('type')?.value).type
       await this.faqService.udpateFaqType(this.faq.dw_intent, type).toPromise()
+      this.faqTypeUpdated.emit({faq: this.faq.dw_intent, type: type})
     }
   }
 

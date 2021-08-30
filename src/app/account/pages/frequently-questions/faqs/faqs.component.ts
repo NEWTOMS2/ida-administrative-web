@@ -36,7 +36,7 @@ export class FaqsComponent implements OnInit {
   public searchIcon = faSearch;
   public expandedElement!: Faq | null;
   public faqForm!: FormGroup;
-
+  public faqs!: Faq[];
 
   get actions(): TemplateRef<any> {
     return this.itemTmpl;
@@ -98,10 +98,16 @@ export class FaqsComponent implements OnInit {
           answers: faq.answers
         }
       })
+      this.faqs = faqs;
       this.dataSource = new MatTableDataSource(faqs);
     });
   }
 
+  updateFaqType(event: any): void {
+    const x = this.faqs.findIndex((faq) => faq.dw_intent == event.faq);
+    this.faqs[x].type = event.type;
+    this.dataSource.data = this.faqs;
+  }
   
   setTableRowColor(index: number): string{
     let classColor = "";
