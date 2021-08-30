@@ -5,6 +5,7 @@
   "USER_INACTIVE": "The currente state of the client is inactive",
   "GENERIC_ERROR": "Some unexpected error occurs.",
   "USER_CREATED": "User successfully created.",
+  "REGISTERED_USER": "User successfully registered",
   "FAQ_UPDATED": "Frequently question successfully updated",
   "CLAIM_STATE_CREATED": "State claim successfully saved",
   "USER_SUCCESSFULLY_UPDATED": "User successfully updated",
