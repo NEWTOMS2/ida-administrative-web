@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { AuthService } from '../../core/services/auth.service';
 
 @Injectable({
@@ -10,7 +11,9 @@ export class LoggedUserGuard implements CanActivate {
 
   async canActivate(): Promise<boolean> {
     if (localStorage.getItem('Token')!) {
-      return await this.authService.isUserLogged(localStorage.getItem('Token')!).then((user)=> {
+      const token = this.authService.decrypt(localStorage.getItem('Token') || "", environment.encryptKey)
+
+      return await this.authService.isUserLogged(token).then((user)=> {
         if (user && !user.data.expired) {
             this.router.navigate(['/account/tickets']);
         }
