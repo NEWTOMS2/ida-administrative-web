@@ -72,7 +72,6 @@ export class TicketsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.initDataTable();
   }
 
   private initDataTable(): void {
@@ -83,23 +82,24 @@ export class TicketsComponent implements OnInit, AfterViewInit {
   private buildSelectorData(): void {
     this.ticketStates = ticketStates.map((state)=> {
       return {
-        state:  searchTranslation(this.translateService,state.state),
+        state:  searchTranslation(this.translateService,state.state || ""),
         color: state.color
       }
     })
 
-    this.ticketTypes = ticketTypes.map((type) => searchTranslation(this.translateService, type))
+    this.ticketTypes = ticketTypes.map((type) => searchTranslation(this.translateService, type || ""))
   }
   
   private buildTable(): void {
 
     this.activatedRoute.data.subscribe((data: Partial<{ tickets: Ticket[]}>) => {
       const content = data.tickets != null ? data.tickets : []
+
       this.allTickets = content;
 
       let tickets = content.map((ticket) =>{
         const currentStatus = this.getCurrentTicketStatus(ticket);
-        
+
         return {
           id: ticket.id || 0,
           type: searchTranslation(this.translateService, ticket.type || ""),
@@ -111,6 +111,7 @@ export class TicketsComponent implements OnInit, AfterViewInit {
       })
 
       this.dataSource = new MatTableDataSource(tickets as TableTicket[]);
+      this.initDataTable()
     });
 
   }
