@@ -53,6 +53,7 @@ export class FaqDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.buildSelectorData()
     this.buildForm();
+    this.buildNewAnswersForm();
     this.setDeleteAttributeToAnswer();
   }
 
@@ -194,8 +195,10 @@ export class FaqDetailsComponent implements OnInit {
       ...allFaqs,
       type: [this.faq.type]
     });
+  }
 
-    this.newAnswersForm = this.formBuilder.group({})
+  private buildNewAnswersForm(): void {
+    this.newAnswersForm = this.formBuilder.group({});
   }
 
   openConfirmationModal(content: any): void {

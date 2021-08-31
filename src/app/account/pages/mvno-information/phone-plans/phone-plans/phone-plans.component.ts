@@ -86,24 +86,7 @@ export class PhonePlansComponent implements OnInit, AfterViewInit {
   }
 
   updatePhonePlan(updatedPhonePlan: any): void {
-
-    this.phonePlans = this.phonePlans.map((phonePlan)=> {
-      if (  phonePlan.id != updatedPhonePlan.id) return phonePlan;
-      else {
-        return {
-          id: phonePlan.id,
-          name: updatedPhonePlan.name,
-          description: updatedPhonePlan.description,
-          minutes: updatedPhonePlan.minutes,
-          sms: updatedPhonePlan.sms,
-          mb: updatedPhonePlan.mb,
-          price: updatedPhonePlan.price,
-          duration: updatedPhonePlan.duration
-        } as PhonePlan;
-      }
-    })
-
-    this.refresh()
+    this.reloadPhonePlans();
   }
 
   reloadPhonePlans(): void {
