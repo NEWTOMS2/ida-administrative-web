@@ -88,12 +88,12 @@ export class PhonePlanDetailsComponent implements OnInit {
           this.notification.showSuccessToast('PHONE_PLAN_SUCCESSFULLY_UPDATED');
           this.phonePlanState = state;
           this.phonePlanDetailForm.markAsPristine();
-          this.update.emit(this.phonePlanDetailForm.value)
+          this.update.emit(phonePlan)
         })
         .catch((error) => {
           this.spinnerLoader = false;
           this.notification.showErrorToast("GENERIC_ERROR");
-        });;
+        });
     }
   }
 

@@ -58,7 +58,7 @@ export class UsersCreationComponent implements OnInit {
       .then(() => {
         this.spinnerLoader = false;
         this.notification.showSuccessToast('USER_CREATED');
-        this.dialogRef.close()
+        this.dialogRef.close("User added");
       })
       .catch((error) => {
         this.spinnerLoader = false;
