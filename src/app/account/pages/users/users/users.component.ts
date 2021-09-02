@@ -11,6 +11,8 @@ import { User } from 'src/app/core/models/user.interface';
 import { searchTranslation } from 'src/app/utils/searchTranslation';
 import { UsersCreationComponent } from '../users-creation/users-creation.component';
 import { userTypes } from 'src/app/core/config/configuration';
+import { UsersService } from 'src/app/core/services/users.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-users',
@@ -40,8 +42,8 @@ export class UsersComponent implements OnInit, AfterViewInit {
   constructor(
     private translateService: TranslateService,
     private dialog: MatDialog,
-    private activatedRoute: ActivatedRoute
-
+    private activatedRoute: ActivatedRoute,
+    private usersService: UsersService
     ) { }
 
   ngOnInit(): void {
@@ -76,17 +78,27 @@ export class UsersComponent implements OnInit, AfterViewInit {
     this.refresh()
   }
 
-
   getUsers(): void {
     this.activatedRoute.data.subscribe((data: Partial<{ users: User[]}>) => {
       this.users = data.users || []
     });
   }
 
+  async getUsersFromDb(): Promise<any> {
+    return this.usersService.get().toPromise();
+  }
+
   openUserCreationModal(): void {
     this.dialog.open(UsersCreationComponent, {
       width: '700px',
       autoFocus: false
+    }).afterClosed().subscribe(async(data)=> {
+      if (data == "User added") {
+        await this.getUsersFromDb().then((data: any)=> {
+          this.users = data || [];
+        });
+        this.refresh();
+      }
     });
   }
 

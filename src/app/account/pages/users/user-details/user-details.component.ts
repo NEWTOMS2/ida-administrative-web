@@ -37,7 +37,6 @@ export class UserDetailsComponent implements OnInit {
     this.buildEnums();
     this.buildUser();
     this.buildForm();
-
   }
 
   

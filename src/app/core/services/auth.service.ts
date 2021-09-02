@@ -63,7 +63,6 @@ export class AuthService {
       })
       .toPromise()
       .then((user) => {
-        console.log(user)
         return user;
       })
       .catch(() => {
