@@ -157,6 +157,15 @@ mat-cell{
 color: $dark-blue !important
 }
 
+.mat-row {
+  min-height: 60px !important;
+}
+
+.mat-cell {
+  padding: 10px;
+  font-size: 13px;
+}
+
 .table-row-item{
 background-color:$secondary-ligther-color;
 }
@@ -169,4 +178,17 @@ background-color:$secondary-ligther-color;
 
 .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
   background-color:  $primary-color  !important;
+}
+
+@media screen and (max-width: 960px) {
+  .small-searcher{
+    width: 100% !important;
+  }
+}
+
+
+@media (min-width: 760px) and (min-height: 600px) {
+  .mat-dialog-content {
+    display: contents !important;
+  }
 }

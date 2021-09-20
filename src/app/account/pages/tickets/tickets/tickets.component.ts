@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 
 import { ticketStates, ticketTypes } from 'src/app/core/config/configuration';
 
@@ -54,6 +54,7 @@ export class TicketsComponent implements OnInit, AfterViewInit {
     'state'
   ];
   private user!: User | undefined;
+  public filterAgentClaims = false;
 
   constructor(
     private translateService: TranslateService,
@@ -72,6 +73,7 @@ export class TicketsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this.initDataTable()
   }
 
   private initDataTable(): void {
@@ -109,15 +111,11 @@ export class TicketsComponent implements OnInit, AfterViewInit {
           agent: ticket.employee?.email  || "",
         }
       })
-
       this.dataSource = new MatTableDataSource(tickets as TableTicket[]);
-      this.initDataTable()
     });
-
   }
 
   private buildUser(): void{
-
     this.activatedRoute.data.subscribe((data: Partial<{ user: User}>) => {
       this.user = data.user
     });
@@ -156,14 +154,36 @@ export class TicketsComponent implements OnInit, AfterViewInit {
   }
 
   applyFilter(filterValue: any): void {
+    console.log(filterValue)
     const value =  filterValue.value === null ? '' : filterValue.value;
     filterValue = value.trim();
     filterValue = value.toLowerCase();
+    if (this.filterAgentClaims) {
+      this.dataSource.filterPredicate = (data: TableTicket, filter: string):  boolean => {
+        const dataStr = this.defaultFilter(data);
+        const transformedFilter = filter.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        return (dataStr.indexOf(transformedFilter) != -1) && data.agent == this.user?.email;
+      } 
+    }
+    else {
+      this.dataSource.filterPredicate = (data: TableTicket, filter: string):  boolean => {
+        const dataStr = this.defaultFilter(data);
+        const transformedFilter = filter.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        return dataStr.indexOf(transformedFilter) != -1;
+       }
+    }
     this.dataSource.filter = value;
+  }
+
+  defaultFilter(data: TableTicket): string {
+    return Object.keys(data).reduce((currentTerm: string, key: string) => {
+      return (currentTerm + (data as { [key: string]: any })[key] + '◬');
+    }, '').normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
   }
 
   filterAgentRequests(value: string): void {
     const filter = value == 'MY_REQUESTS' ? this.user?.email : ''
+    this.filterAgentClaims = value == 'MY_REQUESTS' ? true : false;
     this.applyFilter({value: filter});
   }
 
@@ -178,9 +198,10 @@ export class TicketsComponent implements OnInit, AfterViewInit {
     const ticket = this.allTickets.filter((ticket) => ticket.id == selectedTicket.id)[0]
     const currentStatus = this.getCurrentTicketStatus(ticket);
 
+    console.log(ticket);
     this.router.navigateByUrl('/account/tickets/details', { state: {
       detail: {
-        id: ticket.claimId,
+        id: ticket.id,
         client: ticket.client.email,
         lastname: ticket.client.lastname,
         name: ticket.client.name,

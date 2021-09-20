@@ -1,134 +1,136 @@
-<div class="container basic-form pt-4">
+<div class="basic-form pt-4">
     <div class="row justify-content-center">
         <div class="col-12 col-md-10">
-            <form [formGroup]="phonePlanForm" class="needs-validation" novalidate>
-                <div class="row form-row mb-4" id="name-group">
-                    <div class="col-12 col-md-6 mb-4 mb-md-0">
-                        <label class="form-label">{{ 'NAME' | translate }}</label>
-                        <input type="text" formControlName="name" class="form-control" [ngClass]="{
+            <mat-dialog-content>
+                <form [formGroup]="phonePlanForm" class="needs-validation" novalidate>
+                    <div class="row form-row mb-4" id="name-group">
+                        <div class="col-12 col-md-6 mb-4 mb-md-0">
+                            <label class="form-label">{{ 'NAME' | translate }}</label>
+                            <input type="text" formControlName="name" class="form-control" [ngClass]="{
                             'is-invalid':
                               this.phonePlanForm.get('name')?.invalid &&
                               this.phonePlanForm.get('name')?.touched
                           }" />
-                        <div class="invalid-feedback">
-                            {{"INTRODUCE_NAME" | translate}}
+                            <div class="invalid-feedback">
+                                {{"INTRODUCE_NAME" | translate}}
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-12 col-md-6">
-                        <label class="form-label">{{ 'DURATION_DAYS' | translate }}</label>
-                        <input type="number" formControlName="duration" class="form-control" [ngClass]="{
+                        <div class="col-12 col-md-6">
+                            <label class="form-label">{{ 'DURATION_DAYS' | translate }}</label>
+                            <input type="number" formControlName="duration" class="form-control" [ngClass]="{
                             'is-invalid':
                               this.phonePlanForm.get('duration')?.invalid &&
                               this.phonePlanForm.get('duration')?.touched
                           }" />
-                        <div class="invalid-feedback">
-                            {{"INTRODUCE_VALUE" | translate}}
+                            <div class="invalid-feedback">
+                                {{"INTRODUCE_VALUE" | translate}}
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="row form-row mb-4" id="name-group">
-                    <div class="col-12 col-md-6  mb-4 mb-md-0">
-                        <label class="form-label">{{ 'MINUTES' | translate }}</label>
-                        <input type="number" formControlName="minutes" class="form-control" [ngClass]="{
+                    <div class="row form-row mb-4" id="name-group">
+                        <div class="col-12 col-md-6  mb-4 mb-md-0">
+                            <label class="form-label">{{ 'MINUTES' | translate }}</label>
+                            <input type="number" formControlName="minutes" class="form-control" [ngClass]="{
                             'is-invalid':
                               this.phonePlanForm.get('minutes')?.invalid &&
                               this.phonePlanForm.get('minutes')?.touched
                           }" />
-                        <div class="invalid-feedback">
-                            {{"INTRODUCE_VALUE" | translate}}
+                            <div class="invalid-feedback">
+                                {{"INTRODUCE_VALUE" | translate}}
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-12 col-md-6">
-                        <label class="form-label">{{ 'MB' | translate }}</label>
-                        <input type="number" formControlName="mb" class="form-control" [ngClass]="{
+                        <div class="col-12 col-md-6">
+                            <label class="form-label">{{ 'MB' | translate }}</label>
+                            <input type="number" formControlName="mb" class="form-control" [ngClass]="{
                             'is-invalid':
                               this.phonePlanForm.get('mb')?.invalid &&
                               this.phonePlanForm.get('mb')?.touched
                           }" />
-                        <div class="invalid-feedback">
-                            {{"INTRODUCE_VALUE" | translate}}
+                            <div class="invalid-feedback">
+                                {{"INTRODUCE_VALUE" | translate}}
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="row form-row mb-4" id="name-group">
-                    <div class="col-12 col-md-6">
-                        <label class="form-label">{{ 'SMS' | translate }}</label>
-                        <input type="number" formControlName="sms" class="form-control" [ngClass]="{
+                    <div class="row form-row mb-4" id="name-group">
+                        <div class="col-12 col-md-6">
+                            <label class="form-label">{{ 'SMS' | translate }}</label>
+                            <input type="number" formControlName="sms" class="form-control" [ngClass]="{
                             'is-invalid':
                               this.phonePlanForm.get('sms')?.invalid &&
                               this.phonePlanForm.get('sms')?.touched
                           }" />
-                        <div class="invalid-feedback">
-                            {{"INTRODUCE_VALUE" | translate}}
+                            <div class="invalid-feedback">
+                                {{"INTRODUCE_VALUE" | translate}}
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-12 col-md-6">
-                        <label class="form-label">{{ 'PRICE' | translate }}</label>
-                        <input type="number" formControlName="price" class="form-control" [ngClass]="{
+                        <div class="col-12 col-md-6">
+                            <label class="form-label">{{ 'PRICE' | translate }}</label>
+                            <input type="number" formControlName="price" class="form-control" [ngClass]="{
                             'is-invalid':
                               this.phonePlanForm.get('price')?.invalid &&
                               this.phonePlanForm.get('price')?.touched
                           }" />
-                        <div class="invalid-feedback">
-                            {{"INTRODUCE_VALUE" | translate}}
+                            <div class="invalid-feedback">
+                                {{"INTRODUCE_VALUE" | translate}}
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="row form-row mb-4" id="name-group">
-                    <div class="col-12 mb-md-0">
-                        <label class="form-label">{{ 'TYPE' | translate }}</label>
-                        <select class="form-select" formControlName="type" [ngClass]="{
+                    <div class="row form-row mb-4" id="name-group">
+                        <div class="col-12 mb-md-0">
+                            <label class="form-label">{{ 'TYPE' | translate }}</label>
+                            <select class="form-select" formControlName="type" [ngClass]="{
                                 'is-invalid':
                                 this.phonePlanForm.get('type')?.invalid &&
                                 this.phonePlanForm.get('type')?.touched
                             }">
-                            <option *ngFor="let type of phonePlanTypes" value="{{type}}">
-                                {{ formatContent(type) | translate }}
-                            </option>
-                        </select>
-                        <div class="invalid-feedback">
-                            {{"INTRODUCE_VALUE" | translate}}
+                                <option *ngFor="let type of phonePlanTypes" value="{{type}}">
+                                    {{ formatContent(type) | translate }}
+                                </option>
+                            </select>
+                            <div class="invalid-feedback">
+                                {{"INTRODUCE_VALUE" | translate}}
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="row form-row" id="name-group">
-                    <div class="col-12">
-                        <div style="width: 100%;">
-                            <label class="form-label">{{ 'DESCRIPTION' | translate }}</label>
-                            <textarea rows="3" type="text" formControlName="description" value="description"
-                                class="form-control textarea-form" [ngClass]="{
+                    <div class="row form-row" id="name-group">
+                        <div class="col-12">
+                            <div style="width: 100%;">
+                                <label class="form-label">{{ 'DESCRIPTION' | translate }}</label>
+                                <textarea rows="3" type="text" formControlName="description" value="description"
+                                    class="form-control textarea-form" [ngClass]="{
                                 'is-invalid':
                                   this.phonePlanForm.get('description')?.invalid &&
                                   this.phonePlanForm.get('description')?.touched
                               }"></textarea>
-                            <div class="invalid-feedback">
-                                {{"INTRODUCE_CONTENT" | translate}}
+                                <div class="invalid-feedback">
+                                    {{"INTRODUCE_CONTENT" | translate}}
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="row form-row mb-4 mt-5 form-btn" id="name-group">
-                    <div class="col-12 col-md-3">
-                        <button class="btn secondary-btn btn-block" type="button" (click)="createPhonePlan()">
-                            <span *ngIf="!spinnerLoader; else loading" class="btn-content"> {{"SAVE" | translate |
-                                uppercase }}</span>
-                            <ng-template class="text-center" #loading>
-                                <div class="spinner-border spinner-border-sm" role="status">
-                                    <span class="sr-only"></span>
-                                </div>
-                            </ng-template>
-                        </button>
+                    <div class="row form-row mb-4 mt-5 form-btn" id="name-group">
+                        <div class="col-12 col-md-3">
+                            <button class="btn secondary-btn btn-block" type="button" (click)="createPhonePlan()">
+                                <span *ngIf="!spinnerLoader; else loading" class="btn-content"> {{"SAVE" | translate |
+                                    uppercase }}</span>
+                                <ng-template class="text-center" #loading>
+                                    <div class="spinner-border spinner-border-sm" role="status">
+                                        <span class="sr-only"></span>
+                                    </div>
+                                </ng-template>
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </mat-dialog-content>
         </div>
     </div>
 </div>
