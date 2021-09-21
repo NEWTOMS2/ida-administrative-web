@@ -39,7 +39,7 @@
 
         <table mat-table [dataSource]="dataSource" class="table mat-elevation-z8" matSort multiTemplateDataRows>
           <ng-container *ngFor="let column of displayedColumns" matColumnDef="{{ column }}">
-            <th class="header-table" mat-header-cell *matHeaderCellDef>
+            <th class="header-table" mat-sort-header mat-header-cell *matHeaderCellDef>
               {{ column.toUpperCase() | translate }}
             </th>
             <td mat-cell *matCellDef="let element">{{ element[column] | translate }}</td>

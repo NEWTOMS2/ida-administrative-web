@@ -108,10 +108,12 @@
   "PURCHASES": "Compras", 
   "INTERNET_ISSUE": "Problema de internet", 
   "BLOCKING_SERVICES": "Bloqueo de servicios",
-  "BOT_CLAIM": "Digital Worker",
+  "BOT_CLAIM": "Trabajador digital",
   "PAYMENT_ISSUE": "Inconveniente de pago",
   "SERVICE_COVERAGE_ISSUE": "Señal del servicio",
   "PACKAGE_ISSUE": "Planes telefónicos",
+  "RECOVER_LINE": "Recuperación de línea",
+  "PORTABILITY": "Portabilidad",
 
   "ANSWER": "Respuesta",
   "NEW_ANSWER": "Nueva respuesta",
