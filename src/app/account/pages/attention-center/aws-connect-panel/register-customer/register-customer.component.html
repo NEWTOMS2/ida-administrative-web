@@ -1,118 +1,120 @@
-<div class="container basic-form pt-4">
+<div class="basic-form pt-4">
     <div class="row justify-content-center">
         <div class="col-12 col-md-10">
+            <mat-dialog-content>
 
-            <!-- USER DATA FORM -->
-            <form [formGroup]="userForm" class="needs-validation" novalidate>
-                <div class="row form-row justify-content-between form-title">
-                    <div class="col-6"> {{ "USER_DATA" | translate }}</div>
-                </div>
-                <div class="row form-row mb-4" id="name-group">
-                    <div class="col-12 col-md-6 mb-4 mb-md-0">
-                        <label class="form-label">{{ "NAME" | translate }}</label>
-                        <input type="text" formControlName="name" class="form-control" [ngClass]="{
+                <!-- USER DATA FORM -->
+                <form [formGroup]="userForm" class="needs-validation" novalidate>
+                    <div class="row form-row justify-content-between form-title">
+                        <div class="col-6"> {{ "USER_DATA" | translate }}</div>
+                    </div>
+                    <div class="row form-row mb-4" id="name-group">
+                        <div class="col-12 col-md-6 mb-4 mb-md-0">
+                            <label class="form-label">{{ "NAME" | translate }}</label>
+                            <input type="text" formControlName="name" class="form-control" [ngClass]="{
                     'is-invalid':
                       this.userForm.get('name')?.invalid &&
                       this.userForm.get('name')?.touched
                   }" />
-                        <div class="invalid-feedback">
-                            {{ "INTRODUCE_NAME" | translate }}
+                            <div class="invalid-feedback">
+                                {{ "INTRODUCE_NAME" | translate }}
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-12 col-md-6">
-                        <label class="form-label">{{ "LAST_NAME" | translate }}</label>
-                        <input type="text" formControlName="last_name" class="form-control" [ngClass]="{
+                        <div class="col-12 col-md-6">
+                            <label class="form-label">{{ "LAST_NAME" | translate }}</label>
+                            <input type="text" formControlName="last_name" class="form-control" [ngClass]="{
                     'is-invalid':
                       this.userForm.get('last_name')?.invalid &&
                       this.userForm.get('last_name')?.touched
                   }" />
-                        <div class="invalid-feedback">
-                            {{ "INTRODUCE_LAST_NAME" | translate }}
+                            <div class="invalid-feedback">
+                                {{ "INTRODUCE_LAST_NAME" | translate }}
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="row form-row mb-4" id="name-group">
-                    <div class="col-12 col-md-6 mb-4 mb-md-0">
-                        <label class="form-label">{{ "PHONE_NUMBER" | translate }}</label>
-                        <input type="text" formControlName="phone_number" class="form-control" [ngClass]="{
+                    <div class="row form-row mb-4" id="name-group">
+                        <div class="col-12 col-md-6 mb-4 mb-md-0">
+                            <label class="form-label">{{ "PHONE_NUMBER" | translate }}</label>
+                            <input type="text" formControlName="phone_number" class="form-control" [ngClass]="{
                     'is-invalid':
                       this.userForm.get('phone_number')?.invalid &&
                       this.userForm.get('phone_number')?.touched
                   }" />
-                        <div class="invalid-feedback">
-                            {{ "INTRODUCE_PHONE_NUMBER" | translate }}
+                            <div class="invalid-feedback">
+                                {{ "INTRODUCE_PHONE_NUMBER" | translate }}
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-12 col-md-6">
-                        <label class="form-label">{{
-                            "EMAIL_ADDRESS" | translate
-                            }}</label>
-                        <input type="text" formControlName="email" class="form-control" [ngClass]="{
+                        <div class="col-12 col-md-6">
+                            <label class="form-label">{{
+                                "EMAIL_ADDRESS" | translate
+                                }}</label>
+                            <input type="text" formControlName="email" class="form-control" [ngClass]="{
                     'is-invalid':
                       this.userForm.get('email')?.invalid &&
                       this.userForm.get('email')?.touched
                   }" />
-                        <div class="invalid-feedback">
-                            {{ "INTRODUCE_EMAIL" | translate }}
+                            <div class="invalid-feedback">
+                                {{ "INTRODUCE_EMAIL" | translate }}
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="row form-row mb-4" id="name-group">
-                    <div class="col-12 col-md-6 mb-4 mb-md-0">
-                        <label class="form-label">{{ "COUNTRY" | translate }}</label>
-                        <select class="form-select" formControlName="country" #mySelect
-                            (change)='getCities(mySelect.value)'>
-                            <option *ngFor="let country of countries" [value]="country">
-                                {{ country }}
-                            </option>
-                        </select>
+                    <div class="row form-row mb-4" id="name-group">
+                        <div class="col-12 col-md-6 mb-4 mb-md-0">
+                            <label class="form-label">{{ "COUNTRY" | translate }}</label>
+                            <select class="form-select" formControlName="country" #mySelect
+                                (change)='getCities(mySelect.value)'>
+                                <option *ngFor="let country of countries" [value]="country">
+                                    {{ country }}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-6 mb-4 mb-md-0">
+                            <label class="form-label">{{ "CITY" | translate }}</label>
+                            <select class="form-select" formControlName="city">
+                                <option *ngFor="let city of cities" [value]="city">
+                                    {{ city }}
+                                </option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="col-12 col-md-6 mb-4 mb-md-0">
-                        <label class="form-label">{{ "CITY" | translate }}</label>
-                        <select class="form-select" formControlName="city">
-                            <option *ngFor="let city of cities" [value]="city">
-                                {{ city }}
-                            </option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row form-row mb-4" id="name-group">
-                    <div class="col-12 col-md-6">
-                        <label class="form-label">{{ "ADDRESS" | translate }}</label>
-                        <textarea rows="1" class="form-control" formControlName="detail_address" [ngClass]="{
+                    <div class="row form-row mb-4" id="name-group">
+                        <div class="col-12 col-md-6">
+                            <label class="form-label">{{ "ADDRESS" | translate }}</label>
+                            <textarea rows="1" class="form-control" formControlName="detail_address" [ngClass]="{
                 'is-invalid':
                   this.userForm.get('detail_address')?.invalid &&
                   this.userForm.get('detail_address')?.touched
               }"></textarea>
+                        </div>
+                        <div class="col-12 col-md-6 mb-md-0">
+                            <label class="form-label">{{ "TYPE" | translate }}</label>
+                            <select class="form-select" formControlName="is_mvno_client">
+                                <option *ngFor="let type of clientTypes" [value]="type">
+                                    {{ type | translate }}
+                                </option>
+                            </select>
+                        </div>
                     </div>
-                      <div class="col-12 col-md-6 mb-md-0">
-                        <label class="form-label">{{ "TYPE" | translate }}</label>
-                        <select class="form-select" formControlName="is_mvno_client">
-                            <option *ngFor="let type of clientTypes" [value]="type">
-                                {{ type | translate }}
-                            </option>
-                        </select>
-                    </div>
-                </div>
 
-                <div class="row form-row mb-4 form-btn justify-content-center" id="name-group">
-                    <div class="col-12">
-                        <button class="btn secondary-btn btn-block" type="button" (click)="createCustomer()">
-                            <span *ngIf="!spinnerLoader; else loading" class="btn-content">
-                                {{ "SAVE" | translate | uppercase }}</span>
-                            <ng-template class="text-center" #loading>
-                                <div class="spinner-border spinner-border-sm" role="status">
-                                    <span class="sr-only"></span>
-                                </div>
-                            </ng-template>
-                        </button>
+                    <div class="row form-row mb-4 form-btn justify-content-center" id="name-group">
+                        <div class="col-12">
+                            <button class="btn secondary-btn btn-block" type="button" (click)="createCustomer()">
+                                <span *ngIf="!spinnerLoader; else loading" class="btn-content">
+                                    {{ "SAVE" | translate | uppercase }}</span>
+                                <ng-template class="text-center" #loading>
+                                    <div class="spinner-border spinner-border-sm" role="status">
+                                        <span class="sr-only"></span>
+                                    </div>
+                                </ng-template>
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </mat-dialog-content>
         </div>
     </div>
 </div>

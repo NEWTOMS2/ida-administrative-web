@@ -108,6 +108,7 @@
 
 /*--- Table header ---  */
 
+
 mat-header-row {
   background-color: $white;
 }
@@ -139,10 +140,13 @@ mat-row{
 mat-cell{
     color: $primary-color !important;
     font-weight: 400;
+    justify-content: center;
+
 }
 
 .mat-header-cell {
   color: $dark-blue !important;
+  justify-content: center;
 }
 
 .table-row-item{

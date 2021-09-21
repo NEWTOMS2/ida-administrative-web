@@ -154,7 +154,17 @@ mat-cell{
 }
 
 .mat-header-cell {
-color: $dark-blue !important
+  color: $dark-blue !important;
+  font-size: 14px;
+}
+
+.mat-row {
+  min-height: 60px !important;
+}
+
+.mat-cell {
+  padding: 10px;
+  font-size: 13px;
 }
 
 .table-row-item{
@@ -169,4 +179,41 @@ background-color:$secondary-ligther-color;
 
 .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
   background-color:  $primary-color  !important;
+}
+
+@media screen and (max-width: 960px) {
+  .small-searcher{
+    width: 100% !important;
+  }
+}
+
+
+@media (min-width: 760px) and (min-height: 600px) {
+  .mat-dialog-content {
+    display: contents !important;
+  }
+}
+
+
+@media (max-width: 600px) {
+  td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type {
+    padding-right: 10px !important;
+  }
+
+  td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type {
+    padding-left: 10px !important;
+  }
+
+  th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+    overflow-wrap: anywhere;
+    font-size: 12px;
+  }
+}
+
+.mat-sort-header-container { 
+  justify-content: center;
+}
+
+.mat-row {
+  text-align: center;
 }

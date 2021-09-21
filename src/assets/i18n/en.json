@@ -113,6 +113,8 @@
   "PAYMENT_ISSUE": "Payment issue",
   "SERVICE_COVERAGE_ISSUE": "Service coverage",
   "PACKAGE_ISSUE": "Phone plans",
+  "RECOVER_LINE": "Recover line",
+  "PORTABILITY": "Portability",
 
   "ANSWER": "Answer",
   "NEW_ANSWER": "New answer",

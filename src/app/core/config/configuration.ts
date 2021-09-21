@@ -33,7 +33,8 @@ export const ticketStates = [
     color: "info"
   }
 ]
-export const ticketTypes = ["SERVICES", "PROBLEMS"]
+
+export const ticketTypes = ["BLOCKING_SERVICES", "RECOVER_LINE", "SIM_SHIPPING_ISSUE", "PORTABILITY", "INTERNET_ISSUE", "PAYMENT_ISSUE", "SERVICE_COVERAGE_ISSUE"]
 export const faqTypes = ["SERVICES", "PROSPECTS", "SIM_SHIPPING_ISSUE", "PURCHASES", "INTERNET_ISSUE", "BLOCKING_SERVICES"]
 export const userStates = ["ACTIVE", "INACTIVE"]
 export const phonePlanStates = ["AVAILABLE", "UNAVAILABLE"]
