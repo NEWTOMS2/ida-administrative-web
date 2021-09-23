@@ -62,6 +62,7 @@
   "STATUS": "Estatus",
 
   "ATTENTION_CENTER": "Centro de Atención",
+  "COMMUNICATION_ANALYSIS": "Análisis de llamadas",
   "FREQUENTLY_QUESTIONS": "Preguntas frecuentes",
   "ATTENTION_REQUESTS": "Solicitudes de atención",
   "MVNO_INFORMATION": "Información del OMV",
@@ -120,6 +121,7 @@
   "ADD_ANSWER": "Añadir respuesta",
   "ANSWER_ADDED": "La respuesta se ha agregado exitosamente",
   "CLIENT": "Cliente",
+  "CUSTOMER": "Cliente",
   "PHONENUMBER": "Número telefónico",
   "EMAIL": "Correo electrónico",
 
@@ -157,5 +159,18 @@
   "PHONE_PLAN_CREATED": "Plan telefónico creado exitosamente",
   "EXIS_CLIENT": "Cliente de EXiS",
   "PROSPECT": "Prospecto",
-  "DUPLICATED_KEY": "El usuario ya existe, por favor elige otro correo o número telefónico"
+  "DUPLICATED_KEY": "El usuario ya existe, por favor elige otro correo o número telefónico",
+
+  "CONTACT_ID": "Id de comunicación",
+  "DURATION": "Duración",
+  "OVERALL_CLIENT_SENTIMENT": "Sentimiento promedio del cliente",
+  "OVERALL_AGENT_SENTIMENT": "Sentimiento promedio del agente",
+  "POSITIVE": "Positivo",
+  "NEGATIVE": "Negativo",
+  "MIXED": "Mixto",
+  "NEUTRAL": "Neutral",
+  "TRANSCRIPTION": "Transcripción",
+  "COMMUNICATION_DATA": "Datos de la comunicación",
+  "SECONDS": "segundos",
+  "NO_COMMUNICATION_FOUND": "No se ha encontrado una comunicación con el ID proporcionado"
 }
