@@ -1,0 +1,99 @@
+<app-page-wrapper [title]="title">
+    <div *ngIf="communicationDetail; else showNoContent">
+        <div class="row communication-wrapper mb-3 mt-1">
+            <div class="col-md-4 col-12 communication-details-wrapper mr-2 pb-3">
+                <div class="row mt-3 px-2 mb-4 align-items-center" style="height:fit-content;">
+                    <div class="col px-0 ">
+                        <span class="communication-title px-0"> {{ 'COMMUNICATION_DATA' | translate }}</span>
+                    </div>
+                </div>
+
+                <div class="row communication-data">
+                    <div class="col-12 mb-3">
+                        <label class="form-label">{{ 'CLIENT' | translate }}</label>
+                        <input type="text" class="form-control detail-form"
+                            value="{{ communicationDetail!.customer }}" readonly />
+
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label class="form-label">{{ 'AGENT' | translate }}</label>
+                        <input type="text" class="form-control detail-form"
+                            value="{{ communicationDetail!.agent }}" readonly />
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label class="form-label">{{ 'DURATION' | translate }}</label>
+                        <input type="text" class="form-control detail-form" value="{{ communicationDetail!.duration }} {{'SECONDS' | translate}}"
+                            readonly />
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label class="form-label">{{ 'OVERALL_CLIENT_SENTIMENT' | translate }}</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control detail-form input-icon"
+                                value="{{ communicationDetail!.overall_client_sentiment | translate }}" readonly />
+                            <span class="input-group-text">
+                                <fa-icon
+                                    [ngClass]="getSentimentClassColor(communicationDetail!.overall_client_sentiment)"
+                                    [icon]="getIconSentiment(communicationDetail!.overall_client_sentiment)">
+                                </fa-icon>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label class="form-label">{{ 'OVERALL_AGENT_SENTIMENT' | translate }}</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control detail-form input-icon"
+                                value="{{ communicationDetail!.overall_agent_sentiment | translate }}" readonly />
+                            <span class="input-group-text">
+                                <fa-icon
+                                    [ngClass]="getSentimentClassColor(communicationDetail!.overall_agent_sentiment)"
+                                    [icon]="getIconSentiment(communicationDetail!.overall_agent_sentiment)"></fa-icon>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-auto">
+                        <ang-music-player width="100%" [audioList] = audioList timeSliderColor="#182249"></ang-music-player>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 col-12 transcripts-wrapper bg-body pb-3">
+                <div class="row mx-2 mt-3 align-items-center">
+                    <div class="col px-0 ">
+                        <span class="communication-title px-0"> {{ 'TRANSCRIPTION' | translate }}</span>
+                    </div>
+                    <hr class="mt-2">
+                </div>
+
+                <div *ngFor="let transcript of communicationDetail.transcript;" class="row mt-2">
+                    <div class="col">
+                        <div class="row mx-2 my-2">
+                            <div class="col-1 icon-wrapper" *ngIf="transcript.participant == 'AGENT'">
+                                <fa-icon
+                                [ngClass]="getSentimentClassColor(transcript.sentiment)"
+                                [icon]="getIconSentiment(transcript.sentiment)"
+                                ></fa-icon>
+                            </div>
+                            <div class="col-11 px-0">
+                                <div class="person-title mx-2" [ngClass]="{'text-align-end': transcript.participant == 'CUSTOMER'}">
+                                    {{ transcript.participant | translate }}
+                                </div>
+                                <div class="message-wrapper" [ngClass]="getTranscriptPersonClassColor(transcript.participant)">
+                                    {{ transcript.content }}
+                                </div>
+                            </div>
+                            <div class="col-1 icon-wrapper" *ngIf="transcript.participant == 'CUSTOMER'">
+                                <fa-icon
+                                [ngClass]="getSentimentClassColor(transcript.sentiment)"
+                                [icon]="getIconSentiment(transcript.sentiment)"></fa-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #showNoContent>
+        <div class="no-content">
+            <h4>{{'NO_COMMUNICATION_FOUND' | translate}}</h4>
+        </div>
+    </ng-template>
+</app-page-wrapper>

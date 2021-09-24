@@ -154,7 +154,6 @@ export class TicketsComponent implements OnInit, AfterViewInit {
   }
 
   applyFilter(filterValue: any): void {
-    console.log(filterValue)
     const value =  filterValue.value === null ? '' : filterValue.value;
     filterValue = value.trim();
     filterValue = value.toLowerCase();
@@ -198,7 +197,6 @@ export class TicketsComponent implements OnInit, AfterViewInit {
     const ticket = this.allTickets.filter((ticket) => ticket.id == selectedTicket.id)[0]
     const currentStatus = this.getCurrentTicketStatus(ticket);
 
-    console.log(ticket);
     this.router.navigateByUrl('/account/tickets/details', { state: {
       detail: {
         id: ticket.id,

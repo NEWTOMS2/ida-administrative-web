@@ -51,7 +51,7 @@ export const loaderConfig = Object.freeze({
 });
 
 export const routes = {
-  "ADMIN": ['attention', 'frequently-questions', 'tickets', 'mvno-information', 'users'],
+  "ADMIN": ['attention', 'communication-analysis', 'frequently-questions', 'tickets', 'mvno-information', 'users'],
   "AGENT": ['attention', 'tickets']
 }
 export const userTypes = [ 'agent', 'admin']
