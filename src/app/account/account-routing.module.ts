@@ -13,7 +13,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/account/attention',
+        redirectTo: '/account/communication-analysis',
         pathMatch: 'full',
 
       },
@@ -22,6 +22,13 @@ const routes: Routes = [
         loadChildren: () =>
           import('./pages/attention-center/attention-center.module').then(
             (m) => m.AttentionCenterModule
+          ),
+      },
+      {
+        path: 'communication-analysis',
+        loadChildren: () =>
+          import('./pages/communication-analysis/communication-analysis.module').then(
+            (m) => m.CommunicationAnalysisModule
           ),
       },
       {

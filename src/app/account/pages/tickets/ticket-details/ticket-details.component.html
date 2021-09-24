@@ -1,5 +1,5 @@
 <app-page-wrapper [title]="title">
-    <div *ngIf="ticketStates && ticketCurrentStatus" >
+    <div *ngIf="ticketStates && ticketCurrentStatus">
         <div class="row ticket-header">
             <div class="col-md-4 col-12 d-flex py-2 ticket-header-container">
                 <div class="secondary-badge status-tag">
@@ -8,10 +8,7 @@
                 <div class="mx-3 request-id">
                     {{ 'REQUEST' | translate }} # {{ticketCurrentStatus.id}}
                 </div>
-
             </div>
-
-            
         </div>
 
         <div class="row ticket-wrapper mb-3 mt-1">
@@ -20,12 +17,8 @@
                 <div class="row" *ngFor="let option of detailsList">
                     <div class="col mb-3">
                         <label class="form-label">{{ (option[0]).toUpperCase() | translate }}</label>
-                        <input
-                          type="text"
-                          class="form-control detail-form"
-                          value="{{ option[1] | translate }}"
-                          readonly
-                        />
+                        <input type="text" class="form-control detail-form" value="{{ option[1] | translate }}"
+                            readonly />
                     </div>
                 </div>
             </div>
@@ -37,14 +30,14 @@
                     <div class="col-2 nav-wrapper px-0">
                         <nav>
                             <ul class="pagination pagination-sm">
-                              <li class="page-item" (click)="updatePaginator(-1)">
-                                <span class="page-link">&laquo;</span>
-                              </li>
-                              <li class="page-item" (click)="updatePaginator(1)">
-                                  <a class="page-link">&raquo;</a>
-                              </li>
+                                <li class="page-item" (click)="updatePaginator(-1)">
+                                    <span class="page-link">&laquo;</span>
+                                </li>
+                                <li class="page-item" (click)="updatePaginator(1)">
+                                    <a class="page-link">&raquo;</a>
+                                </li>
                             </ul>
-                          </nav>
+                        </nav>
                     </div>
                     <hr class="mt-2">
                 </div>
@@ -63,53 +56,53 @@
                                 <div class="col-md-6 col-12 status-item">
                                     {{state.description}}
                                 </div>
-                          </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <form [formGroup]="newTicketStatusForm" class="needs-validation status-container-wrapper" novalidate *ngIf="showAdminPanel()"> 
+                <form [formGroup]="newTicketStatusForm" class="needs-validation status-container-wrapper" novalidate
+                    *ngIf="showAdminPanel()">
                     <div class="row mx-2 align-items-end">
-                            <div class="col-12 px-0" >
-                                <label for="exampleFormControlTextarea1" class="form-label mt-2 "> {{ 'SAVE_REQUEST_INFORMATION' | translate }}</label>
-                                <textarea formControlName="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                            </div>
+                        <div class="col-12 px-0">
+                            <label for="exampleFormControlTextarea1" class="form-label mt-2 "> {{
+                                'SAVE_REQUEST_INFORMATION' | translate }}</label>
+                            <textarea formControlName="description" class="form-control"
+                                id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
                     </div>
 
                     <div class="row mx-2 update-status-container">
-                            <div class="col-md-3 col-5 px-0">
-                                <select  [ngClass]="{
+                        <div class="col-md-3 col-5 px-0">
+                            <select [ngClass]="{
                                     'is-invalid':
                                       this.newTicketStatusForm.get('state')?.invalid &&
                                       this.newTicketStatusForm.get('state')?.touched
-                                     }" 
-                                    formControlName="state" class="form-select form-control" aria-label="Default select example">
-                                    <option value="" disabled>{{"STATUS" | translate}}</option>
-                                    <option [ngValue]="state.state" *ngFor="let state of ticketStatesConstant">{{state.state | translate}}</option>
-                                </select>
+                                     }" formControlName="state" class="form-select form-control"
+                                aria-label="Default select example">
+                                <option value="" disabled>{{"STATUS" | translate}}</option>
+                                <option [ngValue]="state.state" *ngFor="let state of ticketStatesConstant">{{state.state
+                                    | translate}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 col-7 px-0 switch-wrapper">
+                            <div class="form-switch">
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"
+                                    formControlName="send_notification" checked>
+                                <p> {{ 'SEND_NOTIFICATION' | translate }}</p>
                             </div>
-                            <div class="col-md-6 col-7 px-0 switch-wrapper">
-                                <div class="form-switch">
-                                    <input class="form-check-input" 
-                                        type="checkbox" 
-                                        id="flexSwitchCheckDefault" 
-                                        formControlName="send_notification"
-                                        checked
-                                    >
-                                    <p> {{ 'SEND_NOTIFICATION' | translate }}</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-12 px-0" style="margin-left: auto;">
-                                <button class="btn secondary-btn btn-sm" (click)="createNewStatus()">
-                                    <span *ngIf="!spinnerLoader; else loading">{{"SAVE" | translate}}</span>
+                        </div>
+                        <div class="col-md-3 col-12 px-0" style="margin-left: auto;">
+                            <button class="btn secondary-btn btn-sm" (click)="createNewStatus()">
+                                <span *ngIf="!spinnerLoader; else loading">{{"SAVE" | translate}}</span>
 
-                                    <ng-template class="text-center" #loading>
-                                        <div class="spinner-border spinner-border-sm" role="status">
-                                          <span class="sr-only"></span>
-                                        </div>
-                                      </ng-template>
-                                </button>            
-                            </div>
+                                <ng-template class="text-center" #loading>
+                                    <div class="spinner-border spinner-border-sm" role="status">
+                                        <span class="sr-only"></span>
+                                    </div>
+                                </ng-template>
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>

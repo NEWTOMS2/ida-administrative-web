@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { faPhoneAlt, faQuestionCircle, faEnvelopeOpenText, faCogs, faUsers} from '@fortawesome/free-solid-svg-icons';
+import { faPhoneAlt, faQuestionCircle, faEnvelopeOpenText, faCogs, faUsers, faHeadset, faChartArea} from '@fortawesome/free-solid-svg-icons';
 
 import { searchTranslation } from 'src/app/utils/searchTranslation';
 import { images, routes } from '../../../core/config/configuration'
@@ -14,7 +14,8 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./side-nav.component.scss']
 })
 export class SideNavComponent implements OnInit {
-  public phoneIcon = faPhoneAlt
+  public phoneIcon = faHeadset
+  public analysisIcon = faChartArea;
   public questionIcon = faQuestionCircle
   public requestsIcon = faEnvelopeOpenText
   public mvnoInformationIcon = faCogs
@@ -26,6 +27,11 @@ export class SideNavComponent implements OnInit {
       name: searchTranslation(this.translateService, 'ATTENTION_CENTER'),
       link: '/account/attention',
       icon: this.phoneIcon,
+    },
+    {
+      name: searchTranslation(this.translateService, 'COMMUNICATION_ANALYSIS'),
+      link: '/account/communication-analysis',
+      icon: this.analysisIcon,
     },
     {
       name: searchTranslation(this.translateService, 'FREQUENTLY_QUESTIONS'),

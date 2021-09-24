@@ -1,0 +1,131 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/app";
+
+.header {
+    background-color: #fff !important;
+    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
+    align-items: center;
+}
+
+.communication-wrapper{
+    min-height: 80vh;
+
+    .communication-details-wrapper{
+        background-color: $secondary-ligther-color !important;
+        border-top-left-radius: 0.25rem !important;
+        border-bottom-left-radius: 0.25rem !important;
+        box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
+        padding: 0rem 2rem;
+    }
+
+    .communication-data {
+        height: 88%;
+        flex-direction: column;
+    }
+
+    .detail-form {
+        @extend .base-form;
+    }
+
+    .transcripts-wrapper{
+        display: flex;
+        flex-direction: column;
+        background-color: $background-color;
+        border-top-right-radius: 0.25rem !important;
+        border-top-right-radius: 0.25rem !important;
+        box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
+        padding: 0rem 2rem;
+    }
+
+    .text-input{
+        line-height: 5 !important;
+    }
+
+    .message-wrapper{
+        @extend .base-form;
+        border-radius: 100px;
+        min-height: 40px;
+        border-radius: 0.25rem;
+        align-content: center;
+        align-items: center;
+        display: flex;
+        padding: 0.5rem 1rem;
+    }
+
+    .customer-message {
+        background-color: $secondary-color !important;
+        color: $white !important;
+        font-weight: 300 !important;
+    }
+    
+    .agent-message {
+        background-color:  $secondary-ligther-color !important;
+    }
+    
+    .person-title {
+        text-transform: uppercase;
+        font-size: 10px;
+        font-weight: 700;
+        color: $dark-blue;
+        padding: 0 !important;
+        text-align: start;
+    }
+
+    .communication-title {
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        color: $ligth-blue;
+        padding: 0 !important
+    }
+}
+
+.icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 15px;
+    font-size: 20px;
+}
+
+.text-align-end {
+    text-align: end !important;
+}
+
+.input-icon {
+    border-right-width: 0 !important;
+}
+
+.input-group-text {
+    font-size: 20px;
+    background-color: transparent;
+    padding: 0rem 1rem;
+    border-top: 1px solid $ligth-blue  !important;
+    border-bottom: 1px solid $ligth-blue  !important;
+    border-right: 1px solid $ligth-blue  !important;
+    border-left: 0 !important;
+}
+
+.positive-sentiment-color {
+    color: $green;
+}
+
+.negative-sentiment-color {
+    color:  $ligth-red;
+}
+
+.neutral-sentiment-color, .mixed-sentiment-color {
+    color: $dark-grey;
+} 
+
+.no-content {
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    h4 {
+        width: 40%;
+    }
+}
