@@ -62,6 +62,7 @@
   "STATUS": "Status",
 
   "ATTENTION_CENTER": "Attention Center",
+  "COMMUNICATION_ANALYSIS": "Communication analysis",
   "FREQUENTLY_QUESTIONS": "Frecuently Asked Questions",
   "ATTENTION_REQUESTS": "Attention Requests",
   "MVNO_INFORMATION": "MVNO Information",
@@ -121,6 +122,7 @@
   "ADD_ANSWER": "Add answer",
   "ANSWER_ADDED": "New answer successfully added",
   "CLIENT": "Client",
+  "CUSTOMER": "Customer",
   "PHONENUMBER": "Phone Number",
   "EMAIL": "Email",
 
@@ -157,6 +159,18 @@
   "PHONE_PLAN_CREATED": "Phone plan successfully created",
   "EXIS_CLIENT": "EXiS Client",
   "PROSPECT": "Prospect",
-  "DUPLICATED_KEY": "The user already exists, please choose another email or phone number"
+  "DUPLICATED_KEY": "The user already exists, please choose another email or phone number",
 
+  "CONTACT_ID": "Contact Id",
+  "DURATION": "Duractio",
+  "OVERALL_CLIENT_SENTIMENT": "Overall customer sentiment",
+  "OVERALL_AGENT_SENTIMENT": "Overall agent sentiment",
+  "POSITIVE": "Positive",
+  "NEGATIVE": "Negative",
+  "MIXED": "Mixed",
+  "NEUTRAL": "Neutral",
+  "TRANSCRIPTION": "Transcription",
+  "COMMUNICATION_DATA": "Communication data",
+  "SECONDS": "seconds",
+  "NO_COMMUNICATION_FOUND": "No communication found with the ID provided"
 }
