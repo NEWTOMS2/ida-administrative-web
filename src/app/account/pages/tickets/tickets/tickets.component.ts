@@ -154,7 +154,6 @@ export class TicketsComponent implements OnInit, AfterViewInit {
   }
 
   applyFilter(filterValue: any): void {
-    console.log(filterValue)
     const value =  filterValue.value === null ? '' : filterValue.value;
     filterValue = value.trim();
     filterValue = value.toLowerCase();

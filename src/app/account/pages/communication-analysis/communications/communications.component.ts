@@ -26,9 +26,10 @@ export class CommunicationsComponent implements OnInit {
   @ViewChild(MatTable) table!: MatTable<any>;
   public dataSource!: MatTableDataSource<CommunicationTable>;
   public searchIcon = faSearch;
-  public title =  searchTranslation(this.translateService, 'COMMUNICATION_ANALYSIS');
-  public realTimeCommunications!: RealTimeCommunication[];
-  public   displayedColumns = [
+  public title = searchTranslation(this.translateService, 'COMMUNICATION_ANALYSIS');
+  public realTimeCommunications: RealTimeCommunication[] = [];
+  public displayedColumns = [
+    'id',
     'contact_id',
     'client',
     'agent'
@@ -54,22 +55,30 @@ export class CommunicationsComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  private buildRealTimeCommunications(): void{
-    this.activatedRoute.data.subscribe((data: Partial<{ realTimeCommunications: RealTimeCommunication[]}>) => {
-      const content = data.realTimeCommunications != null ? data.realTimeCommunications : []
-      this.realTimeCommunications = content;
-      this.dataSource = new MatTableDataSource(content as RealTimeCommunication[]);
+  private buildRealTimeCommunications(): void {
+    this.activatedRoute.data.subscribe((data: Partial<{ realTimeCommunications: RealTimeCommunication[] }>) => {
+      const content = data.realTimeCommunications != null ? data.realTimeCommunications : [];
+      content.forEach((element, index) => {
+        const communication: RealTimeCommunication = { 
+          id: index + 1, 
+          contact_id: element.contact_id, 
+          client: element.client, 
+          agent: element.agent 
+        }
+        this.realTimeCommunications.push(communication);
+      });
+      this.dataSource = new MatTableDataSource(this.realTimeCommunications as RealTimeCommunication[]);
     });
   }
 
   applyFilter(filterValue: any): void {
-    const value =  filterValue.value === null ? '' : filterValue.value;
+    const value = filterValue.value === null ? '' : filterValue.value;
     filterValue = value.trim();
     filterValue = value.toLowerCase();
     this.dataSource.filter = value;
   }
 
-  setTableRowColor(index: number): string{
+  setTableRowColor(index: number): string {
     let classColor = "";
     if (index % 2 == 0) classColor = 'table-row-item';
     else '';
