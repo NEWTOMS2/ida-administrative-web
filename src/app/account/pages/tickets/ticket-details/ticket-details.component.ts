@@ -48,6 +48,7 @@ export class TicketDetailsComponent implements OnInit {
         this.ticketStates = this.setStates(data.states || [])
         this.ticketCurrentStatus = data?.detail.currentStatus;
         this.ticketCurrentStatus.id = data?.detail.id;
+        this.ticketCurrentStatus.uuid = data?.detail.uuid;
         this.states = this.ticketStates;
         this.setPaginatedStates();
         this.ticketDetails = {
@@ -73,7 +74,6 @@ export class TicketDetailsComponent implements OnInit {
 
   buildForm(): void{
     this.detailsList = Object.entries(this.ticketDetails);
-
     this.newTicketStatusForm = this.formBuilder.group({
       claim_id: [this.ticketCurrentStatus.id],
       state: ['', Validators.compose([Validators.required])],
