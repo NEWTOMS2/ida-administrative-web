@@ -23,6 +23,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'communication-analysis',
+        loadChildren: () =>
+          import('./pages/communication-analysis/communication-analysis.module').then(
+            (m) => m.CommunicationAnalysisModule
+          ),
+      },
+      {
         path: 'frequently-questions',
 
         loadChildren: () =>

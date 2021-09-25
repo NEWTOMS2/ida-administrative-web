@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "start-secure": "ng serve --ssl --ssl-key key.pem  --ssl-cert cert.crt",
-    "deploy": "ng build --prod --base-href=/ida-administrative-web/"
+    "deploy": "ng build --base-href=/ida-administrative-web/"
   },
   "private": true,
   "dependencies": {
@@ -32,6 +32,7 @@
     "@ngx-translate/core": "^13.0.0",
     "@ngx-translate/http-loader": "^6.0.0",
     "amazon-connect-streams": "^1.6.8",
+    "ang-music-player": "0.0.4",
     "bootstrap": "^5.0.2",
     "crypto-es": "^1.2.7",
     "ngx-loading": "^8.0.0",
