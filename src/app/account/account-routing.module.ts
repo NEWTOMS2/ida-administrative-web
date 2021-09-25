@@ -14,8 +14,6 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: '/account/attention',
-        pathMatch: 'full',
-
       },
       {
         path: 'attention',
