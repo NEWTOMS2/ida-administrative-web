@@ -35,6 +35,19 @@
         border-top-right-radius: 0.25rem !important;
         box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
         padding: 0rem 2rem;
+        height: 80vh;
+    }
+
+    @media (max-height: 680px) {
+        .transcripts-wrapper{
+            height: calc(80vh * 1.5);
+        }    
+    }
+
+    .transcription {
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding-right: 2rem;
     }
 
     .text-input{
@@ -129,3 +142,24 @@
         width: 40%;
     }
 }
+
+::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px $ligth-blue-1;
+    border-radius: 3px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #c8d4eb;
+    border-radius: 3px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #c8d4eb;
+  }

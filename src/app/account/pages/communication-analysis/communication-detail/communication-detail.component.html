@@ -11,19 +11,19 @@
                 <div class="row communication-data">
                     <div class="col-12 mb-3">
                         <label class="form-label">{{ 'CLIENT' | translate }}</label>
-                        <input type="text" class="form-control detail-form"
-                            value="{{ communicationDetail!.customer }}" readonly />
+                        <input type="text" class="form-control detail-form" value="{{ communicationDetail!.customer }}"
+                            readonly />
 
                     </div>
                     <div class="col-12 mb-3">
                         <label class="form-label">{{ 'AGENT' | translate }}</label>
-                        <input type="text" class="form-control detail-form"
-                            value="{{ communicationDetail!.agent }}" readonly />
+                        <input type="text" class="form-control detail-form" value="{{ communicationDetail!.agent }}"
+                            readonly />
                     </div>
                     <div class="col-12 mb-3">
                         <label class="form-label">{{ 'DURATION' | translate }}</label>
-                        <input type="text" class="form-control detail-form" value="{{ communicationDetail!.duration }} {{'SECONDS' | translate}}"
-                            readonly />
+                        <input type="text" class="form-control detail-form"
+                            value="{{ communicationDetail!.duration }} {{'SECONDS' | translate}}" readonly />
                     </div>
                     <div class="col-12 mb-3">
                         <label class="form-label">{{ 'OVERALL_CLIENT_SENTIMENT' | translate }}</label>
@@ -51,7 +51,8 @@
                         </div>
                     </div>
                     <div class="col-12 mt-auto">
-                        <ang-music-player width="100%" [audioList] = audioList timeSliderColor="#182249"></ang-music-player>
+                        <ang-music-player width="100%" [audioList]=audioList timeSliderColor="#182249">
+                        </ang-music-player>
                     </div>
                 </div>
             </div>
@@ -62,28 +63,28 @@
                     </div>
                     <hr class="mt-2">
                 </div>
-
-                <div *ngFor="let transcript of communicationDetail.transcript;" class="row mt-2">
-                    <div class="col">
-                        <div class="row mx-2 my-2">
-                            <div class="col-1 icon-wrapper" *ngIf="transcript.participant == 'AGENT'">
-                                <fa-icon
-                                [ngClass]="getSentimentClassColor(transcript.sentiment)"
-                                [icon]="getIconSentiment(transcript.sentiment)"
-                                ></fa-icon>
-                            </div>
-                            <div class="col-11 px-0">
-                                <div class="person-title mx-2" [ngClass]="{'text-align-end': transcript.participant == 'CUSTOMER'}">
-                                    {{ transcript.participant | translate }}
+                <div class="transcription">
+                    <div *ngFor="let transcript of communicationDetail.transcript;" class="row mt-2">
+                        <div class="col">
+                            <div class="row mx-2 my-2">
+                                <div class="col-1 icon-wrapper" *ngIf="transcript.participant == 'AGENT'">
+                                    <fa-icon [ngClass]="getSentimentClassColor(transcript.sentiment)"
+                                        [icon]="getIconSentiment(transcript.sentiment)"></fa-icon>
                                 </div>
-                                <div class="message-wrapper" [ngClass]="getTranscriptPersonClassColor(transcript.participant)">
-                                    {{ transcript.content }}
+                                <div class="col-11 px-0">
+                                    <div class="person-title mx-2"
+                                        [ngClass]="{'text-align-end': transcript.participant == 'CUSTOMER'}">
+                                        {{ transcript.participant | translate }}
+                                    </div>
+                                    <div class="message-wrapper"
+                                        [ngClass]="getTranscriptPersonClassColor(transcript.participant)">
+                                        {{ transcript.content }}
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-1 icon-wrapper" *ngIf="transcript.participant == 'CUSTOMER'">
-                                <fa-icon
-                                [ngClass]="getSentimentClassColor(transcript.sentiment)"
-                                [icon]="getIconSentiment(transcript.sentiment)"></fa-icon>
+                                <div class="col-1 icon-wrapper" *ngIf="transcript.participant == 'CUSTOMER'">
+                                    <fa-icon [ngClass]="getSentimentClassColor(transcript.sentiment)"
+                                        [icon]="getIconSentiment(transcript.sentiment)"></fa-icon>
+                                </div>
                             </div>
                         </div>
                     </div>
