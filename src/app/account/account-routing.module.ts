@@ -13,9 +13,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/account/communication-analysis',
-        pathMatch: 'full',
-
+        redirectTo: '/account/attention',
       },
       {
         path: 'attention',

@@ -196,10 +196,10 @@ export class TicketsComponent implements OnInit, AfterViewInit {
   seeTicket(selectedTicket: Ticket): void{
     const ticket = this.allTickets.filter((ticket) => ticket.id == selectedTicket.id)[0]
     const currentStatus = this.getCurrentTicketStatus(ticket);
-
     this.router.navigateByUrl('/account/tickets/details', { state: {
       detail: {
-        id: ticket.id,
+        id: ticket.claimId,
+        uuid: ticket.id,
         client: ticket.client.email,
         lastname: ticket.client.lastname,
         name: ticket.client.name,
