@@ -43,8 +43,9 @@ export const clientTypes = ["EXIS_CLIENT", "PROSPECT"]
 
 export const loaderConfig = Object.freeze({
   animationType: 'pulse',
+  fullScreenBackdrop:true,
   backdropBackgroundColour: "#182249",
-  backdropBorderRadius: '4px',
+  backdropBorderRadius: '0px',
   primaryColour:  "#63709F",
   secondaryColour:  "#63709F",
   tertiaryColour: '#EBF1FA',
