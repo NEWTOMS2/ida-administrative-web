@@ -161,7 +161,7 @@
   "PROSPECT": "Prospect",
   "DUPLICATED_KEY": "The user already exists, please choose another email or phone number",
 
-  "CONTACT_ID": "Contact Id",
+  "CONTACT_ID": "Contact ID",
   "DURATION": "Duractio",
   "OVERALL_CLIENT_SENTIMENT": "Overall customer sentiment",
   "OVERALL_AGENT_SENTIMENT": "Overall agent sentiment",
@@ -172,5 +172,5 @@
   "TRANSCRIPTION": "Transcription",
   "COMMUNICATION_DATA": "Communication data",
   "SECONDS": "seconds",
-  "NO_COMMUNICATION_FOUND": "No communication found with the ID provided"
+  "NO_COMMUNICATION_FOUND": "El análisis de la comunicación está siendo procesado"
 }

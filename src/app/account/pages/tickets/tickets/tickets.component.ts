@@ -111,6 +111,7 @@ export class TicketsComponent implements OnInit, AfterViewInit {
           agent: ticket.employee?.email  || "",
         }
       })
+      tickets.sort((a: any, b:any) => {return (b.id - a.id)})
       this.dataSource = new MatTableDataSource(tickets as TableTicket[]);
     });
   }
