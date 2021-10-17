@@ -4,6 +4,7 @@ export interface RealTimeCommunication {
     contact_id: string;
     agent: string;
     client: string;
+    date: string;
 }
 
 export interface CommunicationDetail {

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { CommunicationDetail } from 'src/app/core/models/real-time-communication.interface';
 import { faLaugh, faFrown, faMeh } from '@fortawesome/free-regular-svg-icons';
+import { images } from 'src/app/core/config/configuration';
 
 @Component({
   selector: 'app-communication-detail',
@@ -12,6 +13,7 @@ import { faLaugh, faFrown, faMeh } from '@fortawesome/free-regular-svg-icons';
 export class CommunicationDetailComponent implements OnInit {
   public title = ""
   public communicationDetail: CommunicationDetail | undefined;
+  public contactLogo = images.contactLogo;
 
   audioList = [
     {
