@@ -8,11 +8,12 @@ import { TranslateService } from '@ngx-translate/core';
 import { LocalizedDatePipe } from 'src/app/shared/pipes/localized.pipe';
 import { searchTranslation } from 'src/app/utils/searchTranslation';
 import { RealTimeCommunication } from 'src/app/core/models/real-time-communication.interface';
-
+import { TitleCasePipe } from '@angular/common';
 export interface CommunicationTable {
   contact_id: string;
   client: string;
   agent: string;
+  date: string;
 }
 
 @Component({
@@ -32,14 +33,16 @@ export class CommunicationsComponent implements OnInit {
     'id',
     'contact_id',
     'client',
-    'agent'
+    'agent',
+    'date'
   ];
 
   constructor(
     private translateService: TranslateService,
     private activatedRoute: ActivatedRoute,
     private localizePipe: LocalizedDatePipe,
-    private router: Router
+    private titleCasePipe: TitleCasePipe,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -63,7 +66,8 @@ export class CommunicationsComponent implements OnInit {
           id: index + 1, 
           contact_id: element.contact_id, 
           client: element.client, 
-          agent: element.agent 
+          agent: element.agent,
+          date: this.titleCasePipe.transform(this.localizePipe.transform( new Date (element.date || ""), 'MMMM d, y, h:mm a')),
         }
         this.realTimeCommunications.push(communication);
       });
