@@ -212,4 +212,8 @@ export class TicketsComponent implements OnInit, AfterViewInit {
       },
       states: ticket.states
     } });  }
+
+    userIsAdmin(): boolean {
+      return (this.user?.role || "") == 'ADMIN'
+    }
 }
