@@ -138,4 +138,8 @@ export class UserDetailsComponent implements OnInit {
       userToFilter: this.user.email
     }})
   }
+
+  userIsAdmin(): boolean {
+    return this.user.role == searchTranslation(this.translateService, "ADMIN")
+  }
 }

@@ -20,3 +20,13 @@
 .form-select {
     border: 1px solid $ligth-blue;
 }
+
+.light-btn{
+    color: #63709F !important;
+    border: 1px solid #63709F !important;
+    font-size: 14px !important;
+
+    &:hover {
+        color: $white !important;
+    }
+}

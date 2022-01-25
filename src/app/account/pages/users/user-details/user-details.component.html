@@ -223,7 +223,7 @@
         </div>
 
         <div class="row form-row justify-content-center form-actions">
-          <div class="col-md-8 col-12 mb-1">
+          <div *ngIf="!userIsAdmin()" class="col-md-8 col-12 mb-1">
             <button class="btn light-btn" (click)="seeRequests()">
               {{ "SEE_REQUESTS" | translate }}
             </button>
