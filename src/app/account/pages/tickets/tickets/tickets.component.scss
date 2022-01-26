@@ -116,7 +116,7 @@ mat-header-row {
 mat-row{
   cursor: pointer;
   &:hover{
-    background-color: $ligth-blue;
+    background-color: $ligth-blue-3;
 
     mat-cell{
         color: $white !important;

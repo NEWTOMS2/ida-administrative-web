@@ -45,7 +45,6 @@ export class TicketsComponent implements OnInit, AfterViewInit {
   private allTickets!: any[];
   private state$!: Observable<object>;
   public   displayedColumns = [
-    'select',
     'id',
     'type',
     'agent',

@@ -57,28 +57,6 @@
 
                 <!-- Table content  -->
                 <mat-table [dataSource]="dataSource" class="table" matSort>
-                    <ng-container matColumnDef="select">
-                        <th mat-header-cell *matHeaderCellDef class="mt-2" style="    justify-content: normal;">
-                          <mat-checkbox
-                            (change)="$event ? masterToggle() : null"
-                            [checked]="selection.hasValue() && isAllSelected()"
-                            [indeterminate]="selection.hasValue() && !isAllSelected()"
-                          >
-                          </mat-checkbox>
-                        </th>
-            
-                        <td mat-cell *matCellDef="let row" data-label="Eliminar">
-                          <mat-checkbox 
-                          class="check-share"
-                            (click)="$event.stopPropagation()"
-                            (change)="$event ? selection.toggle(row) : null"
-                            [checked]="selection.isSelected(row)"
-                          >
-                          </mat-checkbox>
-                        </td>
-                        
-                      </ng-container>
-
                     <ng-container matColumnDef="id">
                         <mat-header-cell *matHeaderCellDef mat-sort-header>
                           {{ "ID" | translate }}
