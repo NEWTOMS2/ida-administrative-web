@@ -62,7 +62,7 @@ export class UsersCreationComponent implements OnInit {
       })
       .catch((error) => {
         this.spinnerLoader = false;
-        const errorDetail = error.includes("already exists") ? 'USER_ALREADY_EXISTS' : 'GENERIC_ERROR'
+        const errorDetail = error.includes("already exists") || error.includes('Duplicated employee') ? 'USER_ALREADY_EXISTS' : 'GENERIC_ERROR'
         this.notification.showErrorToast(errorDetail);
       });
     }
