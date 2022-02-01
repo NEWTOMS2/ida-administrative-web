@@ -49,8 +49,8 @@ export class TopNavComponent implements OnInit {
   }
 
   logOut(): void {
+    this.layoutService.closeAwsConnectSession();
     localStorage.clear();
     this.router.navigate(['/']);
   }
-
 }
