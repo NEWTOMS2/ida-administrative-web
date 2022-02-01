@@ -16,7 +16,7 @@ import { NotificationsService } from 'src/app/shared/services/notifications.serv
 import { RegisterClaimDialogComponent } from './register-claim-dialog/register-claim-dialog.component';
 import { RegisterCustomerComponent } from './register-customer/register-customer.component';
 import { Observable } from 'rxjs';
-
+import { LayoutService } from 'src/app/account/layout/layout.service';
 
 @Component({
   selector: 'app-aws-connect-panel',
@@ -45,7 +45,8 @@ export class AwsConnectPanelComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private notification: NotificationsService,
     private dialog: MatDialog,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private layoutService: LayoutService
   ) { }
 
   setEmptyCustomerInfo(): void {
@@ -60,6 +61,9 @@ export class AwsConnectPanelComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.layoutService.logOutObservable.subscribe(()=> {
+      this.logout();
+    })
     this.setEmptyCustomerInfo();
     this.buildUser();
     this.buildForm();
@@ -226,4 +230,9 @@ export class AwsConnectPanelComponent implements OnInit {
     });
   }
 
+  logout(): void {
+    fetch( aws_connect.loginUrl + "/connect/logout", { credentials: 'include', mode: 'no-cors'}).then(() => {
+    const eventBus = connect.core.terminate();
+  });
+  }
 }
