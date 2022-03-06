@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { TranslateService } from '@ngx-translate/core';
-import { claimTypes, emailPattern } from 'src/app/core/config/configuration';
+import { ticketTypes, emailPattern } from 'src/app/core/config/configuration';
 import { TicketsService } from 'src/app/core/services/tickets.service';
 import { NotificationsService } from 'src/app/shared/services/notifications.service';
 import { searchTranslation } from 'src/app/utils/searchTranslation';
@@ -18,7 +18,7 @@ export class RegisterClaimDialogComponent implements OnInit {
   spinnerLoader = false;
   newUserSelected = false;
   isChecked: any = false;
-  claimTypes = claimTypes;
+  claimTypes = ticketTypes;
   constructor(
     private dialogRef: MatDialogRef<RegisterClaimDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public dialogData: any,
