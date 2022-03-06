@@ -68,7 +68,10 @@ export class TicketsComponent implements OnInit, AfterViewInit {
     this.buildUser();
     this.buildSelectorData();
     this.buildTable();
-    this.filterByUser()
+    this.filterByUser();
+    if (!this.userIsAdmin()) {
+      this.filterAgentRequests('MY_REQUESTS');
+    }
   }
 
   ngAfterViewInit(): void {
