@@ -61,7 +61,11 @@ export class CommunicationsComponent implements OnInit {
   private buildRealTimeCommunications(): void {
     this.activatedRoute.data.subscribe((data: Partial<{ realTimeCommunications: RealTimeCommunication[] }>) => {
       const content = data.realTimeCommunications != null ? data.realTimeCommunications : [];
-      content.forEach((element, index) => {
+      const newArr = content.map(obj => {
+        return {...obj, dateSort: new Date(obj.date)};
+      });
+      newArr.sort((date1: any, date2:any) => date2.dateSort - date1.dateSort);
+      newArr.forEach((element, index) => {
         const communication: RealTimeCommunication = { 
           id: index + 1, 
           contact_id: element.contact_id, 
