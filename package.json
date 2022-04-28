@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "start-secure": "ng serve --ssl --ssl-key key.pem  --ssl-cert cert.crt",
-    "deploy": "ng build --base-href=/ida-administrative-web/"
+    "deploy": "ng build --base-href=/"
   },
   "private": true,
   "dependencies": {
